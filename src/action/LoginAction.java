@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import java.util.HashMap;
 
 /**
- * poseidon
+ * youduomi
  * Created by 18330 on 2018/10/13.
  */
 @WebServlet(name = "Login", urlPatterns = "/login")
@@ -24,13 +24,9 @@ public class LoginAction extends BaseServlet {
         return res;
     }
     //用户注册
-    public String addNewUserOptimize(String phone,String code,String pwd,String source,String inviteCode) {
+    public String addNewUserOptimize(String phone,String code,String source,String inviteCode,String real_name) {
         String verificationCode = RedisClient.hget("phone_verification_code", phone, "verification_code");
         if(verificationCode!=null && verificationCode.equals(code)) {
-            if(!pwd.equals("")){
-                pwd = pwd.substring(pwd.length()-6,pwd.length());
-            }
-
             //如果填写了邀请人，但是邀请人不存在的情况下，直接返回
             if(!inviteCode.equals("")){
                 //确认上级邀请人时需要判断,邀请码里的邀请人是是否存在
@@ -38,13 +34,15 @@ public class LoginAction extends BaseServlet {
                 if(hasId == null) {
                     return creatResult(3, "邀请人不存在", null).toString();
                 }
+            }else {
+                return creatResult(3, "请填写邀请人", null).toString();
             }
 
             String has = LoginService.getNewUsersgByPhone(phone);
             JSONArray ja = JSONObject.parseObject(has).getJSONObject("result").getJSONArray("rs");
 
             HashMap<String, Object> map = new HashMap<String, Object>();
-            Integer gaiaId = null;
+//            Integer gaiaId = null;
             String sixCode = "";
             Integer userId = null;
 
@@ -52,13 +50,13 @@ public class LoginAction extends BaseServlet {
             if(ja.size() != 0) {
                 return creatResult(3, "用户已存在", null).toString();
             }else{
-                gaiaId = LoginService.addNewGiaiUser(phone, pwd, source);
+//                gaiaId = LoginService.addNewGiaiUser(phone, pwd, source);
                 sixCode = LoginService.getRandomCode();
-                userId = LoginService.addPoseidonUser(phone, phone, gaiaId, source,sixCode);
+                userId = LoginService.addPoseidonUser(phone, phone, source,sixCode,real_name);
                 LoginService.confirmNewSupmember(String.valueOf(userId),inviteCode);
 //                loginByWetCat =  loginNewByWetCat(phone);
             }
-            map.put("gaiaId", gaiaId);
+//            map.put("gaiaId", gaiaId);
             map.put("sixCode", sixCode);
             map.put("userId", userId);
             RedisClient.hdel("phone_verification_code", phone);

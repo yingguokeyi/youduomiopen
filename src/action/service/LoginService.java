@@ -23,14 +23,14 @@ public class LoginService extends BaseService {
     //用户登录
     public static String userLogin(String loginName, String pwd) {
 //        int sid = sendObject(AioTcpCache.gtc, 0, "", loginName, pwd);
-        int sid = sendObject(762,loginName, MD5Util.MD5(pwd));
+        int sid = sendObject(941,loginName, MD5Util.MD5(pwd));
         Integer gaiaId = (Integer) getFieldValue(ResultPoor.getResult(sid), "id", Integer.class);
         if(gaiaId == null) {
             return creatResult(3, "用户名密码错误", null).toString();
         }
 
         //如果没有用户，需要处理
-        int userSid = sendObject(751, gaiaId);
+        int userSid = sendObject(942, gaiaId);
         String rsTest = ResultPoor.getResult(userSid);
         int userStatus = (int) getFieldValue(rsTest, "status", Integer.class);
         //除以会员页面会员非会员的考虑
@@ -75,17 +75,17 @@ public class LoginService extends BaseService {
     }
 
     public static Integer getUsersgByCode(String inviteCode) {
-        int sid = sendObject(752, inviteCode);
+        int sid = sendObject(933, inviteCode);
         String resText = ResultPoor.getResult(sid);
         return (Integer) getFieldValue(resText, "id", Integer.class);
     }
 
     public static String getNewUsersgByPhone(String phone) {
-        int getUserMsg = sendObject(754,phone);
+        int getUserMsg = sendObject(934,phone);
         return ResultPoor.getResult(getUserMsg);
     }
     public static Integer getUserByPhone(String phone) {
-        int sid = sendObject(754, phone);
+        int sid = sendObject(940, phone);
         String resText = ResultPoor.getResult(sid);
         return (Integer) getFieldValue(resText, "id", Integer.class);
     }
@@ -117,7 +117,7 @@ public class LoginService extends BaseService {
             System.out.println("BizId=" + response.getBizId());
 
 
-            int sid = sendObjectCreate(753, phone, "惠点科技", "SMS_128790134", "{\"code\":\""+ result +"\"}", phone, BaseCache.getTIME());
+            int sid = sendObjectCreate(932, phone, "惠点科技", "SMS_128790134", "{\"code\":\""+ result +"\"}", phone, BaseCache.getTIME());
             ResultPoor.getResult(sid);
 
         } catch (ClientException e) {
@@ -131,17 +131,17 @@ public class LoginService extends BaseService {
     /**
      * 确然上级和加入被邀请人列表
      */
-    public static String confirmNewSupmember(String useId,String phone) {
+    public static String confirmNewSupmember(String useId,String inviteCode) {
         //更新我的上级
-        sendObjectCreate(755,phone,useId);
+        sendObjectCreate(937,inviteCode,useId);
         //查询邀请人信息
-        int insertBeInvite =  sendObject(756,useId);
+        int insertBeInvite =  sendObject(938,useId);
         //生成当前时间  插入邀请表
         String inviteDate = BaseCache.getTIME();
         JSONObject beInvite = JSONObject.parseObject(ResultPoor.getResult(insertBeInvite));
         String phoneInvite = beInvite.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("phone");
         String nickNameInvite = beInvite.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("nick_name");
-        int insertBeInvites =  sendObjectCreate(757,useId,phoneInvite,nickNameInvite,inviteDate);
+        int insertBeInvites =  sendObjectCreate(939,useId,phoneInvite,nickNameInvite,inviteDate);
         return ResultPoor.getResult(insertBeInvites);
     }
 
@@ -156,8 +156,8 @@ public class LoginService extends BaseService {
         }
     }
 
-    public static Integer addPoseidonUser(String phone, String openid, Integer gaiaId, String source,String sixCode) {
-        int sid = sendObjectCreate(758, openid, phone, gaiaId, BaseCache.getTIME(), source, 1, 0, 1,"",phone,sixCode);
+    public static Integer addPoseidonUser(String phone, String openid, String source,String sixCode,String real_name) {
+        int sid = sendObjectCreate(936, openid, phone, BaseCache.getTIME(), source, 1, 0, 1,"",phone,sixCode,real_name);
         String resText = ResultPoor.getResult(sid);
         JSONArray ja = JSONObject.parseObject(resText).getJSONObject("result").getJSONArray("ids");
         return ja.getInteger(0);
@@ -215,7 +215,7 @@ public class LoginService extends BaseService {
         int sign = 1;
         while(sign!=0){
             sixCode = StringUtil.randomCode();
-            int sid = sendObject(761, sixCode);
+            int sid = sendObject(935, sixCode);
             String result = ResultPoor.getResult(sid);
             JSONObject ja = JSONObject.parseObject(result);
             int size = ja.getJSONObject("result").getJSONArray("rs").size();
