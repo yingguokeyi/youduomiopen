@@ -52,6 +52,13 @@ public class PropertiesConf{
 	//拼多多请求地址
 	public static String PDD_FORMAL_URL;
 
+	public static String WEIXIN_MENU_URL;
+	public static String WEIXIN_MEMBER_INFOR_URL;
+	public static String YOUDUOMI_URL;
+	public static String WEIXIN_OAUTH2_URL;
+	public static String WEIXIN_CODE2ACCESSTOKEN_URL;
+	public static String WEIXIN_USERINFO_URL;
+
 	public void init(){
 		Properties prop = new Properties();
 		InputStream in = getClass().getResourceAsStream("/properties/BaseConnect.properties");
@@ -94,6 +101,13 @@ public class PropertiesConf{
 			CLIENT_ID = (String) prop.get("client_id");
 			CLIENT_SECRET = (String) prop.get("client_secret");
 			PDD_FORMAL_URL = (String) prop.get("pdd_formal_url");
+			//微信公众号参数
+			WEIXIN_MENU_URL = (String) prop.get("weixinMenuUrl");
+			WEIXIN_MEMBER_INFOR_URL = (String) prop.get("WeiXinMemberInfoUrl");
+			YOUDUOMI_URL = (String)prop.get("youduomiURL");
+			WEIXIN_OAUTH2_URL = (String)prop.get("weixinOauth2Url");
+			WEIXIN_CODE2ACCESSTOKEN_URL = (String)prop.get("weixinCode2accessTokenUrl");
+			WEIXIN_USERINFO_URL = (String)prop.get("weixinUserinfoUrl");
 
 		} catch (IOException e) {
 			e.printStackTrace();
