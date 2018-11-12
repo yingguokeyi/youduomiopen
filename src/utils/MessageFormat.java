@@ -2,6 +2,7 @@ package utils;
 
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.HierarchicalStreamDriver;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import model.TextMessage;
 import org.dom4j.Document;

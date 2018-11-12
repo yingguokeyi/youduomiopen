@@ -163,6 +163,12 @@ public class LoginService extends BaseService {
         return ja.getInteger(0);
     }
 
+    public static String updatePoseidonUser(String phone,String source,String sixCode,String real_name,String openid){
+        int i = sendObjectCreate(664, source, 1, 0, 1, "", phone, sixCode, real_name, openid);
+        String resText = ResultPoor.getResult(i);
+        return resText;
+    }
+
     public static String loginNewByWetCat(String phone) {
         int sid = sendObject(759,phone);
         String resText = ResultPoor.getResult(sid);

@@ -1,6 +1,8 @@
 package action;
 
 import action.service.LoginService;
+import action.service.UserService;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import common.RedisClient;
@@ -24,7 +26,7 @@ public class LoginAction extends BaseServlet {
         return res;
     }
     //用户注册
-    public String addNewUserOptimize(String phone,String code,String source,String inviteCode,String real_name) {
+    public String addNewUserOptimize(String phone,String code,String source,String inviteCode,String real_name,String openid) {
         String verificationCode = RedisClient.hget("phone_verification_code", phone, "verification_code");
         if(verificationCode!=null && verificationCode.equals(code)) {
             //如果填写了邀请人，但是邀请人不存在的情况下，直接返回
@@ -43,23 +45,33 @@ public class LoginAction extends BaseServlet {
 
             HashMap<String, Object> map = new HashMap<String, Object>();
 //            Integer gaiaId = null;
-            String sixCode = "";
-            Integer userId = null;
 
             //判断用户是否存在
+
             if(ja.size() != 0) {
-                return creatResult(3, "用户已存在", null).toString();
+                return creatResult(3, "该手机号已绑定", null).toString();
             }else{
 //                gaiaId = LoginService.addNewGiaiUser(phone, pwd, source);
-                sixCode = LoginService.getRandomCode();
-                userId = LoginService.addPoseidonUser(phone, phone, source,sixCode,real_name);
-                LoginService.confirmNewSupmember(String.valueOf(userId),inviteCode);
+                  new Thread(){
+                    public void run(){
+                        String sixCode = LoginService.getRandomCode();
+                        //userId = LoginService.addPoseidonUser(phone, phone, source,sixCode,real_name);
+                        //完善用户信息
+                        LoginService.updatePoseidonUser(phone, source, sixCode,real_name, openid);
+                        String wxMember = UserService.findWxMember(openid);
+                        JSONObject jsonObject = JSON.parseObject(wxMember);
+                        String userId = jsonObject.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("id");
+                        LoginService.confirmNewSupmember(String.valueOf(userId),inviteCode);
+                        //            map.put("gaiaId", gaiaId);
+                        map.put("sixCode", sixCode);
+                        map.put("userId", userId);
+                        RedisClient.hdel("phone_verification_code", phone);
+                    }
+                }.start();
+
 //                loginByWetCat =  loginNewByWetCat(phone);
             }
-//            map.put("gaiaId", gaiaId);
-            map.put("sixCode", sixCode);
-            map.put("userId", userId);
-            RedisClient.hdel("phone_verification_code", phone);
+
             return creatResult(1, "", map).toString();
         }else {
             return creatResult(2, "短信验证码错误", null).toString();

@@ -286,4 +286,20 @@ public class UserService extends BaseService {
 		}
 		return res;
 	}
+
+	public static String weixinMemberAdd(String openid,String subscribe,String wxNickName,String sex ,String province,String headImage,String memberLevel,String registrationTime ){
+		int memberLevelI = Integer.valueOf(memberLevel);
+		int subscribeI = Integer.valueOf(subscribe);
+		int sexI = Integer.valueOf(sex);
+		int sid = sendObjectCreate(662, openid,subscribeI, wxNickName, sexI, province, headImage,memberLevelI,registrationTime);
+		String result = ResultPoor.getResult(sid);
+		return result;
+	}
+
+	public static String findWxMember(String openid){
+		int sid = sendObject(663,openid);
+		String result = ResultPoor.getResult(sid);
+		return result;
+	}
+
 }

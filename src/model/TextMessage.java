@@ -7,7 +7,7 @@ package model;
  * @Date 2018/11/7 16:36
  * @Version 1.0
  **/
-public class TextMessage extends BaseMessage{
+public class TextMessage extends BaseMessage {
     private String Content;
     private String MsgId;
 

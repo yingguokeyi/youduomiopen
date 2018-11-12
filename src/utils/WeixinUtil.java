@@ -73,7 +73,7 @@ public class WeixinUtil {
     public static void oath(HttpServletRequest request, HttpServletResponse response,String state){
         try {
             String oauth2 = PropertiesConf.WEIXIN_OAUTH2_URL.replace("APPID",APPID).
-                    replace("REDIRECT_URI",PropertiesConf.YOUDUOMI_URL+"/wechatService?method=codeTOAccessToken").
+                    replace("REDIRECT_URI", PropertiesConf.YOUDUOMI_URL+"/wechatAction?method=codeTOAccessToken").
                     replace("SCOPE","snsapi_base").replace("STATE",state);
             response.sendRedirect(oauth2);
         } catch (IOException e) {

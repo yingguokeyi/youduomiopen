@@ -36,7 +36,7 @@
         window.onload =function(){
             $.ajax({
                 type: "get",
-                url: "${ctx}/youduomi/wxUser?method=getUserInfo&openid="+openid,
+                url: "${ctx}/youduomiopen/wxUser?method=getUserInfo&openid="+openid,
                 /*data: {"openid":openid},*/
                 contentType:"application/json",  //缺失会出现URL编码，无法转成json对象
                 cache: false,
@@ -44,9 +44,9 @@
                 dataType: "json",
                 success:function(data) {
                     if(data.success ==1){
-                        $("#set_nickname").html(data.rs[0].wx_nick_name);
-                        $("#headImg").attr("src",data.rs[0].head_image);
-                        $("#iId").attr("ID"+data.rs[0].id);
+                        $("#set_nickname").html(data.result.rs[0].wx_nick_name);
+                        $("#headImg").attr("src",data.result.rs[0].head_image);
+                        $("#iId em").html(+data.result.rs[0].id);
                     }else{
                         alert("error");
                     }
@@ -67,7 +67,7 @@
                 </a>
             </li>
             <li class="second">
-                <p><span id="set_nickname"></span>&nbsp;&nbsp;<i id="iId"></i><button class="copy" data-clipboard-action="copy" data-clipboard-target="i">复制</button></p>
+                <p><span id="set_nickname"></span>&nbsp;&nbsp;<i id="iId">ID<em></em></i><button class="copy" data-clipboard-action="copy" data-clipboard-target="em">复制</button></p>
                 <p class="rank">普通会员</p>
             </li>
         </ul>

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -141,6 +142,7 @@ public class WechatAction extends BaseServlet {
     public void toUploadReceipts(HttpServletRequest request, HttpServletResponse response){
         WeixinUtil.oath(request,response,"5");
     }
+
     public void codeTOAccessToken(HttpServletRequest request, HttpServletResponse response){
         //得到code
         String code = request.getParameter("code");
@@ -175,11 +177,12 @@ public class WechatAction extends BaseServlet {
      */
     public static void upgradeMembers(HttpServletRequest request,HttpServletResponse response,JSONArray rs){
         String member_level = rs.getJSONObject(0).getString("member_level");
+        String openid = rs.getJSONObject(0).getString("openid");
         try {
             if(member_level.equals("0")){
-                response.sendRedirect(request.getContextPath()+"/wechat/member.jsp");
+                response.sendRedirect(request.getContextPath()+"/wechat/member.jsp?openid="+openid);
             }else{
-                response.sendRedirect(request.getContextPath()+"/wechat/reminder.jsp");
+                response.sendRedirect(request.getContextPath()+"/wechat/reminder.jsp?openid="+openid);
             }
         } catch (IOException e) {
             e.printStackTrace();

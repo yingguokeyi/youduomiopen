@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+英雄自古如美人,人间不忍见白头
 </body>
 </html>
