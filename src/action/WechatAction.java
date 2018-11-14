@@ -120,7 +120,7 @@ public class WechatAction extends BaseServlet {
         System.out.println("headimgurl"+headimgurl);
         String s = UserService.weixinMemberAdd(openid, jsonObject.getString("subscribe"), jsonObject.getString("nickname"),
                 jsonObject.getString("sex"), jsonObject.getString("province"), headimgurl,
-                "0", jsonObject.getString("subscribe_time"));
+                "1", jsonObject.getString("subscribe_time"));
         System.out.println("save:"+s);
 
     }
