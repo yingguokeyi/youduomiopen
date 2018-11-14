@@ -12,7 +12,7 @@
 
 }
 .message ul li span:nth-child(1){
-	width: 80%;
+	width: 100%;
 	font-size: .28rem;
 	color: #333;
 	float: left;
@@ -25,19 +25,25 @@
 	vertical-align: top;
 }
 .fill{
-	width: 65%;
+	width: 68%;
 	font-size: .26rem;
 	color: #666;
 	height: .85rem;
 	display: inline-block;
 	padding-left: .26rem;
+}
+.fill select{
+	width: 100%;
+	height: 100%;
+	border:none;
+	outline: none;
 }	
 .message ul li span:nth-child(1) input,.message ul li span:nth-child(1) textarea{
 	border: none;
 	outline: none;
 }
 .message ul li span:nth-child(2){
-	width: 20%;
+	width: 10%;
 	float: right;
 	text-align: right;
 }

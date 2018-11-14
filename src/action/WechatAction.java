@@ -79,7 +79,7 @@ public class WechatAction extends BaseServlet {
                 String eventType = map.get("Event");//获取是关注还是取消
                 //关注
                 if(MessageUtil.MESSAGE_SUBSCRIBE.equals(eventType)){
-                    message = MessageFormat.initText(toUserName, fromUserName, "欢迎关注烟火,回复[0]即可调出功能菜单");
+                    message = MessageFormat.initText(toUserName, fromUserName, "欢迎关注掌小龙！");
                     new Thread(){
                         public void run(){
                             System.out.println("================ Thread savewxMember ==================");
@@ -179,7 +179,7 @@ public class WechatAction extends BaseServlet {
         String member_level = rs.getJSONObject(0).getString("member_level");
         String openid = rs.getJSONObject(0).getString("openid");
         try {
-            if(member_level.equals("0")){
+            if(member_level.equals("1")){
                 response.sendRedirect(request.getContextPath()+"/wechat/member.jsp?openid="+openid);
             }else{
                 response.sendRedirect(request.getContextPath()+"/wechat/reminder.jsp?openid="+openid);

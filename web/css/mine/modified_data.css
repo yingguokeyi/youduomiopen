@@ -21,7 +21,7 @@
 	font-size: .28rem;
 	color: #333;
 }
-.main_bot ul li input,.main_bot ul li textarea{
+.main_bot ul li input,.main_bot ul li textarea,.main_bot ul li select{
 	display: inline-block;
 	width: 70%;
 	border: none;
