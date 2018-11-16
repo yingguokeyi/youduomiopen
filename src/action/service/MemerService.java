@@ -36,4 +36,11 @@ public class MemerService extends BaseService {
         int i = sendObject(954, useId);
         return ResultPoor.getResult(i);
     }
+
+    //查询会员详情
+    public static String getLowerUserInfo(String useId) {
+        int i = sendObject(955, useId,useId,useId);
+        return ResultPoor.getResult(i);
+    }
+
 }

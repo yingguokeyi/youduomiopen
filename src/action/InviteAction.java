@@ -5,10 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import servlet.BaseServlet;
 
 import javax.servlet.annotation.WebServlet;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by 18330 on 2018/11/14.
@@ -41,9 +39,11 @@ public class InviteAction extends BaseServlet {
 
                 JSONObject jsonObject = userList.getJSONObject("result").getJSONArray("rs").getJSONObject(i);
                 String id = jsonObject.getString("id");
+                String wx_nick_name = jsonObject.getString("wx_nick_name");
                 String phone = jsonObject.getString("phone");
                 String member_level = jsonObject.getString("member_level");
                 String Invitation_code = jsonObject.getString("Invitation_code");
+                String head_image = jsonObject.getString("head_image");
                 int num = 0;
                 if (size1 != 0){
                     num = size1+num;
@@ -52,9 +52,11 @@ public class InviteAction extends BaseServlet {
                     num = size2+num;
                 }
                 resultMap.put("id", id);
+                resultMap.put("wx_nick_name", wx_nick_name);
                 resultMap.put("phone", phone);
                 resultMap.put("member_level", member_level);
                 resultMap.put("Invitation_code", Invitation_code);
+                resultMap.put("head_image", head_image);
 
                 resultMap.put("numAll", num);
                 resultMap.put("num1", size1);
@@ -78,6 +80,12 @@ public class InviteAction extends BaseServlet {
     //查询下下级会员
     public String getLowerLower(String userId){
         String res =  MemerService.getLowerLower(userId);
+        return res;
+    }
+
+    //查询会员详情
+    public String getLowerUserInfo(String userId){
+        String res =  MemerService.getLowerUserInfo(userId);
         return res;
     }
 
