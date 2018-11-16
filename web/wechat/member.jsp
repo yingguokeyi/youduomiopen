@@ -48,7 +48,7 @@
     <div class="sky"></div>
     <!-- 人工通道，自动通道 -->
     <div class="Passage">
-        <a href="../register/credit_channel.html"><div class="Artificial_channel">人工通道</div></a>
+        <a href="online_service.jsp"><div class="Artificial_channel">人工通道</div></a>
         <div class="workday">上班时间： 10：00 - 22:00</div>
         <a href="javascript: ;"><div class="automatic_channel">自动通道</div></a>
         <a href="#">

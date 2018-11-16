@@ -1,4 +1,4 @@
-package action.common;
+package common;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -13,6 +13,13 @@ public class ResultJSONUtil {
     public static String success(Object str){
         JSONObject resoult = new JSONObject();
         resoult.put("code","0");
+        resoult.put("message","");
+        resoult.put("result",str);
+        return resoult.toString();
+    }
+    public static String faile(Object str){
+        JSONObject resoult = new JSONObject();
+        resoult.put("code","1");
         resoult.put("message","");
         resoult.put("result",str);
         return resoult.toString();

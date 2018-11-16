@@ -21,7 +21,8 @@ public class UploadImageUtil {
 
     public static Map<String, String> uploadImg(HttpServletRequest request) {
         Map<String, String> map = new HashMap<>();
-        String imagePath = "", fileName = null, orderNo = null, remark = null, token = null, goodsName = null, skuId = null;
+        String imagePath = "", fileName = null, orderNo = null, remark = null, token = null, title = null, skuId = null,
+                prePayment = null,buyNumber = null,money = null;
         FileItem files = null;
         String payTime = null;
         InputStream in;
@@ -30,8 +31,8 @@ public class UploadImageUtil {
         // 重命名
         String extName = "";
         // 文件后缀
-        //imagePath = "D:\\upload\\";
-        imagePath = PropertiesConf.uploadBackOrderImagePath;
+        imagePath = PropertiesConf.WECHAT_IMAGE_LOACH_PATH;
+        //imagePath = PropertiesConf.uploadBackOrderImagePath;
         File zz = new File(imagePath);
         if (!zz.exists()) {
             zz.mkdir();
@@ -53,10 +54,6 @@ public class UploadImageUtil {
                     String fieldName = item.getFieldName();
                     SimpleDateFormat sdf1 = new SimpleDateFormat("YYYYMMddHHmmss");
                     Date date = new Date();
-                    // 上传文件命名
-                    realFileName = sdf1.format(date);
-                    fileName = item.getName();
-
                     System.out.println(" filedName: " + fieldName);
                     //若是一个一般的表单域，打印信息
                     if (item.isFormField()) {
@@ -67,13 +64,16 @@ public class UploadImageUtil {
                             remark = value;
                         } else if ("token".equals(fieldName)) {
                             token = value;
-                        } else if ("goodsName".equals(fieldName)) {
+                        } /*else if ("goodsName".equals(fieldName)) {
                             goodsName = value;
-                        } else if ("skuid".equals(fieldName)) {
+                        }*/ else if ("openid".equals(fieldName)) {
                             skuId = value;
                         }
                     } else {
                         if ("file".equals(fieldName)) {
+                            // 上传文件命名
+                            realFileName = sdf1.format(date);
+                            fileName = item.getName();
                             files = item;
                         }
                     }
@@ -87,7 +87,7 @@ public class UploadImageUtil {
                         extName = fileName.substring(fileName.lastIndexOf("."));//.jpg
                         // 文件后缀名字
                         //imagePath = "D:\\upload\\" + realFileName + extName;
-                        imagePath = PropertiesConf.uploadBackOrderImagePath + realFileName + extName;
+                        imagePath = PropertiesConf.WECHAT_IMAGE_LOACH_PATH + realFileName + extName;
                         ops = new FileOutputStream(imagePath);
                         in = files.getInputStream();
                         byte[] buff = new byte[1024];
@@ -114,9 +114,11 @@ public class UploadImageUtil {
                                     goodsName = goodsWord.get("words").toString();
                                 }*/
                                 for (int i=0;i<wordsArray.size(); i++) {
+                                    title = wordsArray.getJSONObject(0).getString("words");
+                                    remark = wordsArray.getJSONObject(1).getString("words");
                                     JSONObject jsonWords = JSONObject.parseObject(wordsArray.get(i).toString());
                                     String words = jsonWords.get("words").toString();
-                                    if(words.indexOf("￥") !=-1){
+                                    /*if(words.indexOf("￥") !=-1){
                                         if(goodsName == null || "".equals(goodsName)){
                                             if(words.length()<7){
                                                 JSONObject jsonWords_1 = JSONObject.parseObject(wordsArray.get(i-1).toString());
@@ -126,9 +128,9 @@ public class UploadImageUtil {
                                                 goodsName = words.substring(6, words.indexOf("￥"));
                                             }
                                         }
-                                    } else if(orderNo == null || "".equals(orderNo)){
-                                        if (words.indexOf("订单编号") != -1) {
-                                            orderNo = words.substring(words.indexOf(":") + 1, words.length());
+                                    } else*/ if(orderNo == null || "".equals(orderNo)){
+                                        if (words.indexOf("小票号") != -1) {
+                                            orderNo = words.substring(words.lastIndexOf(":") + 1, words.length());
                                         }
                                     } else if (words.indexOf("付款时间") != -1) {
                                         String payDateTime = words.substring(words.indexOf(":") + 1, words.length());
@@ -136,6 +138,12 @@ public class UploadImageUtil {
                                         Date parse = format1.parse(payDateTime);
                                         SimpleDateFormat df = new SimpleDateFormat("YYMMddHHmmss");//设置日期格式
                                         payTime = df.format(parse);
+                                    }else if (words.indexOf("应收") != -1) {
+                                        prePayment = words.substring(words.indexOf(":") + 1, words.length()-4);
+                                    }if (words.lastIndexOf("件数") != -1) {
+                                        buyNumber = words.substring(words.lastIndexOf(":") + 1, words.length());
+                                    }if (words.indexOf("实收") != -1) {
+                                        money = words.substring(words.indexOf(":") + 1, words.length()-7);
                                     }
                                 }
                             }
@@ -144,15 +152,19 @@ public class UploadImageUtil {
                             e.printStackTrace();
                         }
                 }
-                map.put("orderNo", orderNo);
-                map.put("goodsName", goodsName);
+                map.put("receiptsNo", orderNo);
+                map.put("title", title);
                 map.put("remark", remark);
                 map.put("token", token);
+                map.put("money", money);
+                map.put("buyNumber", buyNumber);
+                map.put("prePayment",prePayment);
                 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/hestia/backOrder/" + realFileName + extName;
                 //String basePath = "http://10.1.1.96:8084/upload/"+realFileName + extName;
                 map.put("imagePath", basePath);
-                map.put("skuId", skuId);
-                map.put("payTime", payTime);
+                map.put("openid", skuId);
+                map.put("payTime", "2018-11-16 14:20");
+                map.put("payType", "weixin");
             }
         } catch (Exception e) {
             e.printStackTrace();

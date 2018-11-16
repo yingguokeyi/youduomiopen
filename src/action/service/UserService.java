@@ -302,4 +302,10 @@ public class UserService extends BaseService {
 		return result;
 	}
 
+	public static String findUserInfo(String userId){
+		int sid = sendObject(665,userId);
+		String result = ResultPoor.getResult(sid);
+		return result;
+	}
+
 }

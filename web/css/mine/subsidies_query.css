@@ -22,6 +22,7 @@
 	border-radius: .06rem;
 	outline: none;
 	padding-left: .3rem;
+	vertical-align: middle;
 }
 .select_cont{
 	width: 1.7rem;

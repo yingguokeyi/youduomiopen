@@ -58,7 +58,7 @@ public class PropertiesConf{
 	public static String WEIXIN_OAUTH2_URL;
 	public static String WEIXIN_CODE2ACCESSTOKEN_URL;
 	public static String WEIXIN_USERINFO_URL;
-
+	public static String WECHAT_IMAGE_LOACH_PATH;
 	public void init(){
 		Properties prop = new Properties();
 		InputStream in = getClass().getResourceAsStream("/properties/BaseConnect.properties");
@@ -108,6 +108,7 @@ public class PropertiesConf{
 			WEIXIN_OAUTH2_URL = (String)prop.get("weixinOauth2Url");
 			WEIXIN_CODE2ACCESSTOKEN_URL = (String)prop.get("weixinCode2accessTokenUrl");
 			WEIXIN_USERINFO_URL = (String)prop.get("weixinUserinfoUrl");
+			WECHAT_IMAGE_LOACH_PATH = (String) prop.get("wechatImageLocalPath");
 
 		} catch (IOException e) {
 			e.printStackTrace();

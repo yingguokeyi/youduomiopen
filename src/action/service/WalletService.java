@@ -43,4 +43,10 @@ public class WalletService extends BaseService{
 		
 		return  ResultPoor.getResult(orderListId); 
 	}
+
+	public static String getUserWallet(String userId){
+		int sid = sendObject(666,userId);
+		String result = ResultPoor.getResult(sid);
+		return result;
+	}
 }

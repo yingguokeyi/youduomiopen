@@ -6,7 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String openid = request.getParameter("openid");
+%>
 <html>
+<script>
+    var openid = "<%=openid%>"
+</script>
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="" />
@@ -36,7 +42,7 @@
     </div>
     <!-- 输入小票号的框 -->
     <div class="small_mouth">
-        <input type="text" id="le" placeholder="请输入“小票号”" value="" / >
+        <input type="text" id="le" placeholder="请输入“小票号”" onchange="javascript:pload();"/ >
     </div>
     <!-- 上传小票图片 -->
     <div class="pictures">
@@ -53,7 +59,7 @@
     </div>
     <!-- 历史记录 -->
     <div class="history">
-        <a href="history.html">
+        <a href="history.jsp?openid=<%=openid%>">
             <p class="w_history">历史记录</p>
             <p class="L_history"></p>
         </a>
@@ -75,7 +81,7 @@
 <div class="warm" style="display: none;">
     <div class="warm_title">
         <h4>提示</h4>
-        <p>登录成功</p>
+        <p>录入成功</p>
     </div>
     <div class="warm_choose">
         <a class="warm_login">确定</a>

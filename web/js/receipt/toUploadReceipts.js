@@ -1,17 +1,29 @@
-
-$(function(){
-    // 判断是否填写小票号
-    $("#le").blur(function() {
-        var name = document.getElementById("le").value;
-        if(name !=''){
-            $('.push_button').css({display: 'block'});
-            // $('.below').css({display: 'block'});
-          
-        }else {
-            $('.push_button').css({display: 'none'});
-            // $('.below').css({display: 'none'});
+console.log("openid",openid);
+//上传图片
+function receiptImg() {
+    var formData = new FormData();
+    var img_file = document.getElementById("doc");
+    var fileObject = img_file.files[0];
+    formData.append("file", fileObject);
+    formData.append("openid",openid);
+    $.ajax({
+        url: domain_name_url+"/receipts?method=uploadImg",
+        type: "POST",
+        dataType: "json",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            console.log("sendImg",data.result)
+        },
+        error: function (data) {
+            console.log("sendImg",data.result)
         }
     });
+}
+
+
+$(function(){
 
   // 弹框 ----上传
   $(".up").click(function() {
@@ -31,11 +43,7 @@ $(document).on("click", ".warm_login", function(){
     layer.closeAll('page');
     });
 
-
-
- 
-
-})
+});
 
 //下面用于图片上传预览功能
 function setImagePreview(avalue) {
@@ -79,6 +87,34 @@ function setImagePreview(avalue) {
             imgObjPreview.style.display = 'none';
             document.selection.empty();
         }
+    var formData = new FormData();
+    var img_file = document.getElementById("doc");
+    var fileObject = img_file.files[0];
+    formData.append("file", fileObject);
+    formData.append("openid",openid);
+    $.ajax({
+        url: domain_name_url+"/receipts?method=uploadImg",
+        type: "POST",
+        dataType: "json",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            console.log("order",data.result);
+            $('#le').val(data.result);
+            // 判断是否填写小票号
+            var name = document.getElementById("le").value;
+            if(data.code == "0"){
+                $('.push_button').css({display: 'block'});
+
+            }else {
+                $('.push_button').css({display: 'none'});
+            }
+        },
+        error: function (data) {
+            console.log("order",data.result)
+        }
+    });
     return true;
 }
 

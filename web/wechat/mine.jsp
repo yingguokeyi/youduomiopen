@@ -43,10 +43,12 @@
                 async : false,
                 dataType: "json",
                 success:function(data) {
-                    if(data.success ==1){
-                        $("#set_nickname").html(data.result.rs[0].wx_nick_name);
-                        $("#headImg").attr("src",data.result.rs[0].head_image);
-                        $("#iId em").html(+data.result.rs[0].id);
+                    if(data.message ==1){
+                        $("#set_nickname").html(data.wxMember.result.rs[0].wx_nick_name);
+                        $("#headImg").attr("src",data.wxMember.result.rs[0].head_image);
+                        $("#iId em").html(data.wxMember.result.rs[0].id);
+                        $("#pid").html(data.userWallet.result.rs[0].money/100+"元");
+                        $("#lowerId").html(data.lowerCount.result.rs[0].num+"人");
                     }else{
                         alert("error");
                     }
@@ -62,12 +64,12 @@
     <div class="main_top">
         <ul class="hea_ul">
             <li class="first">
-                <a id="fir_per" href="membership.html">
+                <a id="fir_per" href="membership.jsp?openid=<%=openid%>">
                     <img id="headImg" />
                 </a>
             </li>
             <li class="second">
-                <p><span id="set_nickname"></span>&nbsp;&nbsp;<i id="iId">ID<em></em></i><button class="copy" data-clipboard-action="copy" data-clipboard-target="em">复制</button></p>
+                <p><span id="set_nickname"></span>&nbsp;&nbsp;(<i id="iId">ID<em></em></i>)<button class="copy" data-clipboard-action="copy" data-clipboard-target="em">复制</button></p>
                 <p class="rank">普通会员</p>
             </li>
         </ul>
@@ -75,62 +77,70 @@
     <div class="main_middle">
         <ul>
             <li>
-                <p>100.00元</p>
+                <p id="pid">100.00元</p>
                 <p>当前资产</p>
                 <div class="mid_line"></div>
             </li>
 
             <li>
-                <p>6人</p>
+                <p id="lowerId">6人</p>
                 <p>我的团队</p>
             </li>
         </ul>
         <!-- 轮播 -->
-        <div class="swiper-container" id="lunboIdOut">
-            <div class="swiper-wrapper" id="lunboIdIn">
-                <div class="swiper-slide">
-                    <img src="../image/mine/goods_list.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <img src="../image/mine/goods_list.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <img src="../image/mine/goods_list.jpg" alt="">
-                </div>
-            </div>
-            <div class="swiper-pagination "></div>
+        <%--<div class="swiper-container" id="lunboIdOut">--%>
+            <%--<div class="swiper-wrapper" id="lunboIdIn">--%>
+                <%--<div class="swiper-slide">--%>
+                    <%--<img src="../image/mine/goods_list.jpg" alt="">--%>
+                <%--</div>--%>
+                <%--<div class="swiper-slide">--%>
+                    <%--<img src="../image/mine/goods_list.jpg" alt="">--%>
+                <%--</div>--%>
+                <%--<div class="swiper-slide">--%>
+                    <%--<img src="../image/mine/goods_list.jpg" alt="">--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="swiper-pagination "></div>--%>
+        <%--</div>--%>
+        <div id="lunboIdOut">
+            <img src="../image/mine/goods_list.jpg" alt="">
         </div>
     </div>
     <div class="main_bot">
         <ul>
-            <li onclick="window.location='my_team.html'">
+            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/my_team.jsp?openid=<%=openid%>'">
                 <p><img src="../image/mine/team.png" /></p>
                 <p>我的团队</p>
             </li>
-            <li onclick="window.location='my_wallet.html'">
+            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/my_wallet.jsp?openid=<%=openid%>'">
                 <p><img src="../image/mine/wallet.png" /></p>
                 <p>我的钱包</p>
             </li>
-            <li>
+            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/receipt.jsp?openid=<%=openid%>'">
                 <p><img src="../image/mine/query.png" /></p>
                 <p>小票查询</p>
             </li>
-            <li>
+            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/toUploadReceipts.jsp?openid=<%=openid%>'">
                 <p><img src="../image/mine/upload.png" /></p>
                 <p>小票上传</p>
             </li>
-            <li onclick="window.location='subsidies_query.html'">
+            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/subsidies_query.jsp?openid=<%=openid%>'">
                 <p><img src="../image/mine/subsidy.png" /></p>
                 <p>补贴查询</p>
             </li>
-            <li onclick="window.location='online_service.html'">
+            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/online_service.jsp?openid=<%=openid%>'">
                 <p><img src="../image/mine/service.png" /></p>
                 <p>客服服务</p>
             </li>
-            <li onclick="window.location='apply_for.html'">
-                <p><img src="../image/mine/agency.png" /></p>
-                <p>代理申请</p>
+            <li onclick="window.location='../makeEveryDay/makeEveryDay.html'">
+                <p><img src="../image/mine/make_every.png" /></p>
+                <p>天天赚</p>
             </li>
+            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/task_query.jsp?openid=<%=openid%>'">
+                <p><img src="../image/mine/task_query.png" /></p>
+                <p>任务查询</p>
+            </li>
+
         </ul>
     </div>
 </div>
