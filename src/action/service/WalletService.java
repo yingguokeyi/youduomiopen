@@ -61,5 +61,5 @@ public class WalletService extends BaseService{
 		Integer sid = sendObject(956,userId);
 		return  ResultPoor.getResult(sid);
 	}
-	
+
 }

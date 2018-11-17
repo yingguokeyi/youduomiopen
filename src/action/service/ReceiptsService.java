@@ -44,10 +44,18 @@ public class ReceiptsService extends BaseService{
         sql.append(" and user_id =").append(userId);
         if (receipts_order!=null && !"".equals(receipts_order) ){
             sql.append(" and receipts_order =").append(receipts_order);
+        }else{
+            sql.append(" AND history IS NULL ");
         }
         sql.append(" ORDER BY create_date DESC ");
         int sid = BaseService.sendObjectBase(9999,sql.toString());
         return  ResultPoor.getResult(sid);
+    }
+
+    public static String emptyHistory(String userId){
+        int sid = sendObjectCreate(958,1,userId);
+        String result = ResultPoor.getResult(sid);
+        return result;
     }
 
 }

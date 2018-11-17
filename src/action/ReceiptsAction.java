@@ -5,26 +5,14 @@ import action.service.UserService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import common.PropertiesConf;
 import common.ResultJSONUtil;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import servlet.BaseServlet;
 import utils.UploadImageUtil;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 /**
  * @ClassName ReceiptsAction
@@ -76,6 +64,11 @@ public class ReceiptsAction extends BaseServlet{
     //小票上传历史记录
     public String getReceiptsRecord(String userId,String receipts_order){
         String res =  ReceiptsService.getReceiptsRecord(userId,receipts_order);
+        return res;
+    }
+    //清空历史记录
+    public String emptyHistory(String userId){
+        String res =  ReceiptsService.emptyHistory(userId);
         return res;
     }
 
