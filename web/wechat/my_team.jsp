@@ -8,8 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String openid = request.getParameter("openid");
+    String userId = request.getParameter("userId");
 %>
 <html>
+<script>
+    var userId = "<%=userId%>"
+</script>
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="" />
@@ -45,73 +49,26 @@
     <div class="main_bot">
         <div class="team_tile">
             <ul class="bot_ul">
-                <li>
+                <li id="headcount">
                     <a class="tabhover">
-                        总人数6人
+                        总人数<em></em>人
                     </a>
                 </li>
-                <li>
+                <li id="direct_invitation">
                     <a>
-                        直系邀请5人
+                        直系邀请<em></em>人
                     </a>
                 </li>
-                <li>
+                <li id="second_invitation">
                     <a>
-                        二级邀请1人
+                        二级邀请<em></em>人
                     </a>
                 </li>
             </ul>
         </div>
         <div class="tabcontent" id="orderContent">
             <ul>
-                <li class="first">
-                    <a href="membership_details.jsp" class="first_a">
-								<span class="title_content">
-								<img src='../image/mine/autoPic.jpg' />
-									<span>刘一兵<i>(262745)</i></span>
-								</span>
-                        <span class="back_span">
-									<span>普通会员</span>
-									<img src="../image/mine/enter.png" />
-								</span>
-                    </a>
-                </li>
-                <li class="first">
-                    <a href="javascript:;" class="first_a">
-								<span class="title_content">
-								<img src='../image/mine/autoPic.jpg' />
-									<span>刘一兵<i>(262745)</i></span>
-								</span>
-                        <span class="back_span">
-									<span>普通会员</span>
-									<img src="../image/mine/enter.png" />
-								</span>
-                    </a>
-                </li>
-                <li class="first">
-                    <a href="javascript:;" class="first_a">
-								<span class="title_content">
-								<img src='../image/mine/autoPic.jpg' />
-									<span>刘一兵<i>(262745)</i></span>
-								</span>
-                        <span class="back_span">
-									<span>vip</span>
-									<img src="../image/mine/enter.png" />
-								</span>
-                    </a>
-                </li>
-                <li class="first">
-                    <a href="javascript:;" class="first_a">
-								<span class="title_content">
-								<img src='../image/mine/autoPic.jpg' />
-									<span>刘一兵<i>(262745)</i></span>
-								</span>
-                        <span class="back_span">
-									<span>vip</span>
-									<img src="../image/mine/enter.png" />
-								</span>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>

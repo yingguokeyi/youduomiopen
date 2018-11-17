@@ -1,6 +1,7 @@
 package action;
 
 import action.service.ReceiptsService;
+import action.service.UserService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -58,8 +59,11 @@ public class ReceiptsAction extends BaseServlet{
             JSONObject jsonObject = JSON.parseObject(peceipts);
             JSONArray rs = jsonObject.getJSONObject("result").getJSONArray("rs");
             if(rs.size() == 0){
+                String wxMember = UserService.findWxMember(openid);
+                JSONObject jsonObjects = JSON.parseObject(wxMember);
+                String userId = jsonObjects.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("id");
                 //保存小票
-                ReceiptsService.savePeceipts(title, remark, receiptsNo, buyNumber, prePayment, money, payType, payTime, imagePath);
+                ReceiptsService.savePeceipts(title, remark, receiptsNo, buyNumber, prePayment, money, payType, payTime, imagePath,userId);
                 return ResultJSONUtil.success(receiptsNo);
             }
             return ResultJSONUtil.faile("该小票已上传,请勿重复上传");

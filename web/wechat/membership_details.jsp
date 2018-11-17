@@ -40,10 +40,10 @@
         </header>
         <div class="mem_name">
             <p class="mem_head">
-                <img src="../image/mine/autoPic.jpg" />
+                <img />
             </p>
             <p class="mem_per">
-                原来如此
+
             </p>
         </div>
     </div>
@@ -52,43 +52,43 @@
             <li style="overflow:hidden" class="bot_li">
                 <div style="float:left;" class="bot_p">
                     <p>会&nbsp;&nbsp;员&nbsp;&nbsp;ID:</p>
-                    <p><i>528572</i></p>
+                    <p id="member_id"><i></i></p>
                 </div>
             </li>
             <li class="bot_li">
                 <div class="bot_p">
                     <p>会员级别:</p>
-                    <p><em>普通会员</em></p>
+                    <p id="member_level"><em></em></p>
                 </div>
             </li>
             <li class="bot_li">
                 <div class="bot_p">
                     <p>上级会员:</p>
-                    <p><em>缘来如此 (528572)</em></p>
+                    <p><span id="superior_member"></span>(<span id="superior_id"></span>)</p>
                 </div>
             </li>
             <li class="bot_li">
                 <div class="bot_p">
                     <p>会员级别:</p>
-                    <p><em>普通会员</em></p>
+                    <p id="super_memlevel"><em></em></p>
                 </div>
             </li>
             <li class="bot_li">
                 <div class="bot_p">
                     <p>注册时间:</p>
-                    <p><em>2018-10-18 10:34:00</em></p>
+                    <p id="register_time"><em></em></p>
                 </div>
             </li>
             <li class="bot_li">
                 <div class="bot_p">
                     <p>真实姓名:</p>
-                    <p><em>默 *</em></p>
+                    <p id="real_name"><em></em></p>
                 </div>
             </li>
             <li class="bot_li">
                 <div class="bot_p">
                     <p>手机号码:</p>
-                    <p><em>183****0405</em></p>
+                    <p id="member_phone"><em></em></p>
                 </div>
             </li>
         </ul>

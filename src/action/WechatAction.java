@@ -1,6 +1,8 @@
 package action;
 
 import action.service.UserService;
+import action.service.WalletService;
+import cache.BaseCache;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -122,7 +124,10 @@ public class WechatAction extends BaseServlet {
                 jsonObject.getString("sex"), jsonObject.getString("province"), headimgurl,
                 "1", jsonObject.getString("subscribe_time"));
         System.out.println("save:"+s);
-
+        String wxMember = UserService.findWxMember(openid);
+        JSONObject jsonObjects = JSON.parseObject(wxMember);
+        String userId = jsonObjects.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("id");
+        WalletService.saveUserWallet(userId,0,0,0, BaseCache.getTIME(),BaseCache.getTIME(),"remark");
     }
 
     /**
@@ -197,11 +202,12 @@ public class WechatAction extends BaseServlet {
     public static void personCenter(HttpServletRequest request, HttpServletResponse response,JSONArray rs){
         String phone = rs.getJSONObject(0).getString("phone");
         String openid = rs.getJSONObject(0).getString("openid");
+        String userId = rs.getJSONObject(0).getString("id");
         try {
             if(null == phone || "".equals(phone)){
-                response.sendRedirect(request.getContextPath()+"/wechat/register.jsp?openid="+openid);
+                response.sendRedirect(request.getContextPath()+"/wechat/register.jsp?openid="+openid+"&userId="+userId);
             }else{
-                response.sendRedirect(request.getContextPath()+"/wechat/mine.jsp?openid="+openid);
+                response.sendRedirect(request.getContextPath()+"/wechat/mine.jsp?openid="+openid+"&userId="+userId);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -211,7 +217,8 @@ public class WechatAction extends BaseServlet {
     public static void toUploadReceipt(HttpServletRequest request, HttpServletResponse response,JSONArray rs){
         try {
             String openid = rs.getJSONObject(0).getString("openid");
-            response.sendRedirect(request.getContextPath()+"/wechat/toUploadReceipts.jsp?openid="+openid);
+            String userId = rs.getJSONObject(0).getString("id");
+            response.sendRedirect(request.getContextPath()+"/wechat/toUploadReceipts.jsp?openid="+openid+"&userId="+userId);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -221,7 +228,8 @@ public class WechatAction extends BaseServlet {
     public static void receipts(HttpServletRequest request, HttpServletResponse response,JSONArray rs){
         try {
             String openid = rs.getJSONObject(0).getString("openid");
-            response.sendRedirect(request.getContextPath()+"/wechat/receipt.jsp?openid="+openid);
+            String userId = rs.getJSONObject(0).getString("id");
+            response.sendRedirect(request.getContextPath()+"/wechat/receipt.jsp?openid="+openid+"&userId="+userId);
         }catch (IOException e){
             e.printStackTrace();
         }

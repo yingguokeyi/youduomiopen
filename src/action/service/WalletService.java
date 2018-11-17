@@ -49,4 +49,11 @@ public class WalletService extends BaseService{
 		String result = ResultPoor.getResult(sid);
 		return result;
 	}
+
+	public static String saveUserWallet(String userId,int money,int withdraw,int balance,String createTime,
+										String editTime,String remarks){
+		int sid = sendObjectCreate(669, userId,money, withdraw, balance,createTime,editTime,remarks);
+		String result = ResultPoor.getResult(sid);
+		return result;
+	}
 }

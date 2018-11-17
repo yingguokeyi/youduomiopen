@@ -6,7 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String openid = request.getParameter("openid");
+    String userId = request.getParameter("userId");
+%>
 <html>
+<script>
+var userId = <%=userId%>
+</script>
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="" />
@@ -35,20 +42,20 @@
                 <button id="wit_btn" onclick="window.location='${request.contextPath}/youduomiopen/wechat/withdraw.jsp'">提现</button>
             </p>
             <p class="wallet_num">
-                <span class="wallet_zo">总资产:<span>300元</span></span>
+                <span class="wallet_zo">总资产:<span><i></i>元</span></span>
             </p>
         </div>
     </div>
     <div class="main_middle">
         <ul>
             <li>
-                <p>100.00元</p>
+                <p id="current_balance"><i></i>元</p>
                 <p>当前余额</p>
                 <div class="mid_line"></div>
             </li>
 
             <li>
-                <p>100.00元</p>
+                <p id="have_withdrawal"><i></i>元</p>
                 <p>已提现</p>
             </li>
         </ul>

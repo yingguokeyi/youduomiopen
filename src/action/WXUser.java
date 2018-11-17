@@ -30,13 +30,23 @@ public class WXUser extends BaseServlet {
         JSONArray memberArrray = jsonObject.getJSONObject("result").getJSONArray("rs");
         String parentMember = UserService.findUserInfo(memberArrray.getJSONObject(0).getString("parent_user_id"));
         String userWallet = WalletService.getUserWallet(memberArrray.getJSONObject(0).getString("id"));
-        String lowerCount = MemerService.getLowerCount(memberArrray.getJSONObject(0).getString("id"));
+        String res1 =  MemerService.getLowerCount(memberArrray.getJSONObject(0).getString("id"));
+        String res2 =  MemerService.getLowerLowerCount(memberArrray.getJSONObject(0).getString("id"));
+        int size1 = Integer.parseInt(JSONObject.parseObject(res1).getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("num"));
+        int size2 = Integer.parseInt(JSONObject.parseObject(res2).getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("num"));
+        int num = 0;
+        if (size1 != 0){
+            num = size1+num;
+        }
+        if (size2 != 0){
+            num = size2+num;
+        }
         JSONObject json = new JSONObject();
         json.put("message","1");
         json.put("wxMember",JSON.parseObject(wxMember));
         json.put("parentMember",JSON.parseObject(parentMember));
         json.put("userWallet",JSON.parseObject(userWallet));
-        json.put("lowerCount",JSON.parseObject(lowerCount));
+        json.put("lowerCount",num);
         return json.toString();
     }
 }
