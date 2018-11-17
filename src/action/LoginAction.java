@@ -36,9 +36,10 @@ public class LoginAction extends BaseServlet {
                 if(hasId == null) {
                     return creatResult(3, "邀请人不存在", null).toString();
                 }
-            }else {
-                return creatResult(3, "请填写邀请人", null).toString();
             }
+//            else {
+//                return creatResult(3, "请填写邀请人", null).toString();
+//            }
 
             String has = LoginService.getNewUsersgByPhone(phone);
             JSONArray ja = JSONObject.parseObject(has).getJSONObject("result").getJSONArray("rs");
@@ -61,7 +62,9 @@ public class LoginAction extends BaseServlet {
                         String wxMember = UserService.findWxMember(openid);
                         JSONObject jsonObject = JSON.parseObject(wxMember);
                         String userId = jsonObject.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("id");
-                        LoginService.confirmNewSupmember(String.valueOf(userId),inviteCode);
+                        if(!inviteCode.equals("")){
+                            LoginService.confirmNewSupmember(String.valueOf(userId),inviteCode);
+                        }
                         //            map.put("gaiaId", gaiaId);
                         map.put("sixCode", sixCode);
                         map.put("userId", userId);
