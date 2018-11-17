@@ -25,8 +25,8 @@ public class ReceiptsService extends BaseService{
         int receiptsOrderI = Integer.valueOf(receiptsOrder);
         int buyNumberI = Integer.valueOf(buyNumber);
         String createdDate = BaseCache.getTIME();
-        int sid = sendObjectCreate(668, total,remark, receiptsOrderI, buyNumberI, prePayment,money, payType,buyTime,receiptsImgUrl,createdDate,0);
-
+        String status = "0";
+        int sid = sendObjectCreate(668, total,remark, receiptsOrderI, buyNumberI, prePayment,money, payType,buyTime,receiptsImgUrl,createdDate,status);
         String result = ResultPoor.getResult(sid);
         return result;
     }

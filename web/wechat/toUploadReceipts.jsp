@@ -42,7 +42,7 @@
     </div>
     <!-- 输入小票号的框 -->
     <div class="small_mouth">
-        <input type="text" id="le" placeholder="请输入“小票号”" readonly="readonly" onchange="javascript:pload();"/ >
+        <input type="text" id="le" placeholder="请输入“小票号”"  onchange="javascript:pload();"/ >
     </div>
     <!-- 上传小票图片 -->
     <div class="pictures">

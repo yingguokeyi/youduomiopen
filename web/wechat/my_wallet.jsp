@@ -96,5 +96,5 @@ var userId = <%=userId%>
     </div>
 </div>
 </body>
-<script type="text/javascript" src="../js/mine/my_team.js"></script>
+<script type="text/javascript" src="../js/mine/my_wallet.js"></script>
 </html>

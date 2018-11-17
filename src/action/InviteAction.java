@@ -44,13 +44,7 @@ public class InviteAction extends BaseServlet {
                 String member_level = jsonObject.getString("member_level");
                 String Invitation_code = jsonObject.getString("Invitation_code");
                 String head_image = jsonObject.getString("head_image");
-                int num = 0;
-                if (size1 != 0){
-                    num = size1+num;
-                }
-                if (size2 != 0){
-                    num = size2+num;
-                }
+                int num = size1+size2;
                 resultMap.put("id", id);
                 resultMap.put("wx_nick_name", wx_nick_name);
                 resultMap.put("phone", phone);

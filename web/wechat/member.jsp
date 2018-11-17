@@ -52,7 +52,7 @@
         <div class="workday">上班时间： 10：00 - 22:00</div>
         <a href="javascript: ;"><div class="automatic_channel">自动通道</div></a>
         <a href="#">
-            <div class="skip">跳过</div>
+            <%--<div class="skip">跳过</div>--%>
             <div class="xian"></div>
         </a>
     </div>
