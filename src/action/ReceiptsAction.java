@@ -73,4 +73,10 @@ public class ReceiptsAction extends BaseServlet{
         }
     }
 
+    //小票上传历史记录
+    public String getReceiptsRecord(String userId,String receipts_order){
+        String res =  ReceiptsService.getReceiptsRecord(userId,receipts_order);
+        return res;
+    }
+
 }

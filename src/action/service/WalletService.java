@@ -61,18 +61,5 @@ public class WalletService extends BaseService{
 		Integer sid = sendObject(956,userId);
 		return  ResultPoor.getResult(sid);
 	}
-
-
-	public static String getReceiptsRecord(String userId,String receipts_order) {
-		StringBuffer sql = new StringBuffer();
-		sql.append(" SELECT * FROM ( SELECT r.*, e.profit FROM youduomi.b_receipts AS r LEFT JOIN youduomi.b_recommend AS e ON r.id = e.receipts_id AND r.user_id = e.user_id ) AS f WHERE 1 = 1 ");
-		sql.append(" and user_id =").append(userId);
-		if (receipts_order!=null && !"".equals(receipts_order) ){
-			sql.append(" and receipts_order =").append(receipts_order);
-		}
-		sql.append(" ORDER BY create_date DESC ");
-		int sid = BaseService.sendObjectBase(9999,sql.toString());
-		return  ResultPoor.getResult(sid);
-
-	}
+	
 }
