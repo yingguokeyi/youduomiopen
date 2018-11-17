@@ -13,20 +13,20 @@ import cache.ResultPoor;
 public class ReceiptsService extends BaseService{
 
 
-    public static String savePeceipts(String total,String remark,String receiptsOrder,String buyNumber ,String prePayment,
+   /* public static String savePeceipts(String total,String remark,String receiptsOrder,String buyNumber ,String prePayment,
                                       String money,String payType,String buyTime,String receiptsImgUrl,String userId ) {
         int receiptsOrderI = Integer.valueOf(receiptsOrder);
         int buyNumberI = Integer.valueOf(buyNumber);
         int sid = sendObjectCreate(668, total, remark, receiptsOrderI, buyNumberI, prePayment, money, payType, buyTime, receiptsImgUrl, userId);
         String result = ResultPoor.getResult(sid);
         return result;
-    }
-    public static String savePeceipts(String total,String remark,String receiptsOrder,String buyNumber ,String prePayment,String money,String payType,String buyTime,String receiptsImgUrl){
+    }*/
+    public static String savePeceipts(String total,String remark,String receiptsOrder,String buyNumber ,String prePayment,String money,String payType,String buyTime,String receiptsImgUrl,String userId){
         int receiptsOrderI = Integer.valueOf(receiptsOrder);
         int buyNumberI = Integer.valueOf(buyNumber);
         String createdDate = BaseCache.getTIME();
         String status = "0";
-        int sid = sendObjectCreate(668, total,remark, receiptsOrderI, buyNumberI, prePayment,money, payType,buyTime,receiptsImgUrl,createdDate,status);
+        int sid = sendObjectCreate(668, total,remark, receiptsOrderI, buyNumberI, prePayment,money, payType,buyTime,receiptsImgUrl,createdDate,userId,status);
         String result = ResultPoor.getResult(sid);
         return result;
     }
