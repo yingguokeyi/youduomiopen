@@ -2,7 +2,10 @@ package action.service;
 
 
 import cache.AioTcpCache;
+import cache.BaseCache;
 import cache.ResultPoor;
+import com.alibaba.fastjson.JSONObject;
+import utils.StringUtil;
 
 public class WalletService extends BaseService{
 	
@@ -60,6 +63,37 @@ public class WalletService extends BaseService{
 	public static String getWalletMoney(String userId) {
 		Integer sid = sendObject(956,userId);
 		return  ResultPoor.getResult(sid);
+	}
+
+	public static String wechatWithdrawals(String userId,String amount){
+
+		int intAmount = Integer.parseInt(amount)*100;
+		String create_time = BaseCache.getTIME();
+		String sixCode = StringUtil.randomCode();
+		String partner_trade_no = create_time + sixCode;
+		String status = "0";
+		double poundage = 0.99;
+		//查询钱包金额
+		int sid = sendObject(959, userId);
+		String result = ResultPoor.getResult(sid);
+		JSONObject res = JSONObject.parseObject(result);
+		int balance = Integer.parseInt(res.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("balance"));
+		//提现金额符合要求
+		if ( intAmount%500 == 0 && intAmount >=500 && intAmount <= balance ){
+			//修改钱包余额
+			int i1 = sendObjectCreate(960, balance - intAmount, userId);
+			String result1 = ResultPoor.getResult(i1);
+			JSONObject result_json = JSONObject.parseObject(result1);
+			String success = result_json.getString("success");
+			if ( "1".equals(success)){
+				int sid2 = sendObjectCreate(961, partner_trade_no,userId, intAmount,"1%",(int)(intAmount*poundage),1,1,create_time);
+				String result2 = ResultPoor.getResult(sid2);
+				return result2;
+			}
+			return creatResult(2, "提现金额有误", null).toString();
+		}else {
+			return creatResult(2, "提现金额有误", null).toString();
+		}
 	}
 
 }
