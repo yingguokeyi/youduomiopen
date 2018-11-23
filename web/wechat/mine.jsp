@@ -48,7 +48,7 @@
                         $("#set_nickname").html(data.wxMember.result.rs[0].wx_nick_name);
                         $("#headImg").attr("src",data.wxMember.result.rs[0].head_image);
                         $("#iId em").html(data.wxMember.result.rs[0].id);
-                        $("#pid").html(data.userWallet.result.rs[0].money/100+"元");
+                        $("#pid").html(data.userWallet.result.rs[0].balance/100+"元");
                         $("#lowerId").html(data.lowerCount+"人");
                     }else{
                         alert("error");
