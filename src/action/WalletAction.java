@@ -17,4 +17,10 @@ public class WalletAction extends BaseServlet {
         return res;
     }
 
+    //微信申请提现
+    public String wechatWithdrawals(String userId,String amount){
+        String res =  WalletService.wechatWithdrawals(userId,amount);
+        return res;
+    }
+
 }

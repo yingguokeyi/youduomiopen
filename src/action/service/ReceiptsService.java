@@ -38,7 +38,7 @@ public class ReceiptsService extends BaseService{
         return result;
     }
 
-    public static String getReceiptsRecord(String userId,String receipts_order) {
+    public static String getReceiptsRecord(String userId,String receipts_order,String status) {
         StringBuffer sql = new StringBuffer();
         sql.append(" SELECT * FROM ( SELECT r.*, e.profit FROM youduomi.b_receipts AS r LEFT JOIN youduomi.b_recommend AS e ON r.id = e.receipts_id AND r.user_id = e.user_id ) AS f WHERE 1 = 1 ");
         sql.append(" and user_id =").append(userId);
@@ -47,7 +47,11 @@ public class ReceiptsService extends BaseService{
         }else{
             sql.append(" AND history IS NULL ");
         }
-        sql.append(" ORDER BY create_date DESC ");
+        if ("1".equals(status) ){
+            sql.append(" ORDER BY create_date DESC ");
+        }else{
+            sql.append(" ORDER BY create_date ASC ");
+        }
         int sid = BaseService.sendObjectBase(9999,sql.toString());
         return  ResultPoor.getResult(sid);
     }

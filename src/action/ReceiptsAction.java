@@ -67,8 +67,8 @@ public class ReceiptsAction extends BaseServlet{
     }
 
     //小票上传历史记录
-    public String getReceiptsRecord(String userId,String receipts_order){
-        String res =  ReceiptsService.getReceiptsRecord(userId,receipts_order);
+    public String getReceiptsRecord(String userId,String receipts_order,String status){
+        String res =  ReceiptsService.getReceiptsRecord(userId,receipts_order,status);
         return res;
     }
     //清空历史记录

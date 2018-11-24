@@ -47,8 +47,12 @@
                     if(data.message ==1){
                         $("#set_nickname").html(data.wxMember.result.rs[0].wx_nick_name);
                         $("#headImg").attr("src",data.wxMember.result.rs[0].head_image);
+
                         $("#iId em").html(data.wxMember.result.rs[0].Invitation_code);
                         $("#pid").html(data.userWallet.result.rs[0].money/100+"元");
+
+                        /*$("#iId em").html(data.wxMember.result.rs[0].id);
+                        $("#pid").html(data.userWallet.result.rs[0].balance/100+"元");*/
                         $("#lowerId").html(data.lowerCount+"人");
                         $(".rank").html(data.wxMember.result.rs[0].member_level=="1"?"普通会员":"vip");
                         var member = data.wxMember.result.rs[0].member_level;
