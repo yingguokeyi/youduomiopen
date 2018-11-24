@@ -47,9 +47,13 @@
                     if(data.message ==1){
                         $("#set_nickname").html(data.wxMember.result.rs[0].wx_nick_name);
                         $("#headImg").attr("src",data.wxMember.result.rs[0].head_image);
-                        $("#iId em").html(data.wxMember.result.rs[0].id);
+                        $("#iId em").html(data.wxMember.result.rs[0].Invitation_code);
                         $("#pid").html(data.userWallet.result.rs[0].money/100+"元");
                         $("#lowerId").html(data.lowerCount+"人");
+                        $(".rank").html(data.wxMember.result.rs[0].member_level=="1"?"普通会员":"vip");
+                        var member = data.wxMember.result.rs[0].member_level;
+                        sStorage = window.localStorage; //本地存题目
+                        sStorage.wmember = member;
                     }else{
                         alert("error");
                     }
@@ -71,7 +75,7 @@
             </li>
             <li class="second">
                 <p><span id="set_nickname"></span>&nbsp;&nbsp;(<i id="iId">ID<em></em></i>)<button class="copy" data-clipboard-action="copy" data-clipboard-target="em">复制</button></p>
-                <p class="rank">普通会员</p>
+                <p class="rank"></p>
             </li>
         </ul>
     </div>
