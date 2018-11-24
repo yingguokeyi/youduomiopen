@@ -2,6 +2,7 @@ package utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import common.FileFactory;
 import common.PropertiesConf;
 import ocr.OcrAction;
 import org.apache.commons.fileupload.FileItem;
@@ -34,9 +35,9 @@ public class UploadImageUtil {
         imagePath = PropertiesConf.WECHAT_IMAGE_LOACH_PATH;
         //imagePath = PropertiesConf.uploadBackOrderImagePath;
         File zz = new File(imagePath);
-        if (!zz.exists()) {
+        /*if (!zz.exists()) {
             zz.mkdir();
-        }
+        }*/
         try {
             request.setCharacterEncoding("utf-8");
             //2、获得磁盘文件条目工厂
@@ -159,8 +160,9 @@ public class UploadImageUtil {
                 map.put("money", money);
                 map.put("buyNumber", buyNumber);
                 map.put("prePayment",prePayment);
-                String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/hestia/backOrder/" + realFileName + extName;
+                //String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/hestia/backOrder/" + realFileName + extName;
                 //String basePath = "http://10.1.1.96:8084/upload/"+realFileName + extName;
+                String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/wechatUpload/" + realFileName + extName;
                 map.put("imagePath", basePath);
                 map.put("openid", skuId);
                 map.put("payTime", "2018-11-16 14:20");

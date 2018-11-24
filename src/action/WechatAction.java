@@ -108,11 +108,11 @@ public class WechatAction extends BaseServlet {
     }
 
     public static void saveWXMember(String openid){
-        String token = RedisClient.hget("service_datacache","weixintoken","weixintoken_datacache");
+        String token = RedisClient.hget("service_datacache","weixintoken_z","weixintoken_datacache_z");
         if(null == token){
             AccessToken accessToken = WeixinUtil.getAccessToken();
             token = accessToken.getToken();
-            RedisClient.hset("service_datacache","weixintoken","weixintoken_datacache",token,7000);
+            RedisClient.hset("service_datacache","weixintoken_z","weixintoken_datacache_z",token,7000);
         }
         String weixinMemberInforUrl = PropertiesConf.WEIXIN_MEMBER_INFOR_URL.replace("ACCESS_TOKEN",token).replace("OPENID",openid);
         String weixinMember = HttpUtils.sendGet(weixinMemberInforUrl, null);

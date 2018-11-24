@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../assets/layer_mobile/layer.js"></script>
     <script type="text/javascript" src="../assets/js/font-size.js"></script>
     <script type="text/javascript" src="../assets/js/global_variable.js"></script>
-    <title>小票上传</title>
+    <title>历史记录</title>
 </head>
 <body>
 <div class="main">

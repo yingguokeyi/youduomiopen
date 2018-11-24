@@ -34,7 +34,7 @@ $(function(){
 			if(data.success==1){
 				$('.mem_head img').attr('src', deRes.head_image);
 				$('.mem_per').html(deRes.wx_nick_name);
-				$('#member_id i').html(deRes.id);
+				$('#member_id i').html(deRes.Invitation_code);
 				if(deRes.member_level==1){
 					$('#member_level em').html("普通会员");
 				}
@@ -42,7 +42,7 @@ $(function(){
 					$('#member_level em').html("vip");
 				}
 				$('#superior_member').html(deRes.parent_wx_nick_name);
-				$('#superior_id').html(deRes.parent_user_id);
+				$('#superior_id').html(deRes.parent_Invitation_code);
 				if(deRes.parent_member_level==1){
 					$('#super_memlevel em').html("普通会员");
 				}

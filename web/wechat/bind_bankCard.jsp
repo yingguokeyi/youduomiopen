@@ -77,41 +77,6 @@
 							<input type="text" value=""  class="fill" />
 						</span>
             </li>
-            <li>
-						<span>
-							<label>*所&nbsp;在&nbsp;省&nbsp;份:</label>
-							<i class="fill"><select id="s_province" name="s_province"></select></i>
-						</span>
-                <!-- <span class="card_choose">
-                    <img src="../../image/mine/enter.png" />
-                </span> -->
-            </li>
-            <li>
-						<span>
-							<label>*城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市:</label>
-							<i class="fill"><select id="s_city" name="s_city" ></select></i>
-						</span>
-                <!-- <span class="card_choose">
-                    <img src="../../image/mine/enter.png" />
-                </span> -->
-            </li>
-            <li>
-						<span>
-							<label>*区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域:</label>
-							<i class="fill"><select id="s_county" name="s_county"></select></i>
-						</span>
-                <!-- <span class="card_choose">
-                    <img src="../../image/mine/enter.png" />
-                </span> -->
-            </li>
-            <script type="text/javascript" src="../../assets/js/area1.js"></script>
-            <script type="text/javascript">_init_area();</script>
-            <li>
-						<span>
-							<label>*地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:</label>
-							<textarea class="fill" style="margin-top:.05rem;"></textarea>
-						</span>
-            </li>
         </ul>
     </div>
     <div class="main_btn">

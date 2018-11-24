@@ -32,7 +32,7 @@
     <div class="main_top">
         <ul>
             <li class="first">
-                <a href="wx_withdraw.html" class="first_a">
+                <a href="wx_withdraw.jsp" class="first_a">
 							<span class="title_content">
 							<img src='../image/mine/wx.png' />
 								<span>微信</span>
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li class="first">
-                <a href="yhk_withdraw.html" class="first_a">
+                <a href="yhk_withdraw.jsp" class="first_a">
 							<span class="title_content">
 							<img src='../image/mine/yhk.png' />
 								<span>银行卡</span>
@@ -71,7 +71,7 @@
         </ul>
         <p class="wit_service">
             <img src="../image/mine/service1.png" />
-            <a href="javascript:void(0)">联系客服</a>
+            <a href="online_service.jsp">联系客服</a>
         </p>
     </div>
 </div>

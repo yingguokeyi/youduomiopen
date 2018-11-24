@@ -6,7 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String userId = request.getParameter("userId");
+    String openid = request.getParameter("openid");
+%>
 <html>
+<script>
+    var userId = <%=userId%>
+    var openid = <%=openid%>
+</script>
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="" />
@@ -32,7 +40,7 @@
     <div class="main_top">
         <header>
             <div class="title_top">
-                <a href="my_team.html" class="title_top_first">
+                <a href="my_team.jsp?userId=<%=userId%>&openid=<%=openid%>" class="title_top_first">
                     <img src="../image/mine/return.png" class="hea_img" />
                 </a>
                 <span class="title_top_center">会员详情</span>

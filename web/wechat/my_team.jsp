@@ -13,6 +13,7 @@
 <html>
 <script>
     var userId = "<%=userId%>"
+    var openid = "<%=openid%>"
 </script>
 <head>
     <meta charset="utf-8">
@@ -39,7 +40,7 @@
     <div class="main_top">
         <header>
             <div class="title_top">
-                <a href="mine.jsp?openid=<%=openid%>" class="title_top_first">
+                <a href="mine.jsp?openid=<%=openid%>&userId=<%=userId%>" class="title_top_first">
                     <img src="../image/mine/return.png" class="hea_img" />
                 </a>
                 <span class="title_top_center">我的团队</span>

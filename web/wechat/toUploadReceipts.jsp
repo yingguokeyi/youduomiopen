@@ -8,12 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String openid = request.getParameter("openid");
+    String userId = request.getParameter("userId");
 %>
 <html>
 <script>
     var openid = "<%=openid%>"
 </script>
 <head>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
     <meta charset="utf-8">
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -32,6 +36,7 @@
     <script type="text/javascript" src="../assets/layer_mobile/layer.js"></script>
     <script type="text/javascript" src="../assets/js/font-size.js"></script>
     <script type="text/javascript" src="../assets/js/global_variable.js"></script>
+    <script type="text/javascript" src="../assets/layui/layui.js"></script>
     <title>小票上传</title>
 </head>
 <body style="background:#fff;">
@@ -42,14 +47,14 @@
     </div>
     <!-- 输入小票号的框 -->
     <div class="small_mouth">
-        <input type="text" id="le" placeholder="请输入“小票号”"  onchange="javascript:pload();"/ >
+        <input type="text" id="le" placeholder=""  readonly="readonly" onchange="javascript:pload();"/ >
     </div>
     <!-- 上传小票图片 -->
     <div class="pictures">
         <label class="upload_pictures" id="localImag">
             <input class="fileInput" id="doc" type="file"  accept="image/*" name="file" style="display:none;" onchange="javascript:setImagePreview();"/>
             <p class="add" id="add">点击这里选择小票图片</p>
-            <img id="preview" src="" width="1.8rem" height="1.8rem" style="display: none;"/>
+            <img id="preview" src="" width="1.8rem" height="1.8rem" style="display: none; margin-left: 2rem;"/>
         </label>
     </div>
     <!-- 上传，重置 -->
@@ -59,7 +64,7 @@
     </div>
     <!-- 历史记录 -->
     <div class="history">
-        <a href="history.jsp?openid=<%=openid%>">
+        <a href="moreReceipts.jsp?userId=<%=userId%>">
             <p class="w_history">历史记录</p>
             <p class="L_history"></p>
         </a>
@@ -78,17 +83,80 @@
     </div>
 </div>
 <!-- 上传图片成功弹框 -->
-<div class="warm" style="display: none;">
-    <div class="warm_title">
-        <h4>提示</h4>
-        <p>录入成功</p>
-    </div>
-    <div class="warm_choose">
-        <a class="warm_login">确定</a>
-    </div>
-</div>
+<%--       <div class="warm" style="display: none;text-align: center;border-bottom: .01rem solid #ebebeb;">--%>
+<%--            <div class="warm_title">--%>
+<%--                <h4 style="font-size: .3rem;color: #333;margin-top:.34rem;margin-left: 3rem;">提示</h4>--%>
+<%--                <p style=" font-size: .26rem;color: #666;margin-bottom: .34rem;margin-left: 2rem;">录入成功</p >--%>
+<%--            </div>--%>
+<%--            <div class="warm_choose">--%>
+<%--                <a class="warm_login" style="font-size: .26rem;color:#07a0f8;margin-left: 1.8rem;  display: inline-block;width:100%;height: .8rem;line-height: .8rem;text-align: center;">确定</a>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        --%>
+        <!-- 图片不清晰出现弹框 -->
+<%--        <div class="warmm" style="display: none;text-align: center;border-bottom: .01rem solid #ebebeb;">--%>
+<%--            <div class="warm_titles">--%>
+<%--                <h4 style="font-size: .3rem;color: #333;margin-top:.34rem;margin-left: 3rem;">提示</h4>--%>
+<%--                <p style=" font-size: .26rem;color: #666;margin-bottom: .34rem;margin-left: 0.3rem;  display: inline-block;width:100%;height: .8rem;line-height: .8rem;text-align: center;">图片模糊无法识别，请重新上传</p >--%>
+<%--            </div>--%>
+<%--            <div class="warm_chooses">--%>
+<%--                <a class="warm_logins" style="font-size: .26rem;color:#07a0f8;margin-left: 1.8rem;">确定</a>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+
+        <div id="modal_apply" class="modal">
+            <div class="modal-content">
+                <div class="modal-title" style=" width:100%;text-align: center;font-size: .3rem;color: #333;margin-top: 0.3rem;">
+                    <span>提示</span>
+                </div>
+                <div class="modal-body" style=" width: 100%;height: auto;margin-top: .28rem;">
+                    <ul style=" width:100%;font-size: .26rem;color: #666;padding: 0 .26rem;">
+                        <li class="onec" style="  width: 100%;margin-bottom: .42rem;text-align: center; font-size: 0.26rem;color: #666;"></li>
+                    </ul>
+                </div>
+                <footer class="modal-footer" style="  width: 100%;text-align: center;margin: .2rem 0;">
+                    <div id="sure"  style="width: 3.3rem;height:.8rem;border-radius: .08rem;color: #07a0f8;text-align: center;line-height: .8rem;margin-left: 1.4rem;">确定</div>
+                </footer>
+            </div>
+        </div>
+
+        <%--图片成功--%>
+        <div  class="modals">
+            <div class="modal-content">
+                <div class="modal-title" style=" width:100%;text-align: center;font-size: .3rem;color: #333;margin-top: 0.3rem;">
+                    <span>提示</span>
+                </div>
+                <div class="modal-body" style=" width: 100%;height: auto;margin-top: .28rem;">
+                    <ul style=" width:100%;font-size: .26rem;color: #666;padding: 0 .26rem;">
+                        <li class="onec" style="  width: 100%;margin-bottom: .42rem;text-align: center; font-size: 0.26rem;color: #666;">录入成功</li>
+                    </ul>
+                </div>
+                <footer class="modal-footer" style="  width: 100%;text-align: center;margin: .2rem 0;">
+                    <div id="sures"  style="width: 3.3rem;height:.8rem;border-radius: .08rem;color: #07a0f8;text-align: center;line-height: .8rem;margin-left: 1.4rem;">确定</div>
+                </footer>
+            </div>
+        </div>
+        <%--图片过大的提醒--%>
+        <div  class="modalss">
+            <div class="modal-content">
+                <div class="modal-title" style=" width:100%;text-align: center;font-size: .3rem;color: #333;margin-top: 0.3rem;">
+                    <span>提示</span>
+                </div>
+                <div class="modal-body" style=" width: 100%;height: auto;margin-top: .28rem;">
+                    <ul style=" width:100%;font-size: .26rem;color: #666;padding: 0 .26rem;">
+                        <li class="onec" style="  width: 100%;margin-bottom: .42rem;text-align: center; font-size: 0.26rem;color: #666;">图片过大</li>
+                    </ul>
+                </div>
+                <footer class="modal-footer" style="  width: 100%;text-align: center;margin: .2rem 0;">
+                    <div id="suress"  style="width: 3.3rem;height:.8rem;border-radius: .08rem;color: #07a0f8;text-align: center;line-height: .8rem;margin-left: 1.4rem;">确定</div>
+                </footer>
+            </div>
+        </div>
+
 
 </body>
-<script type="text/javascript" src="../assets/layui/layui.js"></script>
+<%--<script type="text/javascript" src="../assets/layui/layui.js"></script>--%>
+<%--<script type="text/javascript" src="../assets/layui/clipboard.min.js"></script>--%>
+<script type="text/javascript" src="../assets/js/iscroll.js"></script>
 <script type="text/javascript" src="../js/receipt/toUploadReceipts.js"></script>
 </html>

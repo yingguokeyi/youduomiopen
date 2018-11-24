@@ -29,7 +29,7 @@ $(function(){
 							ivListHtml += '<a class="first_a">';
 							ivListHtml += '<span class="title_content">';
 							ivListHtml += '<img src='+inviteRes[i].head_image+' />';
-							ivListHtml += '<span>'+inviteRes[i].wx_nick_name+'<i>('+inviteRes[i].id+')</i></span>';
+							ivListHtml += '<span>'+inviteRes[i].wx_nick_name+'<i>('+inviteRes[i].Invitation_code+')</i></span>';
 							ivListHtml += '</span>';
 							ivListHtml += '<span class="back_span">';
 							if(inviteRes[i].member_level==1){
@@ -69,7 +69,7 @@ $(function(){
 							ivListHtml += '<a href="membership_details.jsp" class="first_a">';
 							ivListHtml += '<span class="title_content">';
 							ivListHtml += '<img src='+inviteRes[i].head_image+' />';
-							ivListHtml += '<span>'+inviteRes[i].wx_nick_name+'<i>('+inviteRes[i].id+')</i></span>';
+							ivListHtml += '<span>'+inviteRes[i].wx_nick_name+'<i>('+inviteRes[i].Invitation_code+')</i></span>';
 							ivListHtml += '</span>';
 							ivListHtml += '<span class="back_span">';
 							if(inviteRes[i].member_level==1){
@@ -108,7 +108,7 @@ $(function(){
 							ivListHtml += '<a class="first_a">';
 							ivListHtml += '<span class="title_content">';
 							ivListHtml += '<img src='+inviteRes[i].head_image+' />';
-							ivListHtml += '<span>'+inviteRes[i].wx_nick_name+'<i>('+inviteRes[i].id+')</i></span>';
+							ivListHtml += '<span>'+inviteRes[i].wx_nick_name+'<i>('+inviteRes[i].Invitation_code+')</i></span>';
 							ivListHtml += '</span>';
 							ivListHtml += '<span class="back_span">';
 							if(inviteRes[i].member_level==1){
@@ -128,8 +128,8 @@ $(function(){
 		})
 	})
 	$(document).on('click','.team_message',function(){
-		var userId = $(this).data('userid');
-		location.href = 'membership_details.jsp?userId=' + userId;
+		/*var userId = $(this).data('userid')*/;
+		location.href = 'membership_details.jsp?userId=' + userId+"&openid="+openid;
 	})
 	
 })

@@ -25,11 +25,11 @@ import javax.servlet.annotation.WebServlet;
 public class MenuMain extends BaseServlet {
     static String youduom_url = PropertiesConf.YOUDUOMI_URL;
     public static void wxMenu() {
-        String token = RedisClient.hget("service_datacache","weixintoken","weixintoken_datacache");
+        String token = RedisClient.hget("service_datacache","weixintoken_z","weixintoken_datacache_z");
         if(null == token){
             AccessToken accessToken = WeixinUtil.getAccessToken();
             token =  accessToken.getToken();
-            RedisClient.hset("service_datacache","weixintoken","weixintoken_datacache",token,7000);
+            RedisClient.hset("service_datacache","weixintoken_z","weixintoken_datacache_z",token,7000);
         }
         ViewButton cbt=new ViewButton();
         cbt.setUrl(youduom_url+"wechatAction?method=OAuthOne");

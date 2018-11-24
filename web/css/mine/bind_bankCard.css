@@ -37,6 +37,7 @@
 	height: 100%;
 	border:none;
 	outline: none;
+	background: transparent;
 }	
 .message ul li span:nth-child(1) input,.message ul li span:nth-child(1) textarea{
 	border: none;

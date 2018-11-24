@@ -139,7 +139,7 @@
                 if(data.message ==1){
                     $("#set_nickname").html(data.wxMember.result.rs[0].wx_nick_name);
                     $("#headImg").attr("src",data.wxMember.result.rs[0].head_image);
-                    $("#iIds").html(data.wxMember.result.rs[0].id);
+                    $("#iIds").html(data.wxMember.result.rs[0].Invitation_code);
                     $("#memberLevel em").html(data.wxMember.result.rs[0].member_level == 1?"普通会员":"vip会员")
                     $("#parentMember em").html(data.parentMember.result.rs[0].wx_nick_name);
                     $("#iId em").html(data.parentMember.result.rs[0].member_level == 1?"普通会员":"vip会员");
