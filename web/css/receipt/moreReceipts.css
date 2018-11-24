@@ -54,3 +54,18 @@
 	height: .26rem;
 	margin-top: .6rem;
 }
+.record_img .green {
+	font-size: .24rem;
+    color: #59d749;
+    margin-right: .1rem;
+}
+.record_img .yellow	{
+	font-size: .24rem;
+    color: #fd9f4b;
+    margin-right: .1rem;
+}
+.record_img .red{
+	font-size: .24rem;
+    color: #fd4848;
+    margin-right: .1rem;
+}
