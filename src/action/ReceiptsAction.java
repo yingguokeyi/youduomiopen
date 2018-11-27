@@ -25,6 +25,7 @@ import java.util.Map;
 public class ReceiptsAction extends BaseServlet{
 
     public String uploadImg(HttpServletRequest request, HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Origin", "*");
         try {
             //aliyun图片识别
             Map<String, String> map = UploadImageUtil.uploadImg(request);

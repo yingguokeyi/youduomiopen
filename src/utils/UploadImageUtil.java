@@ -140,7 +140,7 @@ public class UploadImageUtil {
                                         SimpleDateFormat df = new SimpleDateFormat("YYMMddHHmmss");//设置日期格式
                                         payTime = df.format(parse);
                                     }else if (words.indexOf("应收") != -1) {
-                                        prePayment = words.substring(words.indexOf(":") + 1, words.length()-4);
+                                        prePayment = "0";//words.substring(words.indexOf(":") + 1, words.length()-4);
                                     }if (words.lastIndexOf("件数") != -1) {
                                         buyNumber = words.substring(words.lastIndexOf(":") + 1, words.length());
                                     }if (words.indexOf("实收") != -1) {

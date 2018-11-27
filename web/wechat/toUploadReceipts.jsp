@@ -60,7 +60,7 @@
     <!-- 上传，重置 -->
     <div class="push_button">
         <button class="up" type="button">上传</button>
-        <button class="below" type="button">重置</button>
+        <button class="below" id="qingkong" type="button">重置</button>
     </div>
     <!-- 历史记录 -->
     <div class="history">

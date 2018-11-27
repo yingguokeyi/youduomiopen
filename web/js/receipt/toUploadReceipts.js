@@ -348,3 +348,7 @@ function convertBase64UrlToBlob(urlData){
 
     return new Blob( [ab] , {type : 'image/png'});
 }
+// 点击重置按钮清空小票号和图片
+$("#qingkong").click(function(){
+    window.location.reload();
+})
