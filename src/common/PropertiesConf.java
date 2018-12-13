@@ -31,6 +31,8 @@ public class PropertiesConf{
 
 	public static String HESTIA_URL_CE;
 
+	public static String HESTIA_URL_TEST;
+
 	public static String LOGISTIC_NORMAL;
 	// 正式环境物流请求接口路径
 	public static String LOGISTIC_KEY;
@@ -84,6 +86,8 @@ public class PropertiesConf{
 			HESTIA_URL = (String) prop.get("hestia");
 
 			HESTIA_URL_CE = (String) prop.get("hestia_ce");
+
+			HESTIA_URL_TEST = (String) prop.get("hestic_test");
 
 			// 物流信息
 			LOGISTIC_NORMAL = (String) prop.get("logistic_normal");

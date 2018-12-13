@@ -1,6 +1,5 @@
 package action;
 
-import action.service.MemerService;
 import action.service.TaskService;
 import cache.BaseCache;
 import com.alibaba.fastjson.JSONObject;
@@ -43,6 +42,7 @@ public class TaskAction extends BaseServlet {
             String id = jsonObject.getString("id");
             String category_name = jsonObject.getString("category_name");
             String bonus = jsonObject.getString("bonus");
+            String task_create_time = jsonObject.getString("create_time");
             String create_time = jsonObject.getString("create_date");
             String task_begin_time = jsonObject.getString("task_begin_time");
             String task_end_time = jsonObject.getString("task_end_time");
@@ -63,6 +63,7 @@ public class TaskAction extends BaseServlet {
             resultMap.put("id", id);
             resultMap.put("category_name", category_name);
             resultMap.put("bonus", bonus);
+            resultMap.put("task_create_time", task_create_time);
             resultMap.put("create_time", create_time);
             resultMap.put("create_end_time", String.valueOf(i2));
             resultMap.put("task_begin_time", task_begin_time);
@@ -102,46 +103,10 @@ public class TaskAction extends BaseServlet {
         JSONObject userNumJson = JSONObject.parseObject(userNum);
         JSONObject userMoneyJson = JSONObject.parseObject(userMoney);
 
-        int size = userTaskJson.getJSONObject("result").getJSONArray("rs").size();
-        if (size == 0){
-            return creatResult(3, "无任务", null).toString();
-        }
+
         HashMap<String,Object> resMap = new HashMap<String,Object>();
         List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 
-        for (int i=0;i<size;i++) {
-            HashMap<String, Object> resultMap = new HashMap<String, Object>();
-
-            JSONObject jsonObject = userTaskJson.getJSONObject("result").getJSONArray("rs").getJSONObject(i);
-
-            String id = jsonObject.getString("id");
-            String category_name = jsonObject.getString("category_name");
-            String bonus = jsonObject.getString("bonus");
-            String create_time = jsonObject.getString("create_date");
-            String task_begin_time = jsonObject.getString("task_begin_time");
-            String task_end_time = jsonObject.getString("task_end_time");
-            String state = jsonObject.getString("state");
-
-            long i1 =Long.parseLong(create_time);
-            long i2 = 0;
-            if (Long.parseLong(create_time.substring(6,8))<23){
-                i2 = i1+10000;
-            }else {
-                i2 = i1+770000;
-            }
-
-            resultMap.put("id", id);
-            resultMap.put("category_name", category_name);
-            resultMap.put("bonus", bonus);
-            resultMap.put("create_time", create_time);
-            resultMap.put("create_end_time", String.valueOf(i2));
-            resultMap.put("task_begin_time", task_begin_time);
-            resultMap.put("task_end_time", task_end_time);
-            resultMap.put("state", state);
-
-            list.add(resultMap);
-            resMap.put("result", list);
-        }
         JSONObject jsonObject2 = userNumJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0);
         JSONObject jsonObject3 = dayTaskJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0);
         JSONObject jsonObject4 = userMoneyJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0);
@@ -160,6 +125,49 @@ public class TaskAction extends BaseServlet {
         resultMap2.put("money", money);
         resultMap2.put("num", num);
         resultMap2.put("allMoney", allMoney);
+
+        int size = userTaskJson.getJSONObject("result").getJSONArray("rs").size();
+        if (size == 0){
+            resMap.put("result", list);
+            resMap.put("result2", resultMap2);
+            return creatResult(3, "无任务", resMap).toString();
+        }
+
+        for (int i=0;i<size;i++) {
+            HashMap<String, Object> resultMap = new HashMap<String, Object>();
+
+            JSONObject jsonObject = userTaskJson.getJSONObject("result").getJSONArray("rs").getJSONObject(i);
+
+            String id = jsonObject.getString("id");
+            String category_name = jsonObject.getString("category_name");
+            String bonus = jsonObject.getString("bonus");
+            String task_create_time = jsonObject.getString("create_time");
+            String create_time = jsonObject.getString("create_date");
+            String task_begin_time = jsonObject.getString("task_begin_time");
+            String task_end_time = jsonObject.getString("task_end_time");
+            String state = jsonObject.getString("state");
+
+            long i1 =Long.parseLong(create_time);
+            long i2 = 0;
+            if (Long.parseLong(create_time.substring(6,8))<23){
+                i2 = i1+10000;
+            }else {
+                i2 = i1+770000;
+            }
+
+            resultMap.put("id", id);
+            resultMap.put("category_name", category_name);
+            resultMap.put("bonus", bonus);
+            resultMap.put("task_create_time", task_create_time);
+            resultMap.put("create_time", create_time);
+            resultMap.put("create_end_time", String.valueOf(i2));
+            resultMap.put("task_begin_time", task_begin_time);
+            resultMap.put("task_end_time", task_end_time);
+            resultMap.put("state", state);
+
+            list.add(resultMap);
+            resMap.put("result", list);
+        }
         resMap.put("result2", resultMap2);
         return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
     }
@@ -185,24 +193,73 @@ public class TaskAction extends BaseServlet {
         return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
     }
 
-    //开始任务
-    public String startTask(String userId,String taskId){
+    //查看用户任务详情
+    public String getUserTaskInfo(String userId,String taskId){
+
         HashMap<String, Object> resMap = new HashMap<String, Object>();
-        String getDate = BaseCache.getTIME();
-        String status = "1";
-        String singleTask = TaskService.getUserSingleTask(userId, taskId);
-        if (singleTask != null){
-            String res = TaskService.upStartTask(userId, taskId,getDate,singleTask,status);
-            JSONObject result = JSONObject.parseObject(res);
-            resMap.put("result", result);
-            return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
-        }else {
-            String s = TaskService.addStartTask(userId, taskId, getDate,status);
-            JSONObject result1 = JSONObject.parseObject(s);
-            resMap.put("result", result1);
-            return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
+        //查询用户任务详情
+        String info = TaskService.getUserTaskInfo(userId, taskId);
+        JSONObject infoJson = JSONObject.parseObject(info);
+        JSONObject jsonObject = infoJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0);
+        String detailImgIds = jsonObject.getString("detailImgIds");
+        String[] imgIds = detailImgIds.split(",");
+
+        List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+        HashMap<String, Object> map1 = new HashMap<String, Object>();
+        //查询任务图片
+        for (String id : imgIds) {
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            String taskImgInfo = TaskService.getTaskImgInfo(id);
+            JSONObject taskImgJson = JSONObject.parseObject(taskImgInfo);
+            JSONObject taskImgObject = taskImgJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0);
+            String imgId = taskImgObject.getString("id");
+            String image = taskImgObject.getString("image");
+            map.put("imgId",imgId);
+            map.put("image",image);
+            list.add(map);
         }
 
+        JSONObject result = JSONObject.parseObject(info);
+        resMap.put("result", result);
+        resMap.put("img", list);
+        return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
+
+    }
+
+    //开始任务
+    public String startTask(String userId,String taskId,String status){
+
+        //status 0 开始任务;1 查看任务详情;4 重新任务;
+        String getDate = BaseCache.getTIME();
+        String state = "1";
+        //查询任务是否领取过
+        String singleTask = TaskService.getUserSingleTask(userId, taskId);
+        if (status.equals("0")){
+            if (singleTask != null){
+                String res = TaskService.upStartTask(userId, taskId,getDate,singleTask,state);
+            }else {
+                String s = TaskService.addStartTask(userId, taskId, getDate,state);
+            }
+        }else if (status.equals("4")){
+            String res = TaskService.upStartTask(userId, taskId,getDate,singleTask,state);
+        }
+        //查询开始任务信息
+        String startTaskInfo = TaskService.getStartTaskInfo(userId, taskId);
+        JSONObject result = JSONObject.parseObject(startTaskInfo);
+        HashMap<String, Object> resMap = new HashMap<String, Object>();
+        resMap.put("result", result);
+        return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
+
+    }
+
+    //任务失败重新任务
+    public String upTaskFailStatus(String userId,String taskId){
+
+        String res = TaskService.upTaskFailStatus(userId, taskId);
+        JSONObject result = JSONObject.parseObject(res);
+        HashMap<String, Object> resMap = new HashMap<String, Object>();
+        resMap.put("result", result);
+        return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
     }
 
 
