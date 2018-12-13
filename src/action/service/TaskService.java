@@ -2,6 +2,7 @@ package action.service;
 
 import cache.BaseCache;
 import cache.ResultPoor;
+import common.PropertiesConf;
 
 /**
  * Created by 18330 on 2018/12/1.
@@ -34,7 +35,7 @@ public class TaskService extends BaseService  {
         } else if ("3".equals(status)) {
             sql.append(" and state = 3 ");
         } else if ("4".equals(status)) {
-            sql.append(" and state IN(1, 2, 4, 5, 6) ");
+            sql.append(" and state IN( 2, 4, 5, 6) ");
         }
         sql.append(" ORDER BY create_date DESC ");
 //        int i = sendObject(966, userId);
@@ -80,15 +81,15 @@ public class TaskService extends BaseService  {
 
 
     //更新开始任务
-    public static String upStartTask(String userId,String taskId,String getDate,String singleTask,String status){
-        int i = sendObjectCreate(975,taskId,userId,getDate,status,singleTask);
+    public static String upStartTask(String userId,String taskId,String getDate,String singleTask,String state){
+        int i = sendObjectCreate(975,taskId,userId,getDate,state,singleTask);
         String res = ResultPoor.getResult(i);
         return res;
     }
 
     //插入开始任务
-    public static String addStartTask(String userId,String taskId,String getDate,String status){
-        int i = sendObjectCreate(976,taskId,userId,getDate,status);
+    public static String addStartTask(String userId,String taskId,String getDate,String state){
+        int i = sendObjectCreate(976,taskId,userId,getDate,state);
         String res = ResultPoor.getResult(i);
         return res;
     }
@@ -96,6 +97,29 @@ public class TaskService extends BaseService  {
     public static String displayUserTask(String userId,String taskId){
         int i = sendObject(977, taskId,userId,taskId);
         return ResultPoor.getResult(i);
+    }
+
+    public static String getUserTaskInfo(String userId,String taskId){
+        int i = sendObject(978, userId,taskId);
+        return ResultPoor.getResult(i);
+    }
+
+    public static String getTaskImgInfo(String id){
+        int i = sendObject(979, PropertiesConf.HESTIA_URL_TEST,id);
+        return ResultPoor.getResult(i);
+    }
+
+    public static String getStartTaskInfo(String userId,String taskId){
+        int i = sendObject(980, userId,taskId);
+        return ResultPoor.getResult(i);
+    }
+
+    public static String upTaskFailStatus(String userId,String taskId){
+        String getDate = BaseCache.getTIME();
+        String status = "0";
+        int i = sendObjectCreate(981,getDate,status,taskId,userId);
+        String res = ResultPoor.getResult(i);
+        return res;
     }
 
 }
