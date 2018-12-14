@@ -6,7 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String openid = request.getParameter("openid");
+    String userId = request.getParameter("userId");
+%>
 <html>
+<script>
+    var userId = "<%=userId%>"
+    var openid = "<%=openid%>"
+</script>
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="" />
@@ -50,7 +58,7 @@
     <div class="Passage">
         <a href="online_service.jsp"><div class="Artificial_channel">人工通道</div></a>
         <div class="workday">上班时间： 10：00 - 22:00</div>
-        <a href="javascript: ;"><div class="automatic_channel">自动通道</div></a>
+        <a id="recharge" href="javascript: ;"><div class="automatic_channel">自动通道</div></a>
         <a href="#">
             <%--<div class="skip">跳过</div>--%>
             <div class="xian"></div>

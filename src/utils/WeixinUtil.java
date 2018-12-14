@@ -24,8 +24,8 @@ public class WeixinUtil {
 
     private static final String APPID="wx6073812b9fefac99";
     private static final String APPSECRET="de4d56256fd9bc292dd3d6b24e050fe7";
-    //private static final String APPID="wxc63e3bb69c265230";//在基础配置中可查看自己APPID
-   // private static final String APPSECRET= "mjcf6oGasKxHkZPKcpZFFeWoNZptXZcU";//在基础配置中可查看自己APPSECRET
+    //private static final String APPID="wx6073812b9fefac99";//在基础配置中可查看自己APPID
+   // private static final String APPSECRET= "de4d56256fd9bc292dd3d6b24e050fe7";//在基础配置中可查看自己APPSECRET
     private static final String ACCESS_TOKEN_URL="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
     private static final String UPLOAD_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
     public static JSONObject doGetStr(String url){

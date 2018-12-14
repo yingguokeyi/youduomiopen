@@ -26,119 +26,52 @@ public class OrderAction extends BaseServlet {
     /**
      * 创建订单
      *
-     * @param skuId
-     * @param token
-     * @param deliveryAddress
-     * @param consignee
-     * @param consigneeTel
-     * @param dataSource
-     * @param orderType       会过，自营，礼包
-     * @param skuNumber
-     * @param remark
-     * @param paymentWaykey
-     * @param jsCode
+     * @param openid
      * @param transactionBody
-     * @param spbillCreateIp
-     * @param sceneInfo
-     * @param deviceInfo
      * @return
      * @throws Exception
      */
-    public static String createOrder(String skuId, String token, String deliveryAddress, String consignee, String consigneeTel,
-                                     String dataSource, String orderType, String skuNumber, String remark, String paymentWaykey, String jsCode, String transactionBody, String spbillCreateIp, String sceneInfo, String deviceInfo) throws Exception {
+    public static String createOrder( String openid, String transactionBody,String spbillCreateIp) throws Exception {
 
-        String useId = UserService.getUserIdByToken(token);
-        if (useId == null) {
+        if (openid == null) {
             return creatResult(0, "亲，未登录....", null).toString();
         }
+        String wxMember = UserService.findWxMember(openid);
 
         //判断商品库存   订单表里存useId
-        String result_str = GoodService.getGoodsBySkuId(skuId);
-        //String userPurchase_str = GoodService.userPurchase(useId,skuId);
-        JSONObject resultArray = JSONObject.parseObject(result_str).getJSONObject("result").getJSONArray("rs").getJSONObject(0);
-        int stock = Integer.parseInt(resultArray.getString("stock"));
-        int buyconfine = Integer.parseInt(resultArray.getString("buyconfine"));
-        int skuStatus = Integer.parseInt(resultArray.getString("sku_status"));
-        //由于运营修改商品信息后的造成的订单和商品价格存在不时效的不同步问题
-        int marketPrice = Integer.parseInt(resultArray.getString("market_price"));
-        /**
-         * 判断SKU规格是否参加了进行中的秒杀时段 获取秒杀价格 进行下单金额计算
-         */
-        String seckillPrice = OrderService.getSeckillGoodsPrice(skuId);
-        System.out.println(null != seckillPrice);
-        if (null == seckillPrice || "".equals(seckillPrice) || "0".equals(seckillPrice)) {
 
-        } else {
-            try {
-                marketPrice = Integer.parseInt(seckillPrice);
-            } catch (NullPointerException e) {
-                e.printStackTrace();
-            }
-        }
-
-        int originalPrice = Integer.parseInt(resultArray.getString("original_price"));
-        //JSONObject userPurchase_json = JSONObject.parseObject(userPurchase_str);
-        //取消用户限购
-//			int size= userPurchase_json.getJSONObject("result").getJSONArray("rs").size();	
-//			if(size != 0){
-//				return creatResult(5, "亲，该用户限购了", null).toString();
-//			}
-        if (skuStatus == 0) {
-            return creatResult(2, "亲，商品下架了", null).toString();
-        }
-        if (buyconfine != 0 && Integer.parseInt(skuNumber) > buyconfine) {
-            return creatResult(3, "亲,限购买数量了", null).toString();
-        }
-        if (stock < Integer.parseInt(skuNumber)) {
-            return creatResult(4, "亲,库存不足", null).toString();
-        }
-
+        JSONObject resultArray = JSONObject.parseObject(wxMember).getJSONObject("result").getJSONArray("rs").getJSONObject(0);
+        String userId = resultArray.getString("id");
+        //会员价格
+        //int marketPrice = Integer.parseInt(resultArray.getString("market_price"));
         //生成订单号
-        String orderNo = OrderService.getOrderNo(useId);
-        //生成当前时间
+        String orderNo = OrderService.getOrderNo(userId);
+
+        //生成当前时间 创建订单
         String createdDate = BaseCache.getTIME();
-        int rps_code = OrderService.createOrder(skuId, useId, deliveryAddress, consignee, consigneeTel, orderNo, dataSource, orderType, skuNumber, createdDate, remark, paymentWaykey, marketPrice, originalPrice);
+        int rps_code = OrderService.createOrder(userId,orderNo,createdDate, 48,transactionBody);
         if (rps_code != 1) {
             return creatResult(6, "亲，系统忙，请稍等......", null).toString();
         }
 
         //为了优化下单速度，先把创建订单和预支付环境整合到一起
         //微信预支付金额不能前台传，只能后台获取
-        String resultStr = OrderService.findOrderByNo(orderNo);
+        /*String resultStr = OrderService.findOrderByNo(orderNo);
         JSONObject resultJson = JSONObject.parseObject(resultStr);
-        String totalPrice = resultJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("total_price");
+        String totalPrice = resultJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("price");*/
         //获取财务流水号
-        String transactionNo = FinanceService.getTradeNo(useId);
-
+        String transactionNo = FinanceService.getTradeNo(userId);
         //订单支付整合小程序支付和webapp支付
         HashMap<String, Object> wechatPayInfoMap = null;
-        if (paymentWaykey.equals("WetCat")) {
-            wechatPayInfoMap = WechatPayService.miniWetCatOrderCreate(jsCode, transactionBody, transactionNo, totalPrice);
-        } else {
-            wechatPayInfoMap = WechatPayService.winFruitWechatH5Pay(transactionBody, transactionNo, totalPrice, spbillCreateIp, sceneInfo, deviceInfo);
-        }
+
+        //微信统一下单
+        wechatPayInfoMap = WechatPayService.miniWetCatOrderCreate(transactionBody, transactionNo, "48", spbillCreateIp);
         //与微信平台交互生成prePayId
         if (wechatPayInfoMap == null) {
             return creatResult(1, RspCode.WECHAT_ERROR, null).toString();
         }
-        //定义微信支付
-        //交易表插入交易记录,将其交易id更新到订单表（便于财务对账）
-        String financeStr = FinanceService.createFinance(useId, transactionNo, transactionBody, orderNo, totalPrice, paymentWaykey);
-        JSONObject financeJson = JSONObject.parseObject(financeStr);
-        String financeId = financeJson.getJSONObject("result").getJSONArray("ids").get(0).toString();
-        //由于下单单线流程过于复杂，现在考虑用线程异步的方式复杂的数据库操作
-        new Thread() {
-            public void run() {
-                //补全订单计算佣金状态 	  补全订单状态的过程中,存在无父级情况下,父级和顶级会员级别和会员级别和id不可以避免为空的情况,故留到算佣金时处理
-                OrderService.updateOrderDate(orderNo);
-                //将其交易id及其流水号更新到订单表（便于财务对账）
-                OrderService.updateOrderFinance(financeId, orderNo);
-            }
-
-            ;
-        }.start();
-
-        return creatResult(7, "", wechatPayInfoMap).toString();
+        JSONObject jsonObject = creatResult(7, "", wechatPayInfoMap);
+        return jsonObject.toString();
     }
 
 
@@ -203,7 +136,7 @@ public class OrderAction extends BaseServlet {
         if (paymentWaykey.equals("WetCat")) {
             wechatPayInfoMap = WechatPayService.miniWetCatOrderCreate(jsCode, transactionBody, transactionNo, totalPrice);
         } else {
-            wechatPayInfoMap = WechatPayService.winFruitWechatH5Pay(transactionBody, transactionNo, totalPrice, spbillCreateIp, sceneInfo, deviceInfo);
+           // wechatPayInfoMap = WechatPayService.winFruitWechatH5Pay(transactionBody, transactionNo, totalPrice, spbillCreateIp, sceneInfo, deviceInfo);
         }
         if (wechatPayInfoMap == null) {
             return creatResult(1, RspCode.WECHAT_ERROR, null).toString();

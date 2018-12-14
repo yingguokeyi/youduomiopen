@@ -31,11 +31,10 @@ public class OrderService extends BaseService{
      * 创建订单 
      * @return 
      */  
-    public static int createOrder(String skuId,String useId,String deliveryAddress,String consignee,String consigneeTel,
-    		String orderNo,String dataSource,String orderType,String skuNum,String createdDate,String remark,String paymentWaykey,int marketPrice,int originalPrice) { 
+    public static int createOrder(String userId, String orderNo,String createdDate,int originalPrice,String remark) {
     	//新建订单 待付款状态
     	String states = "101";
-    	int sid = sendObjectCreate(461, skuId, useId, deliveryAddress, consignee, consigneeTel,orderNo, dataSource, orderType, skuNum,skuNum , marketPrice, createdDate,states,remark,paymentWaykey,marketPrice,originalPrice);
+    	int sid = sendObjectCreate(679,orderNo,userId,createdDate,states,originalPrice,remark);
 		String result_str = ResultPoor.getResult(sid);
 		JSONObject result_json = JSONObject.parseObject(result_str);
 		int ids = result_json.getInteger("success");
