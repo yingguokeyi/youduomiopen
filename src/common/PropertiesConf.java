@@ -42,6 +42,8 @@ public class PropertiesConf{
 	public static String uploadBackOrderImagePath;
 	// 回填单上传图片地址
 	public static String merchantCertificatePath;
+	//任务图片上传地址
+	public static String uploadTaskImagePath;
 	// 商户证书地址
 
 	public static String clientId;
@@ -95,6 +97,8 @@ public class PropertiesConf{
 			CUSTOMERID = (String) prop.get("customerId");
 
 			uploadBackOrderImagePath = (String) prop.get("uploadBackOrderImagePath");
+
+			uploadTaskImagePath = (String) prop.get("uploadTaskImagePath");
 
 			merchantCertificatePath = (String) prop.get("merchantCertificatePath");
 

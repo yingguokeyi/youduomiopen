@@ -52,13 +52,16 @@ public class TaskAction extends BaseServlet {
             JSONObject taskNumberJson = JSONObject.parseObject(taskNumber);
             String number = taskNumberJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("number");
 
-            long i1 =Long.parseLong(create_time);
             long i2 = 0;
-            if (Long.parseLong(create_time.substring(6,8))<23){
-                i2 = i1+10000;
-            }else {
-                i2 = i1+770000;
+            if(create_time!= null && !"".equals(create_time)){
+                long i1 =Long.parseLong(create_time);
+                if (Long.parseLong(create_time.substring(6,8))<23){
+                    i2 = i1+10000;
+                }else {
+                    i2 = i1+770000;
+                }
             }
+
 
             resultMap.put("id", id);
             resultMap.put("category_name", category_name);
@@ -147,12 +150,14 @@ public class TaskAction extends BaseServlet {
             String task_end_time = jsonObject.getString("task_end_time");
             String state = jsonObject.getString("state");
 
-            long i1 =Long.parseLong(create_time);
             long i2 = 0;
-            if (Long.parseLong(create_time.substring(6,8))<23){
-                i2 = i1+10000;
-            }else {
-                i2 = i1+770000;
+            if(create_time!= null){
+                long i1 =Long.parseLong(create_time);
+                if (Long.parseLong(create_time.substring(6,8))<23){
+                    i2 = i1+10000;
+                }else {
+                    i2 = i1+770000;
+                }
             }
 
             resultMap.put("id", id);

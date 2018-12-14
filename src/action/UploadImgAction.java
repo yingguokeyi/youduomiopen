@@ -2,7 +2,9 @@ package action;
 
 import action.service.UploadImgService;
 import com.alibaba.fastjson.JSONObject;
+import common.PropertiesConf;
 import servlet.BaseServlet;
+import utils.UploadImageUtil;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by 18330 on 2018/12/10.
@@ -21,8 +24,8 @@ import java.util.HashMap;
 public class UploadImgAction extends BaseServlet {
 
     //任务图片上传
-    public String uploadTaskImg(String uploadType, HttpServletRequest req, HttpServletResponse resp){
-
+    public String uploadTaskImg(HttpServletRequest req, HttpServletResponse resp){
+        resp.setHeader("Access-Control-Allow-Origin", "*");
         String address = "";
 
         SimpleDateFormat sdf1 = new SimpleDateFormat("YYYYMM");
@@ -30,18 +33,11 @@ public class UploadImgAction extends BaseServlet {
         Date date = new Date();
 
         String pathTemp = sdf1.format(date) +"/"+sdf2.format(date)+"/";
-
-        if (uploadType.equals("uploadTaskImg")){
-            address = "/usr/local/tomcat/tomcat_cronus/apache-tomcat-9.0.6/webapps/hestia/task/" + pathTemp + "task/";
-        }
+//        String uploadTaskImagePath = "/usr/local/tomcat/tomcat_cronus/apache-tomcat-9.0.6/webapps/hestia/task/";
+        address = PropertiesConf.uploadTaskImagePath + pathTemp + "task/";
         String fileName =  uploadIMG(req,address);
-        String imgPath = "";
-        if(!"".equals(fileName) && uploadType.equals("uploadTaskImg")){
-            imgPath = "/task/" + fileName;
-        }else{
-            System.out.println("图片上传有问题");
-            return creatResult(2, "图片上传失败", null).toString();
-        }
+        String imgPath = "/task/" + fileName;
+
         String res = UploadImgService.addImg(fileName, imgPath, "", "", "", "");
         JSONObject result = JSONObject.parseObject(res);
         HashMap<String, Object> resMap = new HashMap<String, Object>();
