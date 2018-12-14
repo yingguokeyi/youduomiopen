@@ -141,7 +141,7 @@
                 <p><img src="../image/mine/service.png" /></p>
                 <p>客服服务</p>
             </li>
-            <li onclick="window.location='../makeEveryDay/makeEveryDay.html'">
+            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/make_everyDay.jsp?openid=<%=openid%>&userId=<%=userId%>'">
                 <p><img src="../image/mine/make_every.png" /></p>
                 <p>天天赚</p>
             </li>

@@ -113,7 +113,7 @@ public class WechatPayService{
 	/**
 	 * 2018-05-29 libai小程序H5微信支付创建预订单
 	 */
-	public static HashMap<String, Object> winFruitWechatH5Pay(String transactionBody,String transactionNo,String totalPrice,String spbillCreateIp,String sceneInfo,String deviceInfo)
+	public static HashMap<String, Object> winFruitWechatH5Pay(String transactionBody,String transactionNo,String totalPrice,String spbillCreateIp)
 			throws  Exception {
 		
 		HashMap<String, Object> wechatH5PayInfoMap = new HashMap<String, Object>();
@@ -122,7 +122,7 @@ public class WechatPayService{
 			//商户号	mch_id
 			wechatH5PayInfoMap.put("mch_id", PropertiesConf.MINI_MCH_ID.trim());
 			//设备号	device_info
-			wechatH5PayInfoMap.put("device_info", deviceInfo);
+			//wechatH5PayInfoMap.put("device_info", deviceInfo);
 			//随机字符串	nonce_str
 			wechatH5PayInfoMap.put("nonce_str", StringUtil.getRandomStringByLength(32));
 			//商品描述	body
@@ -138,7 +138,7 @@ public class WechatPayService{
 			//交易类型	trade_type	MWEB
 			wechatH5PayInfoMap.put("trade_type", "MWEB");
 			//场景信息	scene_info
-			wechatH5PayInfoMap.put("scene_info", sceneInfo);
+			//wechatH5PayInfoMap.put("scene_info", sceneInfo);
 
 			//签名	sign		
 			wechatH5PayInfoMap.put("sign",MD5Util.sign(StringUtil.createLinkString(wechatH5PayInfoMap), "&key=" + PropertiesConf.MINI_APP_KEY.trim(), "UTF-8").toUpperCase());

@@ -42,7 +42,7 @@ $(function(){
                          redundantHtml += '<p class="infor_title">';
                          redundantHtml += '<span>'+depositsHistory[i].title+'</span>';
                          redundantHtml += '</p>';
-                         redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+depositsHistory[i].money +'</i></span></p>';
+                         redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+(depositsHistory[i].money/100).toFixed(2) +'</i></span></p>';
                          redundantHtml += '</div>';
                          redundantHtml += '<div class="record_img">';
                          if(depositsHistory[i].status == 0){ // 0 未审核
@@ -72,7 +72,7 @@ $(function(){
 
                     sStorage.uri_goods = uri;//id
                     sStorage.img= pastImg;//小票图片
-                    sStorage.cash= pastMoney/100;//奖励钱
+                    sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
                     sStorage.slogan= pastTitle;//标题
                     sStorage.smallBanks = pastUser;//小票号
                     sStorage.final = pastActual;//状态
@@ -124,7 +124,7 @@ $(function(){
                                 existHtml += '<p class="infor_title">';
                                 existHtml += '<span>'+rsList[i].title+'</span>';
                                 existHtml += '</p>';
-                                existHtml += '<p class="record_plan">小票号：<em>'+receipts+'</em> <span class="record_t">消费: <i>'+rsList[i].money +'</i></span></p>';
+                                existHtml += '<p class="record_plan">小票号：<em>'+receipts+'</em> <span class="record_t">消费: <i>'+(rsList[i].money /100).toFixed(2)+'</i></span></p>';
                                 existHtml += '</div>';
                                 existHtml += '<div class="record_img">';
                                 if(rsList[i].status == 0){  // 0 未审核
@@ -155,7 +155,7 @@ $(function(){
 
                         sStorage.uri_goods = uri;//id
                         sStorage.img= pastImg;//小票图片
-                        sStorage.cash= pastMoney/100;//奖励钱
+                        sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
                         sStorage.slogan= pastTitle;//标题
                         sStorage.smallBanks = pastUser;//小票号
                         sStorage.final = pastActual;//状态
@@ -234,7 +234,7 @@ $(function(){
                         redundantHtml += '<p class="infor_title">';
                         redundantHtml += '<span>'+depositsHistory[i].title+'</span>';
                         redundantHtml += '</p>';
-                        redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+depositsHistory[i].money +'</i></span></p>';
+                        redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+(depositsHistory[i].money/100).toFixed(2) +'</i></span></p>';
                         redundantHtml += '</div>';
                         redundantHtml += '<div class="record_img">';
                         if(depositsHistory[i].status == 0){ // 0 未审核
@@ -267,7 +267,7 @@ $(function(){
 
                         sStorage.uri_goods = uri;//id
                         sStorage.img= pastImg;//小票图片
-                        sStorage.cash= pastMoney/100;//奖励钱
+                        sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
                         sStorage.slogan= pastTitle;//标题
                         sStorage.smallBanks = pastUser;//小票号
                         sStorage.final = pastActual;//状态
@@ -320,7 +320,7 @@ $(function(){
                         redundantHtml += '<p class="infor_title">';
                         redundantHtml += '<span>'+depositsHistory[i].title+'</span>';
                         redundantHtml += '</p>';
-                        redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+depositsHistory[i].money +'</i></span></p>';
+                        redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+(depositsHistory[i].money/100).toFixed(2)+'</i></span></p>';
                         redundantHtml += '</div>';
                         redundantHtml += '<div class="record_img">';
                         if(depositsHistory[i].status == 0){ // 0 未审核
@@ -353,7 +353,7 @@ $(function(){
 
                         sStorage.uri_goods = uri;//id
                         sStorage.img= pastImg;//小票图片
-                        sStorage.cash= pastMoney/100;//奖励钱
+                        sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
                         sStorage.slogan= pastTitle;//标题
                         sStorage.smallBanks = pastUser;//小票号
                         sStorage.final = pastActual;//状态
@@ -405,7 +405,7 @@ $(function(){
                         redundantHtml += '<p class="infor_title">';
                         redundantHtml += '<span>'+depositsHistory[i].title+'</span>';
                         redundantHtml += '</p>';
-                        redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+depositsHistory[i].money +'</i></span></p>';
+                        redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+(depositsHistory[i].money/100).toFixed(2) +'</i></span></p>';
                         redundantHtml += '</div>';
                         redundantHtml += '<div class="record_img">';
                         if(depositsHistory[i].status == 0){ // 0 未审核
@@ -437,7 +437,7 @@ $(function(){
 
                         sStorage.uri_goods = uri;//id
                         sStorage.img= pastImg;//小票图片
-                        sStorage.cash= pastMoney/100;//奖励钱
+                        sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
                         sStorage.slogan= pastTitle;//标题
                         sStorage.smallBanks = pastUser;//小票号
                         sStorage.final = pastActual;//状态
@@ -490,7 +490,7 @@ $(function(){
                         redundantHtml += '<p class="infor_title">';
                         redundantHtml += '<span>'+depositsHistory[i].title+'</span>';
                         redundantHtml += '</p>';
-                        redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+depositsHistory[i].money +'</i></span></p>';
+                        redundantHtml += '<p class="record_plan">小票号：<em>'+past+'</em> <span class="record_t">消费: <i>'+(depositsHistory[i].money/100).toFixed(2) +'</i></span></p>';
                         redundantHtml += '</div>';
                         redundantHtml += '<div class="record_img">';
                         if(depositsHistory[i].status == 0){ // 0 未审核
@@ -523,7 +523,7 @@ $(function(){
 
                         sStorage.uri_goods = uri;//id
                         sStorage.img= pastImg;//小票图片
-                        sStorage.cash= pastMoney/100;//奖励钱
+                        sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
                         sStorage.slogan= pastTitle;//标题
                         sStorage.smallBanks = pastUser;//小票号
                         sStorage.final = pastActual;//状态

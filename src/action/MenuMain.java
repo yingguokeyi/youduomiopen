@@ -31,19 +31,19 @@ public class MenuMain extends BaseServlet {
             token =  accessToken.getToken();
             RedisClient.hset("service_datacache","weixintoken_z","weixintoken_datacache_z",token,7000);
         }
-        ViewButton cbt=new ViewButton();
+        /*ViewButton cbt=new ViewButton();
         cbt.setUrl(youduom_url+"wechatAction?method=OAuthOne");
         cbt.setName("升级会员");
-        cbt.setType("view");
+        cbt.setType("view");*/
 
         ViewButton xiaopcheck=new ViewButton();
         xiaopcheck.setUrl(youduom_url+"wechatAction?method=receipt");
-        xiaopcheck.setName("小票查询");
+        xiaopcheck.setName("任务查询");
         xiaopcheck.setType("view");
 
         ViewButton xiaopupload=new ViewButton();
         xiaopupload.setUrl(youduom_url+"wechatAction?method=toUploadReceipts");
-        xiaopupload.setName("小票上传");
+        xiaopupload.setName("去做任务");
         xiaopupload.setType("view");
 
 
@@ -58,11 +58,11 @@ public class MenuMain extends BaseServlet {
 
 
         JSONObject buttonOne=new JSONObject();
-        buttonOne.put("name", "小票上传");
+        buttonOne.put("name", "去做任务");
         buttonOne.put("sub_button", sub_button);
 
         JSONArray button=new JSONArray();
-        button.add(cbt);
+        //button.add(cbt);
         button.add(buttonOne);
         button.add(vbt);
 

@@ -81,7 +81,7 @@ public class WechatAction extends BaseServlet {
                 String eventType = map.get("Event");//获取是关注还是取消
                 //关注
                 if(MessageUtil.MESSAGE_SUBSCRIBE.equals(eventType)){
-                    message = MessageFormat.initText(toUserName, fromUserName, "欢迎关注掌小龙！");
+                    message = MessageFormat.initText(toUserName, fromUserName, "欢迎关注G得米！");
                     new Thread(){
                         public void run(){
                             System.out.println("================ Thread savewxMember ==================");
@@ -214,22 +214,23 @@ public class WechatAction extends BaseServlet {
         }
     }
 
+    //去做任务
     public static void toUploadReceipt(HttpServletRequest request, HttpServletResponse response,JSONArray rs){
         try {
             String openid = rs.getJSONObject(0).getString("openid");
             String userId = rs.getJSONObject(0).getString("id");
-            response.sendRedirect(request.getContextPath()+"/wechat/toUploadReceipts.jsp?openid="+openid+"&userId="+userId);
+            response.sendRedirect(request.getContextPath()+"/wechat/make_everyDay.jsp?openid="+openid+"&userId="+userId);
         }catch (IOException e){
             e.printStackTrace();
         }
 
     }
-
+    //任务查询
     public static void receipts(HttpServletRequest request, HttpServletResponse response,JSONArray rs){
         try {
             String openid = rs.getJSONObject(0).getString("openid");
             String userId = rs.getJSONObject(0).getString("id");
-            response.sendRedirect(request.getContextPath()+"/wechat/receipt.jsp?openid="+openid+"&userId="+userId);
+            response.sendRedirect(request.getContextPath()+"/wechat/myTask.jsp?openid="+openid+"&userId="+userId);
         }catch (IOException e){
             e.printStackTrace();
         }
