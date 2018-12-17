@@ -122,4 +122,12 @@ public class TaskService extends BaseService  {
         return res;
     }
 
+    public static String submitTask(String userId,String taskId,String taskImgIds){
+        String submitDate = BaseCache.getTIME();
+        String status = "3";
+        int i = sendObjectCreate(982,submitDate,taskImgIds,status,taskId,userId);
+        String res = ResultPoor.getResult(i);
+        return res;
+    }
+
 }
