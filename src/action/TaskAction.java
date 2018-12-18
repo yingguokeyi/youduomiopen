@@ -275,6 +275,18 @@ public class TaskAction extends BaseServlet {
         HashMap<String, Object> resMap = new HashMap<String, Object>();
         resMap.put("result", result);
         return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
+
+    }
+
+    //任务搜索
+    public String searchTask(String userId,String year,String month){
+        StringBuffer sTime = new StringBuffer();
+        sTime.append(year.substring(2)).append(month);
+        String task = TaskService.searchTask(userId, sTime.toString());
+        JSONObject result = JSONObject.parseObject(task);
+        HashMap<String, Object> resMap = new HashMap<String, Object>();
+        resMap.put("result", result);
+        return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
     }
 
 
