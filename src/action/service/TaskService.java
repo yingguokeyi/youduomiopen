@@ -130,4 +130,9 @@ public class TaskService extends BaseService  {
         return res;
     }
 
+    public static String searchTask(String userId,String date){
+        int i = sendObject(983, userId,date);
+        return ResultPoor.getResult(i);
+    }
+
 }
