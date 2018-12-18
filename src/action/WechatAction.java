@@ -230,7 +230,7 @@ public class WechatAction extends BaseServlet {
         try {
             String openid = rs.getJSONObject(0).getString("openid");
             String userId = rs.getJSONObject(0).getString("id");
-            response.sendRedirect(request.getContextPath()+"/wechat/myTask.jsp?openid="+openid+"&userId="+userId);
+            response.sendRedirect(request.getContextPath()+"/wechat/task_query.jsp?openid="+openid+"&userId="+userId);
         }catch (IOException e){
             e.printStackTrace();
         }

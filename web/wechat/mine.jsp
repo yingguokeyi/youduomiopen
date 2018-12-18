@@ -112,7 +112,7 @@
             <%--<div class="swiper-pagination "></div>--%>
         <%--</div>--%>
         <div id="lunboIdOut">
-            <img src="../image/mine/goods_list.jpg" alt="">
+            <img src="../image/mine/banner.jpg" alt="">
         </div>
     </div>
     <div class="main_bot">
@@ -125,26 +125,26 @@
                 <p><img src="../image/mine/wallet.png" /></p>
                 <p>我的钱包</p>
             </li>
-            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/receipt.jsp?openid=<%=openid%>&userId=<%=userId%>'">
-                <p><img src="../image/mine/query.png" /></p>
-                <p>小票查询</p>
-            </li>
-            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/toUploadReceipts.jsp?openid=<%=openid%>&userId=<%=userId%>'">
-                <p><img src="../image/mine/upload.png" /></p>
-                <p>小票上传</p>
-            </li>
-            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/subsidies_query.jsp?openid=<%=openid%>&userId=<%=userId%>'">
-                <p><img src="../image/mine/subsidy.png" /></p>
-                <p>补贴查询</p>
-            </li>
+            <%--<li onclick="window.location='${request.contextPath}/youduomiopen/wechat/receipt.jsp?openid=<%=openid%>&userId=<%=userId%>'">--%>
+                <%--<p><img src="../image/mine/query.png" /></p>--%>
+                <%--<p>小票查询</p>--%>
+            <%--</li>--%>
+            <%--<li onclick="window.location='${request.contextPath}/youduomiopen/wechat/toUploadReceipts.jsp?openid=<%=openid%>&userId=<%=userId%>'">--%>
+                <%--<p><img src="../image/mine/upload.png" /></p>--%>
+                <%--<p>小票上传</p>--%>
+            <%--</li>--%>
+            <%--<li onclick="window.location='${request.contextPath}/youduomiopen/wechat/subsidies_query.jsp?openid=<%=openid%>&userId=<%=userId%>'">--%>
+                <%--<p><img src="../image/mine/subsidy.png" /></p>--%>
+                <%--<p>补贴查询</p>--%>
+            <%--</li>--%>
             <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/online_service.jsp?openid=<%=openid%>&userId=<%=userId%>'">
                 <p><img src="../image/mine/service.png" /></p>
                 <p>客服服务</p>
             </li>
-            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/make_everyDay.jsp?openid=<%=openid%>&userId=<%=userId%>'">
-                <p><img src="../image/mine/make_every.png" /></p>
-                <p>天天赚</p>
-            </li>
+            <%--<li onclick="window.location='${request.contextPath}/youduomiopen/wechat/make_everyDay.jsp?openid=<%=openid%>&userId=<%=userId%>'">--%>
+                <%--<p><img src="../image/mine/make_every.png" /></p>--%>
+                <%--<p>天天赚</p>--%>
+            <%--</li>--%>
             <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/task_query.jsp?openid=<%=openid%>&userId=<%=userId%>'">
                 <p><img src="../image/mine/task_query.png" /></p>
                 <p>任务查询</p>

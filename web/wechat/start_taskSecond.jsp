@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../assets/layer_mobile/layer.js"></script>
     <script type="text/javascript" src="../assets/js/font-size.js"></script>
     <script type="text/javascript" src="../assets/js/global_variable.js"></script>
-    <title>天天赚</title>
+    <title>任务</title>
 </head>
 <body style="background:#fff;">
 <div class="main">
@@ -48,11 +48,8 @@
             <span class="time_remaining">剩余时间 <i id="drew"></i></span>
         </div>
         <div class="step">
-            <p class="step_title">步骤二:</p>
-            <p class="step_cont se_cont">复制链接到微信打开手机注册，点击绑定公众号并输入手机号，然后输入EOITOKFNNM.截图提交即可</p>
-            <ul class="sample_picture">
-
-            </ul>
+            <p class="step_title"><button type="button">点击去做任务</button></p>
+            <p class="step_cont">点击后会调起手机浏览器打开任务链接，按任务说明完成操作后，进行步骤操作。</p>
         </div>
     </div>
     <div class="main_middle" style="margin-top:3.4rem;">

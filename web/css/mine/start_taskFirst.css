@@ -26,6 +26,7 @@
 .step_title{
 	font-size: .3rem;
 	color: #333;
+	text-align: center;
 }
 .step button{
 	width: 2.4rem;
@@ -46,7 +47,9 @@
 }
 .main_middle{
 	width: 100%;
-	margin-top: 6.38rem;
+	position: fixed;
+	bottom: .1rem;
+	left: 0;
 	text-align: center;
 }
 .main_middle button{

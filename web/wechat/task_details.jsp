@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../assets/js/font-size.js"></script>
     <script type="text/javascript" src="../assets/js/global_variable.js"></script>
     <script type="text/javascript" src="../assets/js/jsonselect.js"></script>
-    <title>天天赚</title>
+    <title>任务</title>
 </head>
 <body style="background:#fff;">
 <div class="main">
@@ -72,56 +72,17 @@
     </div>
     <div class="main_middle">
         <ul class="task_specification">
-            <p class="task_title">
-                任务说明
+            <p class="task_title" id="task_title">
             </p>
-            <li>
-                1.微信扫码，用户微信登录。
-            </li>
-            <li>
-                2.点击立即登录——支付——分钱。
-            </li>
-            <li>
-                3.找到购买成功的订单并截图提交。
-            </li>
         </ul>
         <div class="sample_picture">
             <p class="task_title">
                 示例图片
             </p>
-            <ul>
+            <ul style="margin-bottom:.2rem;">
 
             </ul>
         </div>
-        <ul class="task_steps">
-            <p class="task_title">
-                任务说明
-            </p>
-            <li>
-                <p>
-                    1.第一步
-                </p>
-                <p>
-                    微信扫码，用户微信登录。
-                </p>
-            </li>
-            <li>
-                <p>
-                    1.第二步
-                </p>
-                <p>
-                    点击立即登录——支付——分钱。
-                </p>
-            </li>
-            <li>
-                <p>
-                    1.第三步
-                </p>
-                <p>
-                    找到购买成功的订单并截图提交。
-                </p>
-            </li>
-        </ul>
         <div class="task_bg">
 
         </div>
