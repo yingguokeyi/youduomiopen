@@ -207,26 +207,34 @@ public class TaskAction extends BaseServlet {
         JSONObject infoJson = JSONObject.parseObject(info);
         JSONObject jsonObject = infoJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0);
         String detailImgIds = jsonObject.getString("detailImgIds");
-        String[] imgIds = detailImgIds.split(",");
+        if(!"".equals(detailImgIds)){
+            String[] imgIds = detailImgIds.split(",");
 
-        List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
-        HashMap<String, Object> map1 = new HashMap<String, Object>();
-        //查询任务图片
-        for (String id : imgIds) {
-            HashMap<String, Object> map = new HashMap<String, Object>();
-            String taskImgInfo = TaskService.getTaskImgInfo(id);
-            JSONObject taskImgJson = JSONObject.parseObject(taskImgInfo);
-            JSONObject taskImgObject = taskImgJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0);
-            String imgId = taskImgObject.getString("id");
-            String image = taskImgObject.getString("image");
-            map.put("imgId",imgId);
-            map.put("image",image);
-            list.add(map);
+            List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+            HashMap<String, Object> map1 = new HashMap<String, Object>();
+            //查询任务图片
+            for (String id : imgIds) {
+                HashMap<String, Object> map = new HashMap<String, Object>();
+                String taskImgInfo = TaskService.getTaskImgInfo(id);
+                JSONObject taskImgJson = JSONObject.parseObject(taskImgInfo);
+                JSONObject taskImgObject = taskImgJson.getJSONObject("result").getJSONArray("rs").getJSONObject(0);
+                String imgId = taskImgObject.getString("id");
+                String image = taskImgObject.getString("image");
+                map.put("imgId",imgId);
+                map.put("image",image);
+                list.add(map);
+            }
+            JSONObject result = JSONObject.parseObject(info);
+            resMap.put("result", result);
+            resMap.put("img", list);
+        }else{
+            JSONObject result = JSONObject.parseObject(info);
+            resMap.put("result", result);
+            resMap.put("img", null);
         }
 
-        JSONObject result = JSONObject.parseObject(info);
-        resMap.put("result", result);
-        resMap.put("img", list);
+
+
         return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
 
     }
