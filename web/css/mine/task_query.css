@@ -26,13 +26,13 @@
 }
 .select_cont{
 	width: 1.7rem;
-	height: 3rem;
+	height: 5rem;
 	border: .01rem solid #999;
 	position: absolute;
 	z-index: 100;
 	display: none;
 	overflow-y:scroll;
-	background: #fff; 
+	background: #fff;
 }
 .select_cont ul{
 	width: 100%;
@@ -40,8 +40,8 @@
 }
 .select_cont ul li{
 	width: 100%;
-	height: .3rem;
-	line-height: .3rem;
+	height: .5rem;
+	line-height: .5rem;
 	padding-left: .2rem;
 	border-bottom: .01rem solid #999;
 }
@@ -80,11 +80,19 @@
 .query_list{
 	width: 100%;
 	height: auto;
-	background: #fff;
 	margin-top: .2rem;
+}
+.query_no{
+	text-align: center;
+	margin-top: 1rem;
+	color: #666;
+	font-size: .3rem;
+	display: none;
 }
 .query_list ul{
 	width: 100%;
+	background: #fff;
+	display: none;
 }
 .query_list ul li{
 	width: 100%;

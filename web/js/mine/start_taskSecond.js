@@ -2,8 +2,6 @@ $(function(){
 	var money = localStorage.getItem('money');//奖励钱
 	var Stime = localStorage.getItem('s_time');//开始时间
 	var Etime = localStorage.getItem('e_time');//结束时间
-	var arrimg = localStorage.getItem('sArr1');//图片
-	var arrimgs = arrimg.split(",");
 	var smoney = (money/100).toFixed(2);
     $('.quest_rewards i').html(smoney+'元');
 	// 开始时间的总秒数
@@ -61,10 +59,4 @@ $(function(){
 	    }.bind(that) ,1000);
 
 	}
-	// 图片
-	var imgListHtml = '';
-	for (var i = 0; i < arrimgs.length; i++) {
-		imgListHtml += '<li><img src='+arrimgs[i]+'></li>';
-	};
-	$('.sample_picture').html(imgListHtml);
 })

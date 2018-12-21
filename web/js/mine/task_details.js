@@ -23,6 +23,7 @@ $(function(){
 				var startTime = rs.create_start_time;//开始时间
 				var endTime = rs.create_end_time;//结束时间
 				var taskEndTime = rs.task_end_time;//截止日期
+                var remark = rs.remark;//任务说明
 				sStorage = window.localStorage; //本地存题目
 				sStorage.state = situation;
                 sStorage.money = dough;
@@ -76,6 +77,7 @@ $(function(){
 				$('.top_money').html((dough/100).toFixed(2));//奖励钱
 				$('.expiration_date').html(taskTime);//截止日期
     			$('.top_title').html(title);//标题
+                $('#task_title').html('任务说明:'+remark)//任务说明
 			    // 开始时间的总秒数
 			    var startTimetm = "20" + startTime.substring(0, 2) + "/" + startTime.substring(2, 4) + "/" + startTime.substring(4, 6) + " " + startTime.substring(6, 8) + ":" + startTime.substring(8, 10) + ":" + startTime.substring(10, 12);
 			    var startDate = new Date(startTimetm).getTime();
@@ -122,7 +124,7 @@ $(function(){
 						if(nowdate>taskEndTime){
 							$('#modal_issue').show();
 						}else{
-							location.href = 'start_taskFirst.jsp';
+							location.href = 'start_taskFirst.jsp?openid='+openid+'&userId='+userId;
 						}
 					})	
 				}

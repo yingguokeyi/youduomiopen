@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../assets/layer_mobile/layer.js"></script>
     <script type="text/javascript" src="../assets/js/font-size.js"></script>
     <script type="text/javascript" src="../assets/js/global_variable.js"></script>
-    <title>天天赚</title>
+    <title>任务</title>
 </head>
 <body style="background:#fff;">
 <div class="main">
@@ -48,8 +48,7 @@
             <span class="time_remaining">剩余时间 <i id="drew"></i></span>
         </div>
         <div class="step">
-            <p class="step_title">步骤三:</p>
-            <p class="step_cont" style="color:#333;">提交信息:<span>提交公众号页面截图</span></p>
+            <p class="step_title">上传任务截图</p>
         </div>
         <ul class="upload_pic">
             <li>

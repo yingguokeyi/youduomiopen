@@ -3,6 +3,8 @@ $(function(){
 	var state = localStorage.getItem('state');//状态
 	var money = localStorage.getItem('money');//奖励钱
 	var taskEndt = localStorage.getItem('taskEnd');//截止日期
+    var arrimg = localStorage.getItem('sArr1');//图片
+    var arrimgs = arrimg.split(",");
 	$('.title_top_first').click(function(){
 		layer.open({
 			type: 1,
@@ -33,7 +35,10 @@ $(function(){
         success: function(data) {
         	if(data.success==1){
         		var smoney = (money/100).toFixed(2);
-        		$('.quest_rewards i').html(smoney+'元');
+                var remark = data.result.rs[0].result.result.rs[0].remark;//任务说明
+                var link = data.result.rs[0].result.result.rs[0].link_adress;//任务链接
+                $('.quest_rewards i').html(smoney+'元');
+                $('.se_cont').html('任务说明:'+remark);
         		//获取开始时间
         		var trs = data.result.rs[0].result.result.rs[0];
         		var stime = trs.create_date;
@@ -136,7 +141,9 @@ $(function(){
 						        }
 						    })
 						})    
-					}else{
+					}else if(link==""){
+                        location.href = 'start_taskThree.html';
+                    }else{
 						location.href = 'start_taskSecond.jsp';
 					}
 				})
@@ -146,5 +153,12 @@ $(function(){
         	sStorage.s_time = stime;//开始时间
         	sStorage.e_time = etime;//结束时间
         }
-    })    
+    })
+    // 图片
+    var imgListHtml = '';
+    for (var i = 0; i < arrimgs.length; i++) {
+        imgListHtml += '<li><img src='+arrimgs[i]+'></li>';
+    };
+    $('.sample_picture').html(imgListHtml);
+    $('.sample_picture li').length<=20;
 })

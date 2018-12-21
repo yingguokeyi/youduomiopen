@@ -1,3 +1,5 @@
+// var arr=[];
+var myArray=new Array();
 //下面用于图片上传预览功能
 function setImagePreview1(avalue) {
     //input
@@ -7,42 +9,81 @@ function setImagePreview1(avalue) {
     //div
     var divs1 = document.getElementById("localImag1");
     var add1 = document.getElementById("add1");
-        if (docObj1.files && docObj1.files[0]) {
-            //火狐下，直接设img属性
-            imgObjPreview1.style.display = 'block';
-            imgObjPreview1.style.width = '100%';
-            imgObjPreview1.style.height = '100%';
-            //imgObjPreview.src = docObj.files[0].getAsDataURL();
-            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-            imgObjPreview1.src = window.URL.createObjectURL(docObj1.files[0]);
+    if (docObj1.files && docObj1.files[0]) {
+        //火狐下，直接设img属性
+        imgObjPreview1.style.display = 'block';
+        imgObjPreview1.style.width = '100%';
+        imgObjPreview1.style.height = '100%';
+        //imgObjPreview.src = docObj.files[0].getAsDataURL();
+        //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+        imgObjPreview1.src = window.URL.createObjectURL(docObj1.files[0]);
+        add1.style.display="none";
+        $('.upolad_txt').hide();
+        $("#sub_task").removeAttr("disabled");
+        $('#sub_task').css({'background':'#333','color':'#fff'});
+        receiptImg1();
+    } else {
+        //IE下，使用滤镜
+        docObj1.select();
+        var imgSrc = document.selection.createRange().text;
+        var localImagId1= document.getElementById("localImag1");
+        //必须设置初始大小
+        localImagId1.style.width = "100%";
+        localImagId1.style.height = "100%";
+        //图片异常的捕捉，防止用户修改后缀来伪造图片
+        try {
+            localImagId1.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+            localImagId1.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
             add1.style.display="none";
             $('.upolad_txt').hide();
             $("#sub_task").removeAttr("disabled");
-			$('#sub_task').css({'background':'#333','color':'#fff'});
-        } else {
-            //IE下，使用滤镜
-            docObj1.select();
-            var imgSrc = document.selection.createRange().text;
-            var localImagId1= document.getElementById("localImag1");
-            //必须设置初始大小
-            localImagId1.style.width = "100%";
-            localImagId1.style.height = "100%";
-            //图片异常的捕捉，防止用户修改后缀来伪造图片
-            try {
-                localImagId1.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                localImagId1.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-                add1.style.display="none";
-                $('.upolad_txt').hide();
-                $("#sub_task").removeAttr("disabled");
-				$('#sub_task').css({'background':'#333','color':'#fff'});
-            } catch(e) {
-                alert("您上传的图片格式不正确，请重新选择!");
-                return false;
-            }
-            imgObjPreview1.style.display = 'none';
-            document.selection.empty();
+            $('#sub_task').css({'background':'#333','color':'#fff'});
+        } catch(e) {
+            alert("您上传的图片格式不正确，请重新选择!");
+            return false;
         }
+        receiptImg1();
+        imgObjPreview1.style.display = 'none';
+        document.selection.empty();
+    }
     return true;
+}
+function receiptImg1() {
+    var formData = new FormData();
+    var img_file = document.getElementById("doc1");
+    var fileObject = img_file.files[0];
+    if(fileObject.size/1024 > 1025){//大于1M，进行压缩上传
+        photoCompress(fileObject, {
+            quality: 0.2
+        }, function(base64Codes){
+            //console.log("压缩后：" + base.length / 1024 + " " + base);
+            var bl = convertBase64UrlToBlob(base64Codes);
+            formData.append("file", bl, "file_"+Date.parse(new Date())+".jpg"); // 文件对象
+            formData.append("url_type","uploadImg");
+        });
+    }else {
+        formData.append("file", fileObject);
+        formData.append("url_type","uploadImg");
+    }
+    $.ajax({
+        url: domain_name_url+"/uploadImg?method=uploadTaskImg",
+        type: "POST",
+        dataType: "json",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            if(data.success==1){
+                var ids1 = data.result.rs[0].result.result.ids[0];
+                myArray.push(ids1);
+                console.log(myArray);
+            }
+            console.log("sendImg",data.result);
+        },
+        error: function (data) {
+            console.log("sendImg",data.result)
+        }
+    });
 }
 function setImagePreview2(avalue) {
     //input
@@ -52,42 +93,81 @@ function setImagePreview2(avalue) {
     //div
     var divs2 = document.getElementById("localImag2");
     var add2 = document.getElementById("add2");
-        if (docObj2.files && docObj2.files[0]) {
-            //火狐下，直接设img属性
-            imgObjPreview2.style.display = 'block';
-            imgObjPreview2.style.width = '100%';
-            imgObjPreview2.style.height = '100%';
-            //imgObjPreview.src = docObj.files[0].getAsDataURL();
-            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-            imgObjPreview2.src = window.URL.createObjectURL(docObj2.files[0]);
+    if (docObj2.files && docObj2.files[0]) {
+        //火狐下，直接设img属性
+        imgObjPreview2.style.display = 'block';
+        imgObjPreview2.style.width = '100%';
+        imgObjPreview2.style.height = '100%';
+        //imgObjPreview.src = docObj.files[0].getAsDataURL();
+        //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+        imgObjPreview2.src = window.URL.createObjectURL(docObj2.files[0]);
+        add2.style.display="none";
+        $('.upolad_txt').hide();
+        $("#sub_task").removeAttr("disabled");
+        $('#sub_task').css({'background':'#333','color':'#fff'});
+        receiptImg2();
+    } else {
+        //IE下，使用滤镜
+        docObj2.select();
+        var imgSrc = document.selection.createRange().text;
+        var localImagId2= document.getElementById("localImag2");
+        //必须设置初始大小
+        localImagId2.style.width = "100%";
+        localImagId2.style.height = "100%";
+        //图片异常的捕捉，防止用户修改后缀来伪造图片
+        try {
+            localImagId2.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+            localImagId2.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
             add2.style.display="none";
             $('.upolad_txt').hide();
             $("#sub_task").removeAttr("disabled");
-			$('#sub_task').css({'background':'#333','color':'#fff'});
-        } else {
-            //IE下，使用滤镜
-            docObj2.select();
-            var imgSrc = document.selection.createRange().text;
-            var localImagId2= document.getElementById("localImag2");
-            //必须设置初始大小
-            localImagId2.style.width = "100%";
-            localImagId2.style.height = "100%";
-            //图片异常的捕捉，防止用户修改后缀来伪造图片
-            try {
-                localImagId2.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                localImagId2.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-                add2.style.display="none";
-                $('.upolad_txt').hide();
-                $("#sub_task").removeAttr("disabled");
-				$('#sub_task').css({'background':'#333','color':'#fff'});
-            } catch(e) {
-                alert("您上传的图片格式不正确，请重新选择!");
-                return false;
-            }
-            imgObjPreview2.style.display = 'none';
-            document.selection.empty();
+            $('#sub_task').css({'background':'#333','color':'#fff'});
+        } catch(e) {
+            alert("您上传的图片格式不正确，请重新选择!");
+            return false;
         }
+        receiptImg2();
+        imgObjPreview2.style.display = 'none';
+        document.selection.empty();
+    }
     return true;
+}
+function receiptImg2() {
+    var formData = new FormData();
+    var img_file = document.getElementById("doc2");
+    var fileObject = img_file.files[0];
+    if(fileObject.size/1024 > 1025){//大于1M，进行压缩上传
+        photoCompress(fileObject, {
+            quality: 0.2
+        }, function(base64Codes){
+            //console.log("压缩后：" + base.length / 1024 + " " + base);
+            var bl = convertBase64UrlToBlob(base64Codes);
+            formData.append("file", bl, "file_"+Date.parse(new Date())+".jpg"); // 文件对象
+            formData.append("url_type","uploadImg");
+        });
+    }else {
+        formData.append("file", fileObject);
+        formData.append("url_type","uploadImg");
+    }
+    $.ajax({
+        url: domain_name_url+"/uploadImg?method=uploadTaskImg",
+        type: "POST",
+        dataType: "json",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            if(data.success==1){
+                var ids2 = data.result.rs[0].result.result.ids[0];
+                myArray.push(ids2);
+                console.log(myArray);
+            }
+            console.log("sendImg",data.result);
+        },
+        error: function (data) {
+            console.log("sendImg",data.result)
+        }
+    });
 }
 function setImagePreview3(avalue) {
     //input
@@ -97,48 +177,109 @@ function setImagePreview3(avalue) {
     //div
     var divs3 = document.getElementById("localImag3");
     var add3 = document.getElementById("add3");
-        if (docObj3.files && docObj3.files[0]) {
-            //火狐下，直接设img属性
-            imgObjPreview3.style.display = 'block';
-            imgObjPreview3.style.width = '100%';
-            imgObjPreview3.style.height = '100%';
-            //imgObjPreview.src = docObj.files[0].getAsDataURL();
-            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-            imgObjPreview3.src = window.URL.createObjectURL(docObj3.files[0]);
+    if (docObj3.files && docObj3.files[0]) {
+        //火狐下，直接设img属性
+        imgObjPreview3.style.display = 'block';
+        imgObjPreview3.style.width = '100%';
+        imgObjPreview3.style.height = '100%';
+        //imgObjPreview.src = docObj.files[0].getAsDataURL();
+        //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+        imgObjPreview3.src = window.URL.createObjectURL(docObj3.files[0]);
+        add3.style.display="none";
+        $('.upolad_txt').hide();
+        $("#sub_task").removeAttr("disabled");
+        $('#sub_task').css({'background':'#333','color':'#fff'});
+        receiptImg3();
+    } else {
+        //IE下，使用滤镜
+        docObj3.select();
+        var imgSrc = document.selection.createRange().text;
+        var localImagId3= document.getElementById("localImag3");
+        //必须设置初始大小
+        localImagId3.style.width = "100%";
+        localImagId3.style.height = "100%";
+        //图片异常的捕捉，防止用户修改后缀来伪造图片
+        try {
+            localImagId3.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+            localImagId3.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
             add3.style.display="none";
             $('.upolad_txt').hide();
             $("#sub_task").removeAttr("disabled");
-			$('#sub_task').css({'background':'#333','color':'#fff'});
-        } else {
-            //IE下，使用滤镜
-            docObj3.select();
-            var imgSrc = document.selection.createRange().text;
-            var localImagId3= document.getElementById("localImag3");
-            //必须设置初始大小
-            localImagId3.style.width = "100%";
-            localImagId3.style.height = "100%";
-            //图片异常的捕捉，防止用户修改后缀来伪造图片
-            try {
-                localImagId3.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                localImagId3.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-                add3.style.display="none";
-                $('.upolad_txt').hide();
-                $("#sub_task").removeAttr("disabled");
-				$('#sub_task').css({'background':'#333','color':'#fff'});
-            } catch(e) {
-                alert("您上传的图片格式不正确，请重新选择!");
-                return false;
-            }
-            imgObjPreview3.style.display = 'none';
-            document.selection.empty();
+            $('#sub_task').css({'background':'#333','color':'#fff'});
+        } catch(e) {
+            alert("您上传的图片格式不正确，请重新选择!");
+            return false;
         }
+        receiptImg3();
+        imgObjPreview3.style.display = 'none';
+        document.selection.empty();
+    }
     return true;
 }
+function receiptImg3() {
+    var formData = new FormData();
+    var img_file = document.getElementById("doc3");
+    var fileObject = img_file.files[0];
+    if(fileObject.size/1024 > 1025){//大于1M，进行压缩上传
+        photoCompress(fileObject, {
+            quality: 0.2
+        }, function(base64Codes){
+            //console.log("压缩后：" + base.length / 1024 + " " + base);
+            var bl = convertBase64UrlToBlob(base64Codes);
+            formData.append("file", bl, "file_"+Date.parse(new Date())+".jpg"); // 文件对象
+            formData.append("url_type","uploadImg");
+        });
+    }else {
+        formData.append("file", fileObject);
+        formData.append("url_type","uploadImg");
+    }
+    $.ajax({
+        url: domain_name_url+"/uploadImg?method=uploadTaskImg",
+        type: "POST",
+        dataType: "json",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            if(data.success==1){
+                var ids3 = data.result.rs[0].result.result.ids[0];
+                myArray.push(ids3);
+                console.log(myArray);
+            }
+            console.log("sendImg",data.result);
+        },
+        error: function (data) {
+            console.log("sendImg",data.result)
+        }
+    });
+}
+console.log(myArray);
 $('#sub_task').click(function(){
-	$('#modal_start').show();
-	$('.close').click(function(){
-		$('#modal_start').hide();
-	})
+    $('#modal_start').show();
+    $('.close').click(function(){
+        $('#modal_start').hide();
+    })
+})
+var uri = localStorage.getItem('uri_goods');//拿到传过来的id
+$('#sure').click(function(){
+    var ids = myArray.join();
+    $.ajax({
+        url: domain_name_url + "/task",
+        type: "GET",
+        dataType: "jsonp", //指定服务器返回的数据类型
+        data: {
+            method: 'submitTask',
+            userId: 4599,
+            taskId:uri,
+            taskImgIds:ids,
+            url_type:"task"
+        },
+        success: function(data) {
+            if(data.success==1){
+                $('#modal_start').hide();
+            }
+        }
+    })
 })
 $(function(){
     var money = localStorage.getItem('money');//奖励钱
@@ -163,7 +304,7 @@ $(function(){
             countdown(totalSecond)
         },1000)
     }
-    
+
     function countdown (totalSecond){
         var that=this;
         clearInterval(that.interval);
@@ -187,16 +328,16 @@ $(function(){
             var secStr = sec.toString();
             if (secStr.length == 1) secStr = '0' + secStr;
             //将倒计时赋值到div中
-            document.getElementById("drew").innerHTML = hrStr+':'+minStr+':'+secStr; 
-            totalSecond--; 
+            document.getElementById("drew").innerHTML = hrStr+':'+minStr+':'+secStr;
+            totalSecond--;
             if (totalSecond == 0) {
                 setTimeout(function tt(totalSecond){
                     document.getElementById("drew").innerHTML = '00'+':'+'00'+':'+'00';
                     clearInterval(that.interval);
                 },1000)
-                
+
             }else{
-         
+
             }
         }.bind(that) ,1000);
 

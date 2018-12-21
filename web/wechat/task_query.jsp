@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String openid = request.getParameter("openid");
+    String userId = request.getParameter("userId");
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -53,73 +57,37 @@
             <button type="button" id="query_btn">查询</button>
             <div class="select_cont" id="year_sel">
                 <ul>
-                    <li>2018</li>
-                    <li>2017</li>
-                    <li>2016</li>
-                    <li>2015</li>
-                    <li>2014</li>
-                    <li>2013</li>
-                    <li>2012</li>
-                    <li>2011</li>
-                    <li>2010</li>
-                    <li>2009</li>
-                    <li>2008</li>
+
                 </ul>
             </div>
             <div class="select_cont" id="mont_sel">
                 <ul>
-
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                    <li>12</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="query_list">
+        <p class="query_no">无数据</p>
         <ul>
-            <li>
-                <div class="query_left">
-                    <p class="left_per">
-                        <span>CB一分钟简单注册，奖励8.00元</span>
-                    </p>
-                    <p class="left_pro">
-                        <span class="pro_plan">已完成</span>
-                        <span>2018-12-12  10:10:00</span>
-                    </p>
-                </div>
-                <div class="query_right">
-                    ￥ <span>1.00</span>
-                </div>
-            </li>
-            <li>
-                <div class="query_left">
-                    <p class="left_per">
-                        <span>CB一分钟简单注册，奖励8.00元</span>
-                    </p>
-                    <p class="left_pro">
-                        <span>进行中</span>
-                        <span>2018-12-12  10:10:00</span>
-                    </p>
-                </div>
-                <div class="query_right">
-                    ￥ <span>1.00</span>
-                </div>
-            </li>
-            <li>
-                <div class="query_left">
-                    <p class="left_per">
-                        <span>CB一分钟简单注册，奖励8.00元</span>
-                    </p>
-                    <p class="left_pro">
-                        <span>待审核</span>
-                        <span>2018-12-12  10:10:00</span>
-                    </p>
-                </div>
-                <div class="query_right">
-                    ￥ <span>1.00</span>
-                </div>
-            </li>
         </ul>
     </div>
 </div>
 </body>
+<script>
+    var openid = "<%=openid%>";
+    var userId= "<%=userId%>";
+</script>
 <script type="text/javascript" src="../js/mine/task_query.js"></script>
 </html>

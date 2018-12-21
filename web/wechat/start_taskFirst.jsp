@@ -24,12 +24,13 @@
     <link rel="stylesheet" href="../assets/css/common.css" />
     <link rel="stylesheet" href="../assets/css/header_common.css" />
     <link rel="stylesheet" href="../css/mine/start_taskFirst.css" />
+    <link rel="stylesheet" href="../css/mine/start_taskSecond.css" />
     <link rel="stylesheet" href="../assets/layer_mobile/need/layer.css" />
     <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="../assets/layer_mobile/layer.js"></script>
     <script type="text/javascript" src="../assets/js/font-size.js"></script>
     <script type="text/javascript" src="../assets/js/global_variable.js"></script>
-    <title>天天赚</title>
+    <title>任务</title>
 </head>
 <body style="background:#fff;">
 <div class="main">
@@ -47,8 +48,11 @@
             <span class="time_remaining">剩余时间 <i id="drew"></i></span>
         </div>
         <div class="step">
-            <p class="step_title">步骤一:<button type="button">点击去做任务</button></p>
-            <p class="step_cont">点击后会调起手机浏览器打开任务链接，按任务说明完成操作后，进行步骤二操作。</p>
+            <p class="step_title">请仔细查看任务步骤后按流程完成任务</p>
+            <p class="step_cont se_cont"></p>
+            <ul class="sample_picture">
+
+            </ul>
         </div>
     </div>
     <div class="main_middle">
