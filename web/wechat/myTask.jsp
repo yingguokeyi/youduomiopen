@@ -37,7 +37,7 @@
     <div class="main_top">
         <header>
             <div class="title_top">
-                <a href="javascript:'';" class="title_top_first">
+                <a href="make_everyDay.jsp?userId=<%=userId%>" class="title_top_first">
                     <img src="../image/mine/return.png" class="hea_img" />
                 </a>
                 <span class="title_top_center">我的任务</span>
@@ -46,21 +46,7 @@
         <!-- 任务，金额 -->
         <div class="main_middle" id="top_1">
             <ul>
-                <!-- <li>
-                    <p>20个</p>
-                    <p>今日任务</p>
-                    <div class="mid_line"></div>
-                </li>
-                <li>
-                    <p>50.00元</p>
-                    <p>预计奖励</p>
-                    <div class="mid_line"></div>
-                </li>
 
-                <li>
-                    <p>350.00元</p>
-                    <p>累计收入</p>
-                </li> -->
             </ul>
             <div class="kong"></div>
         </div>
@@ -101,62 +87,7 @@
 
             <div class="allGoods_list" id="orderContent">
                 <ul>
-                    <!-- <li class="main_content_li">
-                        <span class="main_content_a_left">
-                            <img class="main_img" src="../../image/makeEveryDay/money.png">
-                        </span>
-                        <span class="main_content_a_right">
-                            <span class="m_c_a_r_top">cb一分钟简单注册 <i class="just_now">刚刚 </i></span>
-                            <span class="m_c_a_r_bottom">
-                                <span class="m_c_a_r_bottomleft">任务剩余时间：01:20:10</span>
-                            </span>
-                        </span>
-                        <a href="#" class="main_content_a">
-                            <div class="particulars">进行中</div>
-                        </a>
-                    </li>
-                    <li class="main_content_li">
-                        <span class="main_content_a_left">
-                            <img class="main_img" src="../../image/makeEveryDay/money.png">
-                        </span>
-                        <span class="main_content_a_right">
-                            <span class="m_c_a_r_top">58同城速运丰城四级注册推广，只需完成推广 <i class="just_now">11月6</i></span>
-                            <span class="m_c_a_r_bottom">
-                                <span class="m_c_a_r_orange">计1-23小时，超时自动到账</span>
-                            </span>
-                        </span>
-                        <a href="#" class="main_content_a">
-                            <div class="aerea">审核中</div>
-                        </a>
-                    </li>
-                    <li class="main_content_li">
-                        <span class="main_content_a_left">
-                            <img class="main_img" src="../../image/makeEveryDay/ash.png">
-                        </span>
-                        <span class="main_content_a_right">
-                            <span class="m_c_a_r_top">58同城速运丰城四级注册推广，只需完成推广 <i class="just_now">11月5</i></span>
-                            <span class="m_c_a_r_bottom">
-                                <span class="m_c_a_r_green">获得奖励  20元</span>
-                            </span>
-                        </span>
-                        <a href="#" class="main_content_as">
-                            <div class="creoline">已完成</div>
-                        </a>
-                    </li>
-                    <li class="main_content_li">
-                        <span class="main_content_a_left">
-                            <img class="main_img" src="../../image/makeEveryDay/ash.png">
-                        </span>
-                        <span class="main_content_a_right">
-                            <span class="m_c_a_r_top">58同城速运丰城四级注册推广，只需完成推广 <i class="just_now">11月4</i></span>
-                            <span class="m_c_a_r_bottom">
-                                <span class="m_c_a_r_red">审核失败</span>
-                            </span>
-                        </span>
-                        <a href="#" class="main_content_as">
-                            <div class="bonus">查看</div>
-                        </a>
-                    </li> -->
+
                 </ul>
             </div>
         </div>

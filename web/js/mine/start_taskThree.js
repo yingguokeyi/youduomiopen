@@ -269,14 +269,14 @@ $('#sure').click(function(){
         dataType: "jsonp", //指定服务器返回的数据类型
         data: {
             method: 'submitTask',
-            userId: 4599,
+            userId: userId,
             taskId:uri,
             taskImgIds:ids,
             url_type:"task"
         },
         success: function(data) {
             if(data.success==1){
-                $('#modal_start').hide();
+                location.href = 'make_everyDay.jsp?userId='+userId;
             }
         }
     })
@@ -342,4 +342,4 @@ $(function(){
         }.bind(that) ,1000);
 
     }
-})
+});

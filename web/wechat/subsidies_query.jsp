@@ -31,7 +31,7 @@
 <div class="main">
     <header>
         <div class="title_top">
-            <a href="mine.html" class="title_top_first">
+            <a href="mine.jsp" class="title_top_first">
                 <img src="../image/mine/return.png" class="hea_img" />
             </a>
             <span class="title_top_center">补贴查询</span>

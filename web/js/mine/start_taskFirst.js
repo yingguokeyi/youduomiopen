@@ -4,7 +4,7 @@ $(function(){
 	var money = localStorage.getItem('money');//奖励钱
 	var taskEndt = localStorage.getItem('taskEnd');//截止日期
     var arrimg = localStorage.getItem('sArr1');//图片
-    var arrimgs = arrimg.split(",");
+
 	$('.title_top_first').click(function(){
 		layer.open({
 			type: 1,
@@ -15,7 +15,7 @@ $(function(){
 			style: 'position:fixed;bottom:50%;left: 8%; right:8%;height: auto;border:none;border-radius:6px'
 		});
 		$(document).on("click", ".warm_login", function(){
-			window.location.href = 'task_details.jsp';
+			window.location.href = 'task_details.jsp?userId='+userId;
 		});
 		$(document).on("click", ".warm_cancel", function() {
 			layer.closeAll('page');
@@ -136,15 +136,15 @@ $(function(){
 						        },
 						        success: function(data) {
 						        	if(data.success==1){
-						        		location.href = 'task_details.jsp';
+						        		location.href = 'task_details.jsp?userId='+userId;
 						        	}
 						        }
 						    })
 						})    
 					}else if(link==""){
-                        location.href = 'start_taskThree.html';
+                        location.href = 'start_taskThree.jsp?userId='+userId;
                     }else{
-						location.href = 'start_taskSecond.jsp';
+						location.href = 'start_taskSecond.jsp?userId='+userId+'&link='+ link;
 					}
 				})
 				
@@ -155,10 +155,14 @@ $(function(){
         }
     })
     // 图片
-    var imgListHtml = '';
-    for (var i = 0; i < arrimgs.length; i++) {
-        imgListHtml += '<li><img src='+arrimgs[i]+'></li>';
-    };
-    $('.sample_picture').html(imgListHtml);
-    $('.sample_picture li').length<=20;
+	if(arrimg!=null){
+        var arrimgs = arrimg.split(",");
+        var imgListHtml = '';
+        for (var i = 0; i < arrimgs.length; i++) {
+            imgListHtml += '<li><img src='+arrimgs[i]+'></li>';
+        };
+        $('.sample_picture').html(imgListHtml);
+        $('.sample_picture li').length<=20;
+	}
+
 })

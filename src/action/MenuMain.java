@@ -53,8 +53,9 @@ public class MenuMain extends BaseServlet {
         vbt.setType("view");
 
         JSONArray sub_button=new JSONArray();
-        sub_button.add(xiaopcheck);
         sub_button.add(xiaopupload);
+        sub_button.add(xiaopcheck);
+
 
 
         JSONObject buttonOne=new JSONObject();

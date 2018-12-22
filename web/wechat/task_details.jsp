@@ -76,12 +76,12 @@
             </p>
         </ul>
         <div class="sample_picture">
-            <p class="task_title">
+            <p class="task_title" style="margin-left: .26rem;">
                 示例图片
             </p>
-            <ul style="margin-bottom:.2rem;">
+            <div id="picOne">
 
-            </ul>
+            </div>
         </div>
         <div class="task_bg">
 
@@ -161,6 +161,13 @@
             <button id="affirm" onclick="window.location='${request.contextPath}/youduomiopen/wechat/myTask.jsp?openid=<%=openid%>&userId=<%=userId%>'">确定</button>
         </footer>
     </div>
+</div>
+<!--  遮罩层 -->
+<div class="mask-img"></div>
+<div class="picture">
+    <img class="phone" src="" alt="" />
+    <div class="left"><img src="../image/mine/left.png" alt="" /></div>
+    <div class="right"><img src="../image/mine/right.png" alt="" /></div>
 </div>
 </body>
 <script>

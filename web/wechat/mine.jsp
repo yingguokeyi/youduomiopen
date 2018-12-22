@@ -73,7 +73,7 @@
     <div class="main_top">
         <ul class="hea_ul">
             <li class="first">
-                <a id="fir_per" href="membership.jsp?openid=<%=openid%>">
+                <a id="fir_per" href="membership.jsp?openid=<%=openid%>&userId=<%=userId%>">
                     <img id="headImg" />
                 </a>
             </li>

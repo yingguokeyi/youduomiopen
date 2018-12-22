@@ -33,11 +33,13 @@
 	height: 100%;
 }
 .top_money{
+	width: 1.12rem;
 	color: #f8c03f;
 	font-size: .26rem;
 	position: absolute;
 	top: .45rem;
-    right: .7rem;
+	right: .4rem;
+	text-align: center;
 }
 .top_txt{
 	width: 75%;
@@ -96,24 +98,16 @@
 .sample_picture{
 	width: 100%;
 	margin-top: .8rem;
-	padding: 0 .26rem;
 }
-.sample_picture ul{
-	padding: 0;
+.sample_picture #picOne{
 	overflow: hidden;
 }
-.sample_picture li{
+.sample_picture img{
 	width: 30.5%;
 	height: 2.66rem;
 	float: left;
-}
-.sample_picture li+li{
-	margin-left: .26rem;
-}
-.sample_picture li img{
-	width: 100%;
-	height: 100%;
-	border:.01rem solid #ebebeb;
+	margin-left: .15rem;
+	margin-bottom: .2rem;
 }
 .task_steps{
 	width: 100%;
@@ -303,4 +297,48 @@
 	line-height: .5rem;
 	text-align: center;
 	margin-top: 0;
+}
+/*遮罩层*/
+.mask-img {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background: rgba(0,0,0,.2);
+}
+
+.picture{
+	display: none;
+	position: fixed;
+	top: 50%; left:50%;
+	transform: translate(-50%,-50%);
+	width: 100%;
+	height: 6rem;
+	line-height: 6rem;
+	text-align:center;
+	z-index: 20;
+}
+.picture .phone{
+	vertical-align: middle;
+	max-width: 7rem;
+	max-height: 6rem;
+}
+.picture .left{
+	position: absolute;
+	left: .1rem;
+	top: 2rem;
+	width: .25rem;
+	height: .4rem;
+	line-height: .4rem;
+}
+.picture .right{
+	position: absolute;
+	right: .1rem;
+	top: 2rem;
+	width: .25rem;
+	height: .4rem;
+	line-height: .4rem;
 }

@@ -35,7 +35,7 @@
 <div class="main">
     <header>
         <div class="title_top">
-            <a href="task_details.jsp" class="title_top_first">
+            <a href="task_details.jsp?userId=<%=userId%>" class="title_top_first">
                 <img src="../image/mine/return.png" class="hea_img" />
             </a>
             <span class="title_top_center" style="font-size:.3rem;">举报</span>

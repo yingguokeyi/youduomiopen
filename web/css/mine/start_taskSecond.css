@@ -10,9 +10,8 @@
 	width: 30.5%;
 	height: 2.66rem;
 	float: left;
-}
-.sample_picture li+li{
-	margin-left: .26rem;
+	margin-left: .15rem;
+	margin-bottom: .2rem;
 }
 .sample_picture li img{
 	width: 100%;

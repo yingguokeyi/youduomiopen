@@ -63,7 +63,7 @@
 <!-- 我的任务记录 -->
 <footer>
     <div class="record">
-        <a href="myTask.jsp">我的任务记录</a>
+        <a href="myTask.jsp?userId=<%=userId%>">我的任务记录</a>
     </div>
 </footer>
 <script>

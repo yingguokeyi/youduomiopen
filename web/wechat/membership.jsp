@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String openid = request.getParameter("openid");
+    String userId = request.getParameter("userId");
 %>
 <html>
 <head>
@@ -35,7 +36,7 @@
     <div class="main_top">
         <header>
             <div class="title_top">
-                <a href="mine.jsp" class="title_top_first">
+                <a href="mine.jsp?userId=<%=userId%>" class="title_top_first">
                     <img src="../image/mine/return.png" class="hea_img" />
                 </a>
                 <span class="title_top_center">会员资料</span>

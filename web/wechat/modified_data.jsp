@@ -32,7 +32,7 @@
     <div class="main_top">
         <header>
             <div class="title_top">
-                <a href="membership.html" class="title_top_first">
+                <a href="membership.jsp" class="title_top_first">
                     <img src="../image/mine/return.png" class="hea_img" />
                 </a>
                 <span class="title_top_center">修改基本资料</span>
