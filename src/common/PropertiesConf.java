@@ -31,7 +31,7 @@ public class PropertiesConf{
 
 	public static String HESTIA_URL_CE;
 
-	public static String HESTIA_URL_TEST;
+	public static String IMG_URL_PREFIX;
 
 	public static String LOGISTIC_NORMAL;
 	// 正式环境物流请求接口路径
@@ -43,7 +43,7 @@ public class PropertiesConf{
 	// 回填单上传图片地址
 	public static String merchantCertificatePath;
 	//任务图片上传地址
-	public static String uploadTaskImagePath;
+	public static String UPLOAD_GOODS_IMAGE_PATH;
 	// 商户证书地址
 
 	public static String clientId;
@@ -89,7 +89,7 @@ public class PropertiesConf{
 
 			HESTIA_URL_CE = (String) prop.get("hestia_ce");
 
-			HESTIA_URL_TEST = (String) prop.get("hestic_test");
+			IMG_URL_PREFIX = (String) prop.get("imgUrlPrefix");
 
 			// 物流信息
 			LOGISTIC_NORMAL = (String) prop.get("logistic_normal");
@@ -98,7 +98,7 @@ public class PropertiesConf{
 
 			uploadBackOrderImagePath = (String) prop.get("uploadBackOrderImagePath");
 
-			uploadTaskImagePath = (String) prop.get("uploadTaskImagePath");
+			UPLOAD_GOODS_IMAGE_PATH = (String) prop.get("uploadGoodsImagePath");
 
 			merchantCertificatePath = (String) prop.get("merchantCertificatePath");
 

@@ -111,7 +111,7 @@ public class TaskService extends BaseService  {
     }
 
     public static String getTaskImgInfo(String id){
-        int i = sendObject(979, PropertiesConf.HESTIA_URL_TEST,id);
+        int i = sendObject(979, PropertiesConf.IMG_URL_PREFIX,id);
         return ResultPoor.getResult(i);
     }
 
@@ -138,6 +138,12 @@ public class TaskService extends BaseService  {
 
     public static String searchTask(String userId,String date){
         int i = sendObject(983, userId,date);
+        return ResultPoor.getResult(i);
+    }
+
+
+    public static String getTaskFail(String taskId,String userId){
+        int i = sendObject(990,taskId,userId);
         return ResultPoor.getResult(i);
     }
 

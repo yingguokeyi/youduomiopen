@@ -297,5 +297,16 @@ public class TaskAction extends BaseServlet {
         return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
     }
 
+    //查看审核失败详情
+    public String getTaskFail(String taskId,String userId){
+
+        String taskFail = TaskService.getTaskFail(taskId,userId);
+        JSONObject result = JSONObject.parseObject(taskFail);
+        HashMap<String, Object> resMap = new HashMap<String, Object>();
+        resMap.put("result", result);
+        return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
+
+    }
+
 
 }
