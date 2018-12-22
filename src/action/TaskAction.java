@@ -97,7 +97,7 @@ public class TaskAction extends BaseServlet {
         //我的任务数量
         String userNum = TaskService.getStateNum(userId);
         //今日任务数量
-        String dayTask = TaskService.getTaskMoney(substringDate);
+        String dayTask = TaskService.getUserTaskMoney(userId);
         //累计收入
         String userMoney = TaskService.getUserMoney(userId);
 

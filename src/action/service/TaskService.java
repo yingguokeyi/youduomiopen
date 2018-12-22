@@ -19,6 +19,12 @@ public class TaskService extends BaseService  {
         return ResultPoor.getResult(i);
     }
 
+    //已领任务金额，任务数量
+    public static String getUserTaskMoney(String userId){
+        int i = sendObject(988, userId);
+        return ResultPoor.getResult(i);
+    }
+
     public static String getTaskNumber(String id){
         int i = sendObject(965, id);
         return ResultPoor.getResult(i);
