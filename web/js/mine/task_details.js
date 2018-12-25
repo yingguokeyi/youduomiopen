@@ -9,6 +9,7 @@ $(function(){
         data: {
             method: 'getUserTaskInfo',
             userId: userId,
+			openid:openid,
             taskId:uri,
             url_type:"task"
         },
@@ -65,7 +66,7 @@ $(function(){
 				var sMinute = creatTime.substring(8, 10);//分钟
 				var sSecond = creatTime.substring(10, 12);//秒
 				var sMiao = sHour*3600 + sMinute*60 + sSecond*1;
-				if(Month!=sMonth && date!=sDate){
+				if((Month!=sMonth && date!=sDate)||(Month==sMonth && date!=sDate)){
 					$('.now').html(sMonth+'月'+sDate+'日');
 				}else if(miao-sMiao<=3600){
 					$('.now').html('刚刚');
@@ -180,6 +181,16 @@ $(function(){
 
 				}
         	}
+            var rsPhone = data.result.rs[2];
+            //判断有没有绑定手机号
+            var phone = rsPhone.phone;
+            $('#task_apply').click(function(){
+                if(phone==''){
+                    var url = window.location.href;
+                    localStorage.setItem('url', window.location.href);
+                    location.href = 'register.jsp?url='+url+'&openid='+openid+'&userId='+userId;
+                }
+            });
         	// 图片
             var rsImg = data.result.rs[1];
             var img = rsImg.img;

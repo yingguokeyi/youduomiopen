@@ -1,7 +1,10 @@
 package action;
 
 import action.service.TaskService;
+import action.service.UserService;
 import cache.BaseCache;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import servlet.BaseServlet;
 
@@ -199,8 +202,10 @@ public class TaskAction extends BaseServlet {
     }
 
     //查看用户任务详情
-    public String getUserTaskInfo(String userId,String taskId){
-
+    public String getUserTaskInfo(String userId,String taskId,String openid){
+        String wxMember = UserService.findWxMember(openid);
+        JSONObject userJsonObject = JSON.parseObject(wxMember);
+        String phone = userJsonObject.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("phone");
         HashMap<String, Object> resMap = new HashMap<String, Object>();
         //查询用户任务详情
         String info = TaskService.getUserTaskInfo(userId, taskId);
@@ -227,10 +232,12 @@ public class TaskAction extends BaseServlet {
             JSONObject result = JSONObject.parseObject(info);
             resMap.put("result", result);
             resMap.put("img", list);
+            resMap.put("phone", phone);
         }else{
             JSONObject result = JSONObject.parseObject(info);
             resMap.put("result", result);
             resMap.put("img", null);
+            resMap.put("phone", phone);
         }
 
 

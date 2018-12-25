@@ -74,16 +74,17 @@ function ask(){
                     goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                     goodListHtml += '</span>';
                     goodListHtml += '<span class="p_purse">'+(allTasks[i].bonus/100).toFixed(2)+'</span>';
-                    goodListHtml += '<span class="main_content_a_right">';
-                    if( miao-sMiao<=3600){
-                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">刚刚</i></span>';
-                    }else if(miao-sMiao>3600){
-                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">今天</i></span>';
-                    }else if( Month!=sMonth && date!=sDate){
+                    goodListHtml += '<span class="main_content_a_right a_righ_time">';
+                    if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){//判断当前月和日与开始的不相等
+
                         goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                    }else if(miao-sMiao>3600){//判断当前秒与开始
+                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">今天</i></span>';
+                    }else if( miao-sMiao<=3600){
+                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">刚刚</i></span>';
                     }
                     goodListHtml += '<span class="m_c_a_r_bottom">';
-                    goodListHtml += '<span class="m_c_a_r_bottomleft">已有'+allTasks[i].number+'人领取</span>';
+                    goodListHtml += '<span class="m_c_a_r_bottomleft d_drew">已有'+allTasks[i].number+'人领取</span>';
                     goodListHtml += '</span>';
                     goodListHtml += '</span>';
                     goodListHtml += '<a class="main_content_a">';
@@ -137,13 +138,14 @@ function ask(){
                     goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                     goodListHtml += ' </span>';
                     goodListHtml += '<span class="p_purse">'+(allTasks[i].bonus/100).toFixed(2)+'</span>';
-                    goodListHtml += '<span class="main_content_a_right">';
-                    if( miao- sMiao<=3600){
-                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">刚刚</i></span>';
-                    }else if(miao- sMiao>3600){
-                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">今天</i></span>';
-                    }else if( Month!=sMonth && date!=sDate){
+                    goodListHtml += '<span class="main_content_a_right a_righ_time">';
+
+                    if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){//判断当前月和日与开始的不相等
                         goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                    }else if(miao-sMiao>3600){//判断当前秒与开始
+                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">今天</i></span>';
+                    }else if( miao-sMiao<=3600){
+                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">刚刚</i></span>';
                     }
                     goodListHtml += '<span class="m_c_a_r_bottom">';
                     goodListHtml += '<span class="m_c_a_r_bottomleft d_drew"></span>';
@@ -199,16 +201,18 @@ function ask(){
                                         rsHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                                         rsHtml += '</span>';
                                         rsHtml += '<span class="p_purse">'+(fixationRs[i].bonus/100).toFixed(2)+'</span>';
-                                        rsHtml += '<span class="main_content_a_right">';
-                                        if( miao-sMiao<=3600){
-                                            rsHtml += '<span class="m_c_a_r_top">'+fixationRs[i].category_name+'<i class="just_now">刚刚</i></span>';
-                                        }else if(miao-sMiao>3600){
-                                            rsHtml += '<span class="m_c_a_r_top">'+fixationRs[i].category_name+'<i class="just_now">今天</i></span>';
-                                        }else if( Month!=sMonth && date!=sDate){
+                                        rsHtml += '<span class="main_content_a_right a_righ_time">';
+                                        if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){//判断当前月和日与开始的不相等
+
                                             rsHtml += '<span class="m_c_a_r_top">'+fixationRs[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                                        }else if(miao-sMiao>3600){//判断当前秒与开始
+                                            rsHtml += '<span class="m_c_a_r_top">'+fixationRs[i].category_name+'<i class="just_now">今天</i></span>';
+                                        }else if( miao-sMiao<=3600){
+
+                                            rsHtml += '<span class="m_c_a_r_top">'+fixationRs[i].category_name+'<i class="just_now">刚刚</i></span>';
                                         }
                                         rsHtml += '<span class="m_c_a_r_bottom">';
-                                        rsHtml += '<span class="m_c_a_r_bottomleft">已有'+fixationRs[i].number+'人领取</span>';
+                                        rsHtml += '<span class="m_c_a_r_bottomleft d_drew">已有'+fixationRs[i].number+'人领取</span>';
                                         rsHtml += '</span>';
                                         rsHtml += '</span>';
                                         rsHtml += '<a class="main_content_a">';
@@ -242,7 +246,7 @@ function ask(){
                                     var gurl = window.location.href;
 
                                     localStorage.setItem('gurl', window.location.href);
-                                    location.href = 'task_details.jsp?spuId=' + uri +'&url=' + gurl+'&userId='+userId+'&openid='+openid;
+                                    location.href = 'task_details.jsp?userId='+userId+'&openid='+openid;
                                 })
                             }
                         })
@@ -267,16 +271,19 @@ function ask(){
                     goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/ash.png">';
                     goodListHtml += '</span>';
                     goodListHtml += '<span class="y_purse">'+(allTasks[i].bonus/100).toFixed(2)+' </span>';
-                    goodListHtml += '<span class="main_content_a_ash">';
-                    if( miao- sMiao<=3600){
-                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">刚刚</i></span>';
-                    }else if(miao- sMiao>3600){
-                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">今天</i></span>';
-                    }else if( Month!=sMonth && date!=sDate){
+                    goodListHtml += '<span class="main_content_a_ash a_righ_time">';
+
+                    if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){//判断当前月和日与开始的不相等
+
                         goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                    }else if(miao-sMiao>3600){//判断当前秒与开始
+                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">今天</i></span>';
+                    }else if( miao-sMiao<=3600){
+
+                        goodListHtml += '<span class="m_c_a_r_top">'+allTasks[i].category_name+'<i class="just_now">刚刚</i></span>';
                     }
                     goodListHtml += '<span class="m_c_a_r_ash">';
-                    goodListHtml += '<span class="m_c_a_r_bottomlefts">已完成</span>';
+                    goodListHtml += '<span class="m_c_a_r_bottomlefts d_drew">已完成</span>';
                     goodListHtml += ' </span>';
                     goodListHtml += '</span>';
                     goodListHtml += '<div class="main_content_a">';
@@ -286,66 +293,6 @@ function ask(){
 
                 }
             }
-            //    if(12*page>12){
-            //         $('#orderContent ul').append(goodListHtml);
-
-            //         $('.mtw_k').click(function(){
-            //             var uri = $(this).data('id');//id
-            //             var pastState = $(this).data('state');//获得状态state
-            //             var pastMoney = $(this).data('bonus');//奖励钱
-            //             var pastTitle = $(this).data('category_name');//标题
-            //             var pastNumber = $(this).data('number');//已完成人数
-            //             var board = $(this).data('create_end_time');//结束时间
-            //             var initiate = $(this).data('task_create_time');//开始时间
-            //             var creation = $(this).data('create_time');//用户开始做任务的时间
-
-
-            //             sStorage = window.localStorage; //本地存题目
-
-            //             sStorage.uri_goods = uri;//id
-            //             sStorage.equation= pastState;//获得状态state
-            //             sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-            //             sStorage.slogan= pastTitle;//标题
-            //             sStorage.smallBanks = pastNumber;//已完成人数
-            //             sStorage.endingTime = board;//结束时间
-            //             sStorage.setOutTime = initiate;//开始时间
-            //             sStorage.setUptTime = creation;//用户开始做任务的时间
-            //             var gurl = window.location.href;
-
-            //             localStorage.setItem('gurl', window.location.href);
-            //             location.href = '../mine/task_details.html?spuId='+ uri +'&url=' + gurl ;
-            //         })
-
-            //     }else{
-            //         $('#orderContent ul').html(goodListHtml);
-
-            //         $('.mtw_k').click(function(){
-            //             var uri = $(this).data('id');//id
-            //             var pastState = $(this).data('state');//获得状态state
-            //             var pastMoney = $(this).data('bonus');//奖励钱
-            //             var pastTitle = $(this).data('category_name');//标题
-            //             var pastNumber = $(this).data('number');//已完成人数
-            //             var board = $(this).data('create_end_time');//结束时间
-            //             var initiate = $(this).data('task_create_time');//开始时间
-            //             var creation = $(this).data('create_time');//用户开始做任务的时间
-
-            //             sStorage = window.localStorage; //本地存题目
-
-            //             sStorage.uri_goods = uri;//id
-            //             sStorage.equation= pastState;//获得状态state
-            //             sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-            //             sStorage.slogan= pastTitle;//标题
-            //             sStorage.smallBanks = pastNumber;//已完成人数
-            //             sStorage.endingTime = board;//j结束时间
-            //             sStorage.setOutTime = initiate;//开始时间
-            //             sStorage.setUptTime = creation;//用户开始做任务的时间
-            //             var gurl = window.location.href;
-
-            //             localStorage.setItem('gurl', window.location.href);
-            //             location.href = '../mine/task_details.html?spuId='+ uri +'&url=' + gurl ;
-            //         })
-
-            //     }
             $('#orderContent ul').html(goodListHtml);
 
             $('.mtw_k').click(function(){
@@ -371,7 +318,7 @@ function ask(){
                 var gurl = window.location.href;
 
                 localStorage.setItem('gurl', window.location.href);
-                location.href = 'task_details.jsp?spuId=' + uri +'&url=' + gurl+'&userId='+userId+'&openid='+openid ; ;
+                location.href = 'task_details.jsp?userId='+userId+'&openid='+openid ;
             })
 
         }
@@ -519,10 +466,8 @@ var coTime = '';
 //  倒计时方法---已经开始
 function countdown (totalSecond,index){
     var that=this;
-    if(document.getElementsByClassName('main_content_a_right')[index]){
-
-
-        var d_drew = document.getElementsByClassName('main_content_a_right')[index].getElementsByClassName('d_drew')[0];
+    if( document.getElementsByClassName('a_righ_time')[index]){
+        var d_drew = document.getElementsByClassName('a_righ_time')[index].getElementsByClassName('d_drew')[0];
         clearInterval(d_drew.interval);
         d_drew.interval = setInterval(function () {
             // 总秒数
@@ -636,7 +581,7 @@ function countdown (totalSecond,index){
                             var gurl = window.location.href;
 
                             localStorage.setItem('gurl', window.location.href);
-                            location.href = 'task_details.jsp?spuId=' + uri +'&url=' + gurl+'&userId='+userId+'&openid='+openid ;
+                            location.href = 'task_details.jsp?userId='+userId+'&openid='+openid ;
                         })
                     }
                   })
