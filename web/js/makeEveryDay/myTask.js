@@ -159,13 +159,14 @@ function placard(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
-                            goodListHtml += '<span class="main_content_a_right">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_right a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
                             goodListHtml += '<span class="m_c_a_r_bottom">';
                             goodListHtml += '<span class="m_c_a_r_bottomleft d_drew"></span>';
@@ -192,16 +193,17 @@ function placard(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
-                            goodListHtml += '<span class="main_content_a_right">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_right a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
                             goodListHtml += '<span class="m_c_a_r_bottom">';
-                            goodListHtml += '<span class="m_c_a_r_orange">计1-23小时，超时自动到账</span>';
+                            goodListHtml += '<span class="m_c_a_r_orange d_drew">预计1-23小时，超时自动到账</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '<a href="#" class="main_content_a">';
@@ -226,16 +228,17 @@ function placard(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
-                            goodListHtml += '<span class="main_content_a_right">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_right a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
                             goodListHtml += '<span class="m_c_a_r_bottom">';
-                            goodListHtml += '<span class="m_c_a_r_red">审核失败</span>';
+                            goodListHtml += '<span class="m_c_a_r_red d_drew">审核失败</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '<div class="bonus">查看</div>';
@@ -258,16 +261,17 @@ function placard(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
-                            goodListHtml += '<span class="main_content_a_right">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_right a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
                             goodListHtml += '<span class="m_c_a_r_bottom">';
-                            goodListHtml += ' <span class="m_c_a_r_green">获得奖励  '+(detailsRst[i].bonus/100).toFixed(2)+'元</span>';
+                            goodListHtml += ' <span class="m_c_a_r_green d_drew">获得奖励  '+(detailsRst[i].bonus/100).toFixed(2)+'元</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '<div class="main_content_a">';
@@ -292,16 +296,18 @@ function placard(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/ash.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="y_purse">'+(detailsRst[i].bonus/100).toFixed(2)+' </span>';
-                            goodListHtml += '<span class="main_content_a_ash">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_ash a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
+
                             goodListHtml += '<span class="m_c_a_r_ash">';
-                            goodListHtml += '<span class="m_c_a_r_bottomlefts">任务已过期</span>';
+                            goodListHtml += '<span class="m_c_a_r_bottomlefts d_drew">任务已过期</span>';
                             goodListHtml += ' </span>';
                             goodListHtml += '</span>';
                             goodListHtml += '<div class="main_content_a">';
@@ -311,58 +317,6 @@ function placard(){
                         }
 
                     }
-                    // if(12*page>12){
-                    //     $('#orderContent ul').append(goodListHtml);
-                    //     $('.mtw_k').click(function(){
-                    //         var pastMoney = $(this).data('bonus');//奖励钱
-                    //         var pastTitle = $(this).data('category_name');//标题
-                    //         var uri = $(this).data('id');//id
-                    //         var pastState = $(this).data('state');//获得状态state
-                    //         var board = $(this).data('create_end_time');//结束时间
-                    //         var initiate = $(this).data('task_create_time');//开始时间
-                    //         var creation = $(this).data('create_time');//用户开始做任务的时间
-                    //         sStorage = window.localStorage; //本地存题目
-                    //
-                    //
-                    //         sStorage.uri_goods = uri;//id
-                    //         sStorage.equation= pastState;//获得状态state
-                    //         sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                    //         sStorage.slogan= pastTitle;//标题
-                    //         sStorage.endingTime = board;//结束时间
-                    //         sStorage.setOutTime = initiate;//开始时间
-                    //         sStorage.setUptTime = creation;//用户开始做任务的时间
-                    //         var gurl = window.location.href;
-                    //
-                    //         localStorage.setItem('gurl', window.location.href);
-                    //         location.href = '../mine/task_details.html?spuId=' + uri + '&url=' + gurl ;
-                    //     })
-                    //
-                    // }else{
-                    //     $('#orderContent ul').html(goodListHtml);
-                    //     $('.mtw_k').click(function(Countdown){
-                    //         var pastMoney = $(this).data('bonus');//奖励钱
-                    //         var pastTitle = $(this).data('category_name');//标题
-                    //         var uri = $(this).data('id');//id
-                    //         var pastState= $(this).data('state');//获得状态state
-                    //         var board = $(this).data('create_end_time');//结束时间
-                    //         var initiate = $(this).data('task_create_time');//开始时间
-                    //         var creation = $(this).data('create_time');//用户开始做任务的时间
-                    //         sStorage = window.localStorage; //本地存题目
-                    //
-                    //
-                    //         sStorage.uri_goods = uri;//id
-                    //         sStorage.equation= pastState;//获得状态state
-                    //         sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                    //         sStorage.slogan= pastTitle;//标题
-                    //         sStorage.endingTime = board;//结束时间
-                    //         sStorage.setOutTime = initiate;//开始时间
-                    //         sStorage.setUptTime = creation;//用户开始做任务的时间
-                    //         var gurl = window.location.href;
-                    //
-                    //         localStorage.setItem('gurl', window.location.href);
-                    //         location.href = '../mine/task_details.html?spuId=' + uri + '&url=' + gurl ;
-                    //     })
-                    // }
                     $('#orderContent ul').html(goodListHtml);
                     $('.mtw_k').click(function(Countdown){
                         var pastMoney = $(this).data('bonus');//奖励钱
@@ -394,9 +348,34 @@ function placard(){
                             $('#modal_help').hide();
                             $('#modal_apply').hide();
                         })
-                        $('#task_apply').click(function(){
-                            $('#modal_apply').show();
-                        })
+                        var btn = document.getElementsByClassName('task_apply');
+                        for(var j=0; j<btn.length; j++){
+                            btn[j].onclick = function(){
+                                var rid = $(this).data('id');//获取id
+                                $('#modal_apply').show();
+                                $.ajax({
+                                    url: domain_name_url + "/task",
+                                    type: "GET",
+                                    dataType: "jsonp", //指定服务器返回的数据类型
+                                    data: {
+                                        method: 'getTaskFail',
+                                        userId: 4623,
+                                        taskId:rid,
+                                        url_type:"task"
+                                    },
+                                    success: function(data) {
+                                        if(data.success==1){
+                                            var remarks = data.result.rs[0].result.result.rs[0].remarks;
+                                            $('.onec').html(remarks);
+                                        }
+                                    }
+                                })
+
+                            }
+
+                        }
+
+
                         $('#sure').click(function(){
                             var uri = $(this).data('id');//id
                             var pastState = $(this).data('state');//获得状态state
@@ -571,9 +550,7 @@ $('#conduct').click(function(){
                             var totalSecond;
                             if (startDate < currentDate  && currentDate <= endTDate) {//已经在倒计时了
                                 totalSecond = parseInt((endTDate - currentDate) / 1000);
-                                // setTimeout(function () {//已经在倒计时了
-                                //     countdown(totalSecond)
-                                // },1000)
+
                                 (function(totalSecond,x){
                                     setTimeout(function () {//已经在倒计时了
                                         countdown(totalSecond,x);
@@ -603,13 +580,14 @@ $('#conduct').click(function(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
-                            goodListHtml += '<span class="main_content_a_right">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_right a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
                             goodListHtml += '<span class="m_c_a_r_bottom">';
                             goodListHtml += '<span class="m_c_a_r_bottomleft d_drew"></span>';
@@ -622,57 +600,7 @@ $('#conduct').click(function(){
                         }
 
                     }
-                    // if(12*page>12){
-                    //     $('#orderContent ul').append(goodListHtml);
-                    //     $('.mtw_k').click(function(){
-                    //         var pastMoney = $(this).data('bonus');//奖励钱
-                    //         var pastTitle = $(this).data('category_name');//标题
-                    //         var uri = $(this).data('id');//id
-                    //         var pastState = $(this).data('state');//获得状态state
-                    //         var board = $(this).data('create_end_time');//结束时间
-                    //         var initiate = $(this).data('task_create_time');//开始时间
-                    //         var creation = $(this).data('create_time');//用户开始做任务的时间
-                    //         sStorage = window.localStorage; //本地存题目
-                    //
-                    //
-                    //         sStorage.uri_goods = uri;//id
-                    //         sStorage.equation= pastState;//获得状态state
-                    //         sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                    //         sStorage.slogan= pastTitle;//标题
-                    //         sStorage.endingTime = board;//结束时间
-                    //         sStorage.setOutTime = initiate;//开始时间
-                    //         sStorage.setUptTime = creation;//用户开始做任务的时间
-                    //         var gurl = window.location.href;
-                    //
-                    //         localStorage.setItem('gurl', window.location.href);
-                    //         location.href = '../mine/task_details.html?spuId=' + uri + '&url=' + gurl ;
-                    //     })
-                    // }else{
-                    //     $('#orderContent ul').html(goodListHtml);
-                    //     $('.mtw_k').click(function(){
-                    //         var pastMoney = $(this).data('bonus');//奖励钱
-                    //         var pastTitle = $(this).data('category_name');//标题
-                    //         var uri = $(this).data('id');//id
-                    //         var pastState = $(this).data('state');//获得状态state
-                    //         var board = $(this).data('create_end_time');//结束时间
-                    //         var initiate = $(this).data('task_create_time');//开始时间
-                    //         var creation = $(this).data('create_time');//用户开始做任务的时间
-                    //         sStorage = window.localStorage; //本地存题目
-                    //
-                    //
-                    //         sStorage.uri_goods = uri;//id
-                    //         sStorage.equation= pastState;//获得状态state
-                    //         sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                    //         sStorage.slogan= pastTitle;//标题
-                    //         sStorage.endingTime = board;//结束时间
-                    //         sStorage.setOutTime = initiate;//开始时间
-                    //         sStorage.setUptTime = creation;//用户开始做任务的时间
-                    //         var gurl = window.location.href;
-                    //
-                    //         localStorage.setItem('gurl', window.location.href);
-                    //         location.href = '../mine/task_details.html?spuId=' + uri + '&url=' + gurl ;
-                    //     })
-                    // }
+
                     $('#orderContent ul').html(goodListHtml);
                     $('.mtw_k').click(function(){
                         var pastMoney = $(this).data('bonus');//奖励钱
@@ -698,39 +626,7 @@ $('#conduct').click(function(){
                         location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
                     })
                     $(this).addClass("tabhover").parent().siblings().find("a").removeClass("tabhover");
-                    // 查看出现弹框
-                    $(function(){
-                        $('.close').click(function(){
-                            $('#modal_help').hide();
-                            $('#modal_apply').hide();
-                        })
-                        $('#task_apply').click(function(){
-                            $('#modal_apply').show();
-                        })
-                        $('#sure').click(function(){
-                            var uri = $(this).data('id');//id
-                            var pastState = $(this).data('state');//获得状态state
-                            var pastMoney = $(this).data('bonus');//奖励钱
-                            var pastTitle = $(this).data('category_name');//标题
-                            var board = $(this).data('create_end_time');//结束时间
-                            var initiate = $(this).data('task_create_time');//开始时间
-                            var creation = $(this).data('create_time');//用户开始做任务的时间
-                            sStorage = window.localStorage; //本地存题目
 
-                            sStorage.uri_goods = uri;//id
-                            sStorage.equation= pastState;//获得状态state
-                            sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                            sStorage.slogan= pastTitle;//标题
-                            sStorage.endingTime = board;//结束时间
-                            sStorage.setOutTime = initiate;//开始时间
-                            sStorage.setUptTime = creation;//用户开始做任务的时间
-                            var gurl = window.location.href;
-
-                            localStorage.setItem('gurl', window.location.href);
-                            location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
-
-                        })
-                    })
 
                 }
 
@@ -865,16 +761,17 @@ $('#toAudit').click(function(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
-                            goodListHtml += '<span class="main_content_a_right">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_right a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
                             goodListHtml += '<span class="m_c_a_r_bottom">';
-                            goodListHtml += '<span class="m_c_a_r_orange">计1-23小时，超时自动到账</span>';
+                            goodListHtml += '<span class="m_c_a_r_orange d_drew">预计1-23小时，超时自动到账</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '<a href="#" class="main_content_a">';
@@ -883,57 +780,7 @@ $('#toAudit').click(function(){
                             goodListHtml += '</li>';
                         }
                     }
-                    // if(12*page>12){
-                    //     $('#orderContent ul').append(goodListHtml);
-                    //     $('.mtw_k').click(function(){
-                    //         var pastMoney = $(this).data('bonus');//奖励钱
-                    //         var pastTitle = $(this).data('category_name');//标题
-                    //         var uri = $(this).data('id');//id
-                    //         var pastState = $(this).data('state');//获得状态state
-                    //         var board = $(this).data('create_end_time');//结束时间
-                    //         var initiate = $(this).data('task_create_time');//开始时间
-                    //         var creation = $(this).data('create_time');//用户开始做任务的时间
-                    //         sStorage = window.localStorage; //本地存题目
-                    //
-                    //
-                    //         sStorage.uri_goods = uri;//id
-                    //         sStorage.equation= pastState;//获得状态state
-                    //         sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                    //         sStorage.slogan= pastTitle;//标题
-                    //         sStorage.endingTime = board;//结束时间
-                    //         sStorage.setOutTime = initiate;//开始时间
-                    //         sStorage.setUptTime = creation;//用户开始做任务的时间
-                    //         var gurl = window.location.href;
-                    //
-                    //         localStorage.setItem('gurl', window.location.href);
-                    //         location.href = '../mine/task_details.html?spuId=' + uri + '&url=' + gurl ;
-                    //     })
-                    // }else{
-                    //     $('#orderContent ul').html(goodListHtml);
-                    //     $('.mtw_k').click(function(){
-                    //         var pastMoney = $(this).data('bonus');//奖励钱
-                    //         var pastTitle = $(this).data('category_name');//标题
-                    //         var uri = $(this).data('id');//id
-                    //         var pastState = $(this).data('state');//获得状态state
-                    //         var board = $(this).data('create_end_time');//结束时间
-                    //         var initiate = $(this).data('task_create_time');//开始时间
-                    //         var creation = $(this).data('create_time');//用户开始做任务的时间
-                    //         sStorage = window.localStorage; //本地存题目
-                    //
-                    //
-                    //         sStorage.uri_goods = uri;//id
-                    //         sStorage.equation= pastState;//获得状态state
-                    //         sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                    //         sStorage.slogan= pastTitle;//标题
-                    //         sStorage.endingTime = board;//结束时间
-                    //         sStorage.setOutTime = initiate;//开始时间
-                    //         sStorage.setUptTime = creation;//用户开始做任务的时间
-                    //         var gurl = window.location.href;
-                    //
-                    //         localStorage.setItem('gurl', window.location.href);
-                    //         location.href = '../mine/task_details.html?spuId=' + uri + '&url=' + gurl ;
-                    //     })
-                    // }
+
                     $('#orderContent ul').html(goodListHtml);
                     $('.mtw_k').click(function(){
                         var pastMoney = $(this).data('bonus');//奖励钱
@@ -959,39 +806,7 @@ $('#toAudit').click(function(){
                         location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
                     })
                     $(this).addClass("tabhover").parent().siblings().find("a").removeClass("tabhover");
-                    // 查看出现弹框
-                    $(function(){
-                        $('.close').click(function(){
-                            $('#modal_help').hide();
-                            $('#modal_apply').hide();
-                        })
-                        $('#task_apply').click(function(){
-                            $('#modal_apply').show();
-                        })
-                        $('#sure').click(function(){
-                            var uri = $(this).data('id');//id
-                            var pastState = $(this).data('state');//获得状态state
-                            var pastMoney = $(this).data('bonus');//奖励钱
-                            var pastTitle = $(this).data('category_name');//标题
-                            var board = $(this).data('create_end_time');//结束时间
-                            var initiate = $(this).data('task_create_time');//开始时间
-                            var creation = $(this).data('create_time');//用户开始做任务的时间
-                            sStorage = window.localStorage; //本地存题目
 
-                            sStorage.uri_goods = uri;//id
-                            sStorage.equation= pastState;//获得状态state
-                            sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                            sStorage.slogan= pastTitle;//标题
-                            sStorage.endingTime = board;//结束时间
-                            sStorage.setOutTime = initiate;//开始时间
-                            sStorage.setUptTime = creation;//用户开始做任务的时间
-                            var gurl = window.location.href;
-
-                            localStorage.setItem('gurl', window.location.href);
-                            location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
-
-                        })
-                    })
 
                 }
 
@@ -1124,16 +939,17 @@ $('#completed').click(function(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
-                            goodListHtml += '<span class="main_content_a_right">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_right a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
                             goodListHtml += '<span class="m_c_a_r_bottom">';
-                            goodListHtml += '<span class="m_c_a_r_red">审核失败</span>';
+                            goodListHtml += '<span class="m_c_a_r_red d_drew">审核失败</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '<div class="bonus">查看</div>';
@@ -1156,16 +972,17 @@ $('#completed').click(function(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
-                            goodListHtml += '<span class="main_content_a_right">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_right a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
                             goodListHtml += '<span class="m_c_a_r_bottom">';
-                            goodListHtml += ' <span class="m_c_a_r_green">获得奖励  '+(detailsRst[i].bonus/100).toFixed(2)+'元</span>';
+                            goodListHtml += ' <span class="m_c_a_r_green d_drew">获得奖励  '+(detailsRst[i].bonus/100).toFixed(2)+'元</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '</span>';
                             goodListHtml += '<div class="main_content_a">';
@@ -1190,16 +1007,17 @@ $('#completed').click(function(){
                             goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/ash.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="y_purse">'+(detailsRst[i].bonus/100).toFixed(2)+' </span>';
-                            goodListHtml += '<span class="main_content_a_ash">';
-                            if( miao-sMiao<=3600){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
+                            goodListHtml += '<span class="main_content_a_ash a_righ_time">';
+
+                            if( (Month!=sMonth && date!=sDate)|| (Month == sMonth && date!=sDate)){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
                             }else if(miao-sMiao>3600){
                                 goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">今天</i></span>';
-                            }else if( Month!=sMonth && date!=sDate){
-                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">'+expiryMonth+'</i></span>';
+                            }else if( miao-sMiao<=3600){
+                                goodListHtml += '<span class="m_c_a_r_top">'+detailsRst[i].category_name+'<i class="just_now">刚刚</i></span>';
                             }
                             goodListHtml += '<span class="m_c_a_r_ash">';
-                            goodListHtml += '<span class="m_c_a_r_bottomlefts">任务已过期</span>';
+                            goodListHtml += '<span class="m_c_a_r_bottomlefts d_drew">任务已过期</span>';
                             goodListHtml += ' </span>';
                             goodListHtml += '</span>';
                             goodListHtml += '<div class="main_content_a">';
@@ -1209,56 +1027,7 @@ $('#completed').click(function(){
                         }
 
                     }
-                    // if(12*page>12){
-                    //     $('#orderContent ul').append(goodListHtml);
-                    //     $('.mtw_k').click(function(){
-                    //         var pastMoney = $(this).data('bonus');//奖励钱
-                    //         var pastTitle = $(this).data('category_name');//标题
-                    //         var uri = $(this).data('id');//id
-                    //         var pastState = $(this).data('state');//获得状态state
-                    //         var board = $(this).data('create_end_time');//结束时间
-                    //         var initiate = $(this).data('task_create_time');//开始时间
-                    //         var creation = $(this).data('create_time');//用户开始做任务的时间
-                    //         sStorage = window.localStorage; //本地存题目
-                    //
-                    //
-                    //         sStorage.uri_goods = uri;//id
-                    //         sStorage.equation= pastState;//获得状态state
-                    //         sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                    //         sStorage.slogan= pastTitle;//标题
-                    //         sStorage.endingTime = board;//结束时间
-                    //         sStorage.setOutTime = initiate;//开始时间
-                    //         sStorage.setUptTime = creation;//用户开始做任务的时间
-                    //         var gurl = window.location.href;
-                    //
-                    //         localStorage.setItem('gurl', window.location.href);
-                    //         location.href = '../mine/task_details.html?spuId=' + uri + '&url=' + gurl ;
-                    //     })
-                    // }else{
-                    //     $('#orderContent ul').html(goodListHtml);
-                    //     $('.mtw_k').click(function(){
-                    //         var pastMoney = $(this).data('bonus');//奖励钱
-                    //         var pastTitle = $(this).data('category_name');//标题
-                    //         var uri = $(this).data('id');//id
-                    //         var pastState = $(this).data('state');//获得状态state
-                    //         var board = $(this).data('create_end_time');//结束时间
-                    //         var initiate = $(this).data('task_create_time');//开始时间
-                    //         var creation = $(this).data('create_time');//用户开始做任务的时间
-                    //         sStorage = window.localStorage; //本地存题目
-                    //
-                    //         sStorage.uri_goods = uri;//id
-                    //         sStorage.equation= pastState;//获得状态state
-                    //         sStorage.cash= (pastMoney/100).toFixed(2);//奖励钱
-                    //         sStorage.slogan= pastTitle;//标题
-                    //         sStorage.endingTime = board;//结束时间
-                    //         sStorage.setOutTime = initiate;//开始时间
-                    //         sStorage.setUptTime = creation;//用户开始做任务的时间
-                    //         var gurl = window.location.href;
-                    //
-                    //         localStorage.setItem('gurl', window.location.href);
-                    //         location.href = '../mine/task_details.html?spuId=' + uri + '&url=' + gurl ;
-                    //     })
-                    // }
+
                     $('#orderContent ul').html(goodListHtml);
                     $('.mtw_k').click(function(){
                         var pastMoney = $(this).data('bonus');//奖励钱
@@ -1289,9 +1058,33 @@ $('#completed').click(function(){
                             $('#modal_help').hide();
                             $('#modal_apply').hide();
                         })
-                        $('#task_apply').click(function(){
-                            $('#modal_apply').show();
-                        })
+                        var btn = document.getElementsByClassName('task_apply');
+                        for(var j=0; j<btn.length; j++){
+                            btn[j].onclick =function(){
+                                $('#modal_apply').show();
+                                var rid = $(this).data('id');//获取id
+                                $.ajax({
+                                    url: domain_name_url + "/task",
+                                    type: "GET",
+                                    dataType: "jsonp", //指定服务器返回的数据类型
+                                    data: {
+                                        method: 'getTaskFail',
+                                        userId: 4623,
+                                        taskId:rid,
+                                        url_type:"task"
+                                    },
+                                    success: function(data) {
+                                        if(data.success==1){
+                                            var remarks = data.result.rs[0].result.result.rs[0].remarks;
+                                            $('.onec').html(remarks);
+                                        }
+
+                                    }
+                                })
+
+                            }
+
+                        }
                         $('#sure').click(function(){
                             var uri = $(this).data('id');//id
                             var pastState = $(this).data('state');//获得状态state
@@ -1455,54 +1248,56 @@ window.onscroll = function(){
 //  倒计时方法---已经开始
 function countdown (totalSecond,index){
     var that=this;
-    var d_drew = document.getElementsByClassName('main_content_a_right')[index].getElementsByClassName('d_drew')[0];
-    clearInterval(d_drew.interval);
-    d_drew.interval = setInterval(function () {
-        // 总秒数
-        var second = totalSecond;
-        // 天数位
-        var day = Math.floor(second / 3600 / 24);
-        var dayStr = day.toString();
-        if (dayStr.length == 1) dayStr = '0' + dayStr;
-        // 小时位
-        var hr = Math.floor((second - day * 3600 * 24) / 3600);
-        var hrStr = hr.toString();
-        if (hrStr.length == 1) hrStr = '0' + hrStr;
-        // 分钟位
-        var min = Math.floor((second - day * 3600 * 24 - hr * 3600) / 60);
-        var minStr = min.toString();
-        if (minStr.length == 1) minStr = '0' + minStr;
-        // 秒位
-        var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
-        var secStr = sec.toString();
-        if (secStr.length == 1) secStr = '0' + secStr;
-        //将倒计时赋值到div中
-        // document.getElementById("drew").innerHTML = '已领取    ' +  ' 剩余时间'+'：'+hrStr+':'+minStr+':'+secStr;
-        d_drew.innerHTML = '已领取    ' +  ' 剩余时间'+'：'+hrStr+':'+minStr+':'+secStr;
-        totalSecond--;
-        if (totalSecond == 0) {
-            setTimeout(function tt(){
-                // document.getElementById("drew").innerHTML = '已领取    ' +  ' 剩余时间'+'：'+'00'+':'+'00'+':'+'00';
-                d_drew.innerHTML = '已领取    ' +  ' 剩余时间'+'：'+hrStr+':'+minStr+':'+secStr;
-                // clearInterval(that.interval);
-                clearInterval(d_drew.interval);
-            },1000)
-            $.ajax({
-                url: domain_name_url + "/task",
-                type: "GET",
-                dataType: "jsonp", //指定服务器返回的数据类型
-                data: {
-                    method: 'delTask',
-                    userId: userId,
-                    task_id:id,
-                    url_type:"task"
-                },
-                success: function(data) {
-                    $('#orderContent ul').html('');
-                }
-            })
+    if( document.getElementsByClassName('a_righ_time')[index]) {
+        var d_drew = document.getElementsByClassName('a_righ_time')[index].getElementsByClassName('d_drew')[0];
+        clearInterval(d_drew.interval);
+        d_drew.interval = setInterval(function () {
+            // 总秒数
+            var second = totalSecond;
+            // 天数位
+            var day = Math.floor(second / 3600 / 24);
+            var dayStr = day.toString();
+            if (dayStr.length == 1) dayStr = '0' + dayStr;
+            // 小时位
+            var hr = Math.floor((second - day * 3600 * 24) / 3600);
+            var hrStr = hr.toString();
+            if (hrStr.length == 1) hrStr = '0' + hrStr;
+            // 分钟位
+            var min = Math.floor((second - day * 3600 * 24 - hr * 3600) / 60);
+            var minStr = min.toString();
+            if (minStr.length == 1) minStr = '0' + minStr;
+            // 秒位
+            var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
+            var secStr = sec.toString();
+            if (secStr.length == 1) secStr = '0' + secStr;
+            //将倒计时赋值到div中
+            // document.getElementById("drew").innerHTML = '已领取    ' +  ' 剩余时间'+'：'+hrStr+':'+minStr+':'+secStr;
+            d_drew.innerHTML = '已领取    ' + ' 剩余时间' + '：' + hrStr + ':' + minStr + ':' + secStr;
+            totalSecond--;
+            if (totalSecond == 0) {
+                setTimeout(function tt() {
+                    // document.getElementById("drew").innerHTML = '已领取    ' +  ' 剩余时间'+'：'+'00'+':'+'00'+':'+'00';
+                    d_drew.innerHTML = '已领取    ' + ' 剩余时间' + '：' + hrStr + ':' + minStr + ':' + secStr;
+                    // clearInterval(that.interval);
+                    clearInterval(d_drew.interval);
+                }, 1000)
+                $.ajax({
+                    url: domain_name_url + "/task",
+                    type: "GET",
+                    dataType: "jsonp", //指定服务器返回的数据类型
+                    data: {
+                        method: 'delTask',
+                        userId: userId,
+                        task_id: id,
+                        url_type: "task"
+                    },
+                    success: function (data) {
+                        $('#orderContent ul').html('');
+                    }
+                })
 
-        }
-    }.bind(that) ,1000);
+            }
+        }.bind(that), 1000);
+    }
 
 }
