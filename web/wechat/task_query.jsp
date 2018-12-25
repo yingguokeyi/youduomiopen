@@ -35,10 +35,7 @@
 <div class="main">
     <header>
         <div class="title_top">
-            <a href="mine.html" class="title_top_first">
-                <img src="../image/mine/return.png" class="hea_img" />
-            </a>
-            <span class="title_top_center">任务查询</span>
+            <span class="title_top_center" style="width: 100%;">任务查询</span>
         </div>
     </header>
     <div class="query">

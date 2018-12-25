@@ -37,7 +37,7 @@
     <div class="main_top">
         <header>
             <div class="title_top">
-                <a href="start_taskSecond.jsp?userId=<%=userId%>" class="title_top_first">
+                <a href="javascript :;" onClick="javascript :history.back(-1);" class="title_top_first">
                     <img src="../image/mine/return.png" class="hea_img" />
                 </a>
                 <span class="title_top_center" style="font-size:.3rem;">任务开始</span>

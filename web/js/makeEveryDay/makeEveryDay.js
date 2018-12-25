@@ -268,7 +268,7 @@ function ask(){
                     var sMiao = sHour*3600 + sMinute*60 + sSecond*1;
                     goodListHtml += '<li class="main_content_li">';
                     goodListHtml += '<span class="main_content_a_left">';
-                    goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/ash.png">';
+                    goodListHtml += '<img class="main_img" src="../image/makeEveryDay/ash.png">';
                     goodListHtml += '</span>';
                     goodListHtml += '<span class="y_purse">'+(allTasks[i].bonus/100).toFixed(2)+' </span>';
                     goodListHtml += '<span class="main_content_a_ash a_righ_time">';

@@ -76,7 +76,7 @@
                         </li>
                         <li id="completed">
                             <a>
-                                已结束<em></em>
+                                已完成<em></em>
                             </a>
                         </li>
                     </ul>
@@ -108,9 +108,9 @@
                 <li class="two">*可核实原因并重新提交审核 </li>
             </ul>
         </div>
-        <footer class="modal-footer">
+        <div class="modal-footer">
             <button id="sure">查看任务</button>
-        </footer>
+        </div>
     </div>
 </div>
 </body>
