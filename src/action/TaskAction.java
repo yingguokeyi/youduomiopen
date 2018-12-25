@@ -308,5 +308,16 @@ public class TaskAction extends BaseServlet {
 
     }
 
+    //查询入账记录
+    public String getTaskAccount(String userId){
+
+        String startTaskInfo = TaskService.getTaskAccount(userId);
+        JSONObject result = JSONObject.parseObject(startTaskInfo);
+        HashMap<String, Object> resMap = new HashMap<String, Object>();
+        resMap.put("result", result);
+        return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
+
+    }
+
 
 }

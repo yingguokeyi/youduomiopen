@@ -36,7 +36,7 @@ public class UploadImgAction extends BaseServlet {
 //        String uploadTaskImagePath = "/usr/local/tomcat/tomcat_cronus/apache-tomcat-9.0.6/webapps/hestia/task/";
         address = PropertiesConf.UPLOAD_GOODS_IMAGE_PATH;
         String fileName =  uploadIMG(req,address);
-        String imgPath = "/gdemiopen/" + fileName;
+        String imgPath = "/detail/" + fileName;
 
         String res = UploadImgService.addImg(fileName, imgPath, "", "", "", "");
         JSONObject result = JSONObject.parseObject(res);

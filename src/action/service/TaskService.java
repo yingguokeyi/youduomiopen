@@ -147,4 +147,9 @@ public class TaskService extends BaseService  {
         return ResultPoor.getResult(i);
     }
 
+    public static String getTaskAccount(String userId){
+        int i = sendObject(995,userId);
+        return ResultPoor.getResult(i);
+    }
+
 }

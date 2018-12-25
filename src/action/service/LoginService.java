@@ -132,12 +132,14 @@ public class LoginService extends BaseService {
      * 确然上级和加入被邀请人列表
      */
     public static String confirmNewSupmember(String useId,String inviteCode) {
+        String inviteDate = BaseCache.getTIME();
         //更新我的上级
         sendObjectCreate(937,inviteCode,useId);
+        //奖励邀请人
+        sendObjectCreate(994,inviteCode,useId,"100","3",inviteDate);
         //查询邀请人信息
         int insertBeInvite =  sendObject(938,useId);
         //生成当前时间  插入邀请表
-        String inviteDate = BaseCache.getTIME();
         JSONObject beInvite = JSONObject.parseObject(ResultPoor.getResult(insertBeInvite));
         String phoneInvite = beInvite.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("phone");
         String nickNameInvite = beInvite.getJSONObject("result").getJSONArray("rs").getJSONObject(0).getString("nick_name");
