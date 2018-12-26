@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String openid = request.getParameter("openid");
+    String userId = request.getParameter("userId");
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -39,49 +43,13 @@
     </header>
     <div class="withdrawal_record">
         <ul>
-            <li>
-                <div class="record_infor">
-                    <p class="infor_title">
-                        <span>小票补贴</span>
-                        <span>+1.00</span>
-                    </p>
-                    <p class="record_time">2018-12-12  10:10:00</p>
-                    <p class="record_plan">收件补贴 <i>0.50</i> 元,单号<em>15365478216485</em>
-                    </p>
-                </div>
-                <div class="record_img" onclick="window.location=''">
-                    <img src="../image/mine/enter.png" />
-                </div>
-            </li>
-            <li>
-                <div class="record_infor">
-                    <p class="infor_title">
-                        <span>小票补贴</span>
-                        <span>+1.00</span>
-                    </p>
-                    <p class="record_time">2018-12-12  10:10:00</p>
-                    <p class="record_plan">收件补贴 <i>0.50</i> 元,单号<em>15365478216485</em>
-                </div>
-                <div class="record_img" onclick="window.location=''">
-                    <img src="../image/mine/enter.png" />
-                </div>
-            </li>
-            <li>
-                <div class="record_infor">
-                    <p class="infor_title">
-                        <span>邀请注册奖励</span>
-                        <span>+1.00</span>
-                    </p>
-                    <p class="record_time">2018-12-12  10:10:00</p>
-                    <p class="record_plan">邀请好友注册奖励 <i>0.50</i> 元,好友ID<em>401779</em>
-                </div>
-                <div class="record_img" onclick="window.location=''">
-                    <img src="../image/mine/enter.png" />
-                </div>
-            </li>
         </ul>
     </div>
 </div>
 </body>
+<script>
+    var openid = "<%=openid%>";
+    var userId= "<%=userId%>";
+</script>
 <script type="text/javascript" src="../js/mine/accounting_withdraw.js"></script>
 </html>

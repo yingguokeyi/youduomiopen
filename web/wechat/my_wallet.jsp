@@ -11,9 +11,6 @@
     String userId = request.getParameter("userId");
 %>
 <html>
-<script>
-var userId = <%=userId%>
-</script>
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="" />
@@ -63,7 +60,7 @@ var userId = <%=userId%>
     <div class="main_bot">
         <ul>
             <li class="first">
-                <a href="history_withdraw.jsp" class="first_a">
+                <a href="history_withdraw.jsp?userId=<%=userId%>&openid=<%=openid%>" class="first_a">
 							<span class="title_content">
 								<span>提现记录</span>
 							</span>
@@ -73,7 +70,7 @@ var userId = <%=userId%>
                 </a>
             </li>
             <li class="first">
-                <a href="accounting_withdraw.jsp" class="first_a">
+                <a href="accounting_withdraw.jsp?userId=<%=userId%>&openid=<%=openid%>" class="first_a">
 							<span class="title_content">
 								<span>入账记录</span>
 							</span>
@@ -83,7 +80,7 @@ var userId = <%=userId%>
                 </a>
             </li>
             <li class="first">
-                <a href="bind_bankCard.jsp" class="first_a">
+                <a href="bind_bankCard.jsp?userId=<%=userId%>&openid=<%=openid%>" class="first_a">
 							<span class="title_content">
 								<span>绑定银行卡</span>
 							</span>
@@ -96,5 +93,9 @@ var userId = <%=userId%>
     </div>
 </div>
 </body>
+<script>
+    var openid = "<%=openid%>";
+    var userId= "<%=userId%>";
+</script>
 <script type="text/javascript" src="../js/mine/my_wallet.js"></script>
 </html>

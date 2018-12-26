@@ -250,7 +250,7 @@ $(function(){
 	$('.myscroll_right').html(month+'月'+day+'日');
     //点击图片放大
     function seaImg(){
-        $(".mask-img").on("click",function(e){
+        $(".phone").on("click",function(e){
             $(".mask-img").css("display","none");
             $(".picture").css("display","none");
         })

@@ -156,7 +156,7 @@ function placard(){
 
                             goodListHtml += '<li class="main_content_li mtw_k" data-id='+runId[i]+'  data-state='+phaseState[i]+'  data-bonus='+walletBonus[i]+'  data-category_name='+captionName[i]+' data-create_end_time='+stopTime[i]+' data-task_create_time='+beginTime[i]+' data-create_time='+foundTime[i]+'>';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
                             goodListHtml += '<span class="main_content_a_right a_righ_time">';
@@ -190,7 +190,7 @@ function placard(){
                             var sMiao = sHour*3600 + sMinute*60 + sSecond*1;
                             goodListHtml += '<li class="main_content_li mtw_k" data-id='+runId[i]+'  data-state='+phaseState[i]+'  data-bonus='+walletBonus[i]+'  data-category_name='+captionName[i]+' data-create_end_time='+stopTime[i]+' data-task_create_time='+beginTime[i]+' data-create_time='+foundTime[i]+'>';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
                             goodListHtml += '<span class="main_content_a_right a_righ_time">';
@@ -223,9 +223,9 @@ function placard(){
                             var sSecond = warnsTime.substring(10, 12);//秒
                             var sMiao = sHour*3600 + sMinute*60 + sSecond*1;
 
-                            goodListHtml += '<li class="main_content_li" id="task_apply">';
+                            goodListHtml += '<li class="main_content_li task_apply" data-id='+runId[i]+'>';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
                             goodListHtml += '<span class="main_content_a_right a_righ_time">';
@@ -258,7 +258,7 @@ function placard(){
 
                             goodListHtml += '<li class="main_content_li mtw_k" data-id='+runId[i]+'  data-state='+phaseState[i]+'  data-bonus='+walletBonus[i]+'  data-category_name='+captionName[i]+' data-create_end_time='+stopTime[i]+' data-task_create_time='+beginTime[i]+' data-create_time='+foundTime[i]+'>';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
                             goodListHtml += '<span class="main_content_a_right a_righ_time">';
@@ -293,7 +293,7 @@ function placard(){
 
                             goodListHtml += '<li class="main_content_li">';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/ash.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/ash.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="y_purse">'+(detailsRst[i].bonus/100).toFixed(2)+' </span>';
                             goodListHtml += '<span class="main_content_a_ash a_righ_time">';
@@ -339,7 +339,7 @@ function placard(){
                         var gurl = window.location.href;
 
                         localStorage.setItem('gurl', window.location.href);
-                        location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
+                        location.href = 'task_details.jsp?userId='+userId+'&openid='+openid ;
                     })
 
                     // 查看出现弹框
@@ -348,10 +348,11 @@ function placard(){
                             $('#modal_help').hide();
                             $('#modal_apply').hide();
                         })
+                        var rid;
                         var btn = document.getElementsByClassName('task_apply');
                         for(var j=0; j<btn.length; j++){
                             btn[j].onclick = function(){
-                                var rid = $(this).data('id');//获取id
+                                rid = $(this).data('id');//获取id
                                 $('#modal_apply').show();
                                 $.ajax({
                                     url: domain_name_url + "/task",
@@ -359,7 +360,7 @@ function placard(){
                                     dataType: "jsonp", //指定服务器返回的数据类型
                                     data: {
                                         method: 'getTaskFail',
-                                        userId: 4623,
+                                        userId: userId,
                                         taskId:rid,
                                         url_type:"task"
                                     },
@@ -377,7 +378,7 @@ function placard(){
 
 
                         $('#sure').click(function(){
-                            var uri = $(this).data('id');//id
+                            var uri = rid;//id
                             var pastState = $(this).data('state');//获得状态state
                             var pastMoney = $(this).data('bonus');//奖励钱
                             var pastTitle = $(this).data('category_name');//标题
@@ -396,7 +397,7 @@ function placard(){
                             var gurl = window.location.href;
 
                             localStorage.setItem('gurl', window.location.href);
-                            location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
+                            location.href = 'task_details.jsp?userId='+userId+'&openid='+openid ;
 
                         })
                     })
@@ -577,7 +578,7 @@ $('#conduct').click(function(){
 
                             goodListHtml += '<li class="main_content_li mtw_k" data-id='+runId[i]+'  data-state='+phaseState[i]+'  data-bonus='+walletBonus[i]+'  data-category_name='+captionName[i]+' data-create_end_time='+stopTime[i]+' data-task_create_time='+beginTime[i]+' data-create_time='+foundTime[i]+'>';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
                             goodListHtml += '<span class="main_content_a_right a_righ_time">';
@@ -623,7 +624,7 @@ $('#conduct').click(function(){
                         var gurl = window.location.href;
 
                         localStorage.setItem('gurl', window.location.href);
-                        location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
+                        location.href = 'task_details.jsp?userId='+userId+'&openid='+openid ;
                     })
                     $(this).addClass("tabhover").parent().siblings().find("a").removeClass("tabhover");
 
@@ -758,7 +759,7 @@ $('#toAudit').click(function(){
                             var sMiao = sHour*3600 + sMinute*60 + sSecond*1;
                             goodListHtml += '<li class="main_content_li mtw_k" data-id='+runId[i]+'  data-state='+phaseState[i]+'  data-bonus='+walletBonus[i]+'  data-category_name='+captionName[i]+' data-create_end_time='+stopTime[i]+' data-task_create_time='+beginTime[i]+' data-create_time='+foundTime[i]+'>';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
                             goodListHtml += '<span class="main_content_a_right a_righ_time">';
@@ -803,7 +804,7 @@ $('#toAudit').click(function(){
                         var gurl = window.location.href;
 
                         localStorage.setItem('gurl', window.location.href);
-                        location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
+                        location.href = 'task_details.jsp?userId='+userId+'&openid='+openid ;
                     })
                     $(this).addClass("tabhover").parent().siblings().find("a").removeClass("tabhover");
 
@@ -934,9 +935,9 @@ $('#completed').click(function(){
                             var sSecond = warnsTime.substring(10, 12);//秒
                             var sMiao = sHour*3600 + sMinute*60 + sSecond*1;
 
-                            goodListHtml += '<li class="main_content_li"  id="task_apply">';
+                            goodListHtml += '<li class="main_content_li task_apply" data-id='+runId[i]+'>';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
                             goodListHtml += '<span class="main_content_a_right a_righ_time">';
@@ -969,7 +970,7 @@ $('#completed').click(function(){
 
                             goodListHtml += '<li class="main_content_li mtw_k" data-id='+runId[i]+'  data-state='+phaseState[i]+'  data-bonus='+walletBonus[i]+'  data-category_name='+captionName[i]+' data-create_end_time='+stopTime[i]+' data-task_create_time='+beginTime[i]+' data-create_time='+foundTime[i]+'>';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/money.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/money.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="p_purse">'+(detailsRst[i].bonus/100).toFixed(2)+'</span>';
                             goodListHtml += '<span class="main_content_a_right a_righ_time">';
@@ -1004,7 +1005,7 @@ $('#completed').click(function(){
 
                             goodListHtml += '<li class="main_content_li">';
                             goodListHtml += '<span class="main_content_a_left">';
-                            goodListHtml += '<img class="main_img" src="../../image/makeEveryDay/ash.png">';
+                            goodListHtml += '<img class="main_img" src="../image/makeEveryDay/ash.png">';
                             goodListHtml += '</span>';
                             goodListHtml += '<span class="y_purse">'+(detailsRst[i].bonus/100).toFixed(2)+' </span>';
                             goodListHtml += '<span class="main_content_a_ash a_righ_time">';
@@ -1049,7 +1050,7 @@ $('#completed').click(function(){
                         var gurl = window.location.href;
 
                         localStorage.setItem('gurl', window.location.href);
-                        location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
+                        location.href = 'task_details.jsp?userId='+userId+'&openid='+openid ;
                     })
                     $(this).addClass("tabhover").parent().siblings().find("a").removeClass("tabhover");
                     // 查看出现弹框
@@ -1058,19 +1059,20 @@ $('#completed').click(function(){
                             $('#modal_help').hide();
                             $('#modal_apply').hide();
                         })
+                        var rids;
                         var btn = document.getElementsByClassName('task_apply');
                         for(var j=0; j<btn.length; j++){
                             btn[j].onclick =function(){
                                 $('#modal_apply').show();
-                                var rid = $(this).data('id');//获取id
+                                rids = $(this).data('id');//获取id
                                 $.ajax({
                                     url: domain_name_url + "/task",
                                     type: "GET",
                                     dataType: "jsonp", //指定服务器返回的数据类型
                                     data: {
                                         method: 'getTaskFail',
-                                        userId: 4623,
-                                        taskId:rid,
+                                        userId: userId,
+                                        taskId:rids,
                                         url_type:"task"
                                     },
                                     success: function(data) {
@@ -1086,7 +1088,7 @@ $('#completed').click(function(){
 
                         }
                         $('#sure').click(function(){
-                            var uri = $(this).data('id');//id
+                            var uri = rids;//id
                             var pastState = $(this).data('state');//获得状态state
                             var pastMoney = $(this).data('bonus');//奖励钱
                             var pastTitle = $(this).data('category_name');//标题
@@ -1105,7 +1107,7 @@ $('#completed').click(function(){
                             var gurl = window.location.href;
 
                             localStorage.setItem('gurl', window.location.href);
-                            location.href = 'task_details.jsp?spuId=' + uri + '&url=' + gurl+"&userId="+userId ;
+                            location.href = 'task_details.jsp?userId='+userId+'&openid='+openid ;
 
                         })
                     })
