@@ -136,7 +136,13 @@ public class LoginService extends BaseService {
         //更新我的上级
         sendObjectCreate(937,inviteCode,useId);
         //奖励邀请人
-        sendObjectCreate(994,inviteCode,useId,"100","3",inviteDate);
+        int rewardAmount  = 100;
+        sendObjectCreate(994,inviteCode,useId,rewardAmount,"3",inviteDate);
+        int sid2 = sendObject(956,useId);
+        JSONObject json2 = JSONObject.parseObject(ResultPoor.getResult(sid2));
+        int money = Integer.parseInt(json2.getJSONArray("rs").getJSONObject(0).getString("money"));
+        int balance =  Integer.parseInt(json2.getJSONArray("rs").getJSONObject(0).getString("balance"));
+        sendObjectCreate(996, money+rewardAmount,balance+rewardAmount,inviteCode);
         //查询邀请人信息
         int insertBeInvite =  sendObject(938,useId);
         //生成当前时间  插入邀请表
