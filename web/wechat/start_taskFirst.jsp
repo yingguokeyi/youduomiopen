@@ -47,6 +47,7 @@
             <span class="quest_rewards">任务奖励:<i></i></span>
             <span class="time_remaining">剩余时间 <i id="drew"></i></span>
         </div>
+        <div class="step_line"></div>
         <div class="step" style="padding:0;">
             <p class="step_title">请仔细查看任务步骤后按流程完成任务</p>
             <p class="step_cont se_cont" style="padding:0 .26rem;"></p>

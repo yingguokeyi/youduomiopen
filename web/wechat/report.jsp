@@ -29,7 +29,7 @@
     <script type="text/javascript" src="../assets/layer_mobile/layer.js"></script>
     <script type="text/javascript" src="../assets/js/font-size.js"></script>
     <script type="text/javascript" src="../assets/js/global_variable.js"></script>
-    <title>天天赚</title>
+    <title>G得米</title>
 </head>
 <body style="background:#fff;">
 <div class="main">

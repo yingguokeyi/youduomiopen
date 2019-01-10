@@ -47,6 +47,7 @@
             <span class="quest_rewards">任务奖励:<i></i></span>
             <span class="time_remaining">剩余时间 <i id="drew"></i></span>
         </div>
+        <div class="step_line"></div>
         <div class="step">
             <p class="step_title"><button type="button">点击去做任务</button></p>
             <p class="step_cont">点击后会调起手机浏览器打开任务链接，按任务说明完成操作后，进行步骤操作。</p>

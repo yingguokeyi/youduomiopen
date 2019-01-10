@@ -152,4 +152,10 @@ public class TaskService extends BaseService  {
         return ResultPoor.getResult(i);
     }
 
+    public static String saveTask(String categoryName,String taskNumber,String checkTime,String taskTime,String bomus,String taskEndTime,
+                                  String userId,String taskBeginTime,int status,String source,String detailImgId,String contrastImgIds){
+        int i = sendObjectCreate(683,categoryName,taskNumber,checkTime,taskTime,bomus,taskEndTime,userId,taskBeginTime,status,source,detailImgId,contrastImgIds);
+        String res = ResultPoor.getResult(i);
+        return res;
+    }
 }
