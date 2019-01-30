@@ -41,7 +41,7 @@ public class LoginAction extends BaseServlet {
                return creatResult(3, "请填写邀请人", null).toString();
             }
 
-            String has = LoginService.getNewUsersgByPhone(phone);
+            String has = LoginService.getNewUsersgByPhone(phone,source);
             JSONArray ja = JSONObject.parseObject(has).getJSONObject("result").getJSONArray("rs");
 
             HashMap<String, Object> map = new HashMap<String, Object>();

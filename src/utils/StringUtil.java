@@ -269,4 +269,34 @@ public class StringUtil extends StringUtils {
 		return result;
 	}
 
+	public static Long getTaskTime(String create_time,int task_time){
+
+		long i2 = 0;
+		if(create_time!= null && !"".equals(create_time)){
+			long i1 =Long.parseLong(create_time);
+			if(task_time==1){
+				if (Long.parseLong(create_time.substring(6,8))<23){
+					i2 = i1+10000;
+				}else {
+					i2 = i1+770000;
+				}
+			}else if(task_time==2){
+				if (Long.parseLong(create_time.substring(6,8))<22){
+					i2 = i1+20000;
+				}else {
+					i2 = i1+780000;
+				}
+			}else{
+				if (Long.parseLong(create_time.substring(6,8))<21){
+					i2 = i1+30000;
+				}else {
+					i2 = i1+790000;
+				}
+			}
+
+		}
+
+    	return i2;
+	}
+
 }

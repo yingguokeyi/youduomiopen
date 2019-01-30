@@ -152,4 +152,15 @@ public class TaskService extends BaseService  {
         return ResultPoor.getResult(i);
     }
 
+    //用户发布任务
+    public static String addUserTaskHtml(String userId,String category_name,String link_adress,String type,String remark,String tips_words,String bonus,String task_end_time,String contrastImgIds,String check_time,String task_number,String task_time){
+        String submitDate = BaseCache.getTIME();
+        String status = "1";
+        int source = 1;
+        int i = sendObjectCreate(1006,userId,category_name,link_adress,type,source,remark,tips_words,bonus,submitDate,submitDate,status,0,task_end_time,contrastImgIds,task_number,check_time,task_time);
+        return ResultPoor.getResult(i);
+    }
+
+
+
 }

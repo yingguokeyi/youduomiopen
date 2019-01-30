@@ -296,6 +296,9 @@ public class TaskAction extends BaseServlet {
     //任务搜索
     public String searchTask(String userId,String year,String month){
         StringBuffer sTime = new StringBuffer();
+        if(month.length()==1){
+            month = "0"+month;
+        }
         sTime.append(year.substring(2)).append(month);
         String task = TaskService.searchTask(userId, sTime.toString());
         JSONObject result = JSONObject.parseObject(task);
@@ -324,6 +327,15 @@ public class TaskAction extends BaseServlet {
         resMap.put("result", result);
         return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
 
+    }
+    //H5用户添加任务
+    public String addUserTaskHtml(String token,String category_name,String link_adress,String type,String remark,String tips_words,String bonus,String task_end_time,String contrastImgIds,String check_time,String task_number,String task_time){
+        String userId = UserService.getUserIdByToken(token);
+        if (userId == null) {
+            return creatResult(2, "亲，未登录....", null).toString();
+        }
+        String s = TaskService.addUserTaskHtml(userId,category_name, link_adress, type, remark, tips_words, bonus, task_end_time, contrastImgIds, check_time, task_number, task_time);
+        return s;
     }
 
 

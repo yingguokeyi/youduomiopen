@@ -80,8 +80,8 @@ public class LoginService extends BaseService {
         return (Integer) getFieldValue(resText, "id", Integer.class);
     }
 
-    public static String getNewUsersgByPhone(String phone) {
-        int getUserMsg = sendObject(934,phone);
+    public static String getNewUsersgByPhone(String phone,String source) {
+        int getUserMsg = sendObject(934,phone,source);
         return ResultPoor.getResult(getUserMsg);
     }
     public static Integer getUserByPhone(String phone) {
@@ -167,7 +167,9 @@ public class LoginService extends BaseService {
     }
 
     public static Integer addPoseidonUser(String phone, String openid, String source,String sixCode,String real_name) {
-        int sid = sendObjectCreate(936, openid, phone, BaseCache.getTIME(), source, 1, 0, 1,"",phone,sixCode,real_name);
+        long time = new Date().getTime();
+        String getTime = String.valueOf(time/1000);
+        int sid = sendObjectCreate(936, openid, phone,getTime, source, 1, 0, 1,"",phone,sixCode,real_name,phone);
         String resText = ResultPoor.getResult(sid);
         JSONArray ja = JSONObject.parseObject(resText).getJSONObject("result").getJSONArray("ids");
         return ja.getInteger(0);
