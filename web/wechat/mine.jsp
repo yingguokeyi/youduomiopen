@@ -33,7 +33,7 @@
     <title>个人中心</title>
 </head>
 <script>
-    var openid = "<%=openid%>"
+    var openid = "<%=openid%>";
         window.onload =function(){
             $.ajax({
                 type: "get",
@@ -138,7 +138,7 @@
                 <%--<p>补贴查询</p>--%>
             <%--</li>--%>
             <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/online_service.jsp?openid=<%=openid%>&userId=<%=userId%>'">
-                <p><img src="../image/mine/service.png" /></p>
+                <p><img src="../image/mine/services.png" /></p>
                 <p>客服服务</p>
             </li>
             <%--<li onclick="window.location='${request.contextPath}/youduomiopen/wechat/make_everyDay.jsp?openid=<%=openid%>&userId=<%=userId%>'">--%>
@@ -146,8 +146,12 @@
                 <%--<p>天天赚</p>--%>
             <%--</li>--%>
             <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/task_query.jsp?openid=<%=openid%>&userId=<%=userId%>'">
-                <p><img src="../image/mine/task_query.png" /></p>
+                <p><img src="../image/mine/query.png" /></p>
                 <p>任务查询</p>
+            </li>
+            <li onclick="window.location='${request.contextPath}/youduomiopen/wechat/taskManager.jsp?openid=<%=openid%>&userId=<%=userId%>'">
+                <p><img src="../image/mine/Management.png" /></p>
+                <p>发布管理</p>
             </li>
 
         </ul>

@@ -338,5 +338,13 @@ public class TaskAction extends BaseServlet {
         return s;
     }
 
-
+    public String addTask(String categoryName,String taskNumber,String checkTime,String taskTime,String bomus,String taskEndTime,
+                          String userId,String taskBeginTime,String detailImgId,String contrastImgIds){
+        String s = TaskService.saveTask(categoryName, taskNumber, checkTime, taskTime, bomus, taskEndTime,
+                userId, taskBeginTime, 0, "1", detailImgId, contrastImgIds);
+        JSONObject result = JSONObject.parseObject(s);
+        HashMap<String, Object> resMap = new HashMap<String, Object>();
+        resMap.put("result", result);
+        return creatResult(1, "亲,数据包回来了哦...", resMap).toString();
+    }
 }

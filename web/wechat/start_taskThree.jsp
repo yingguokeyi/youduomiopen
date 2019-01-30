@@ -47,6 +47,7 @@
             <span class="quest_rewards">任务奖励:<i></i></span>
             <span class="time_remaining">剩余时间 <i id="drew"></i></span>
         </div>
+        <div class="step_line"></div>
         <div class="step">
             <p class="step_title">上传任务截图</p>
         </div>

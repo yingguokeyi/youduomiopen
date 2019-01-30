@@ -24,6 +24,7 @@ public class WeixinUtil {
 
     private static final String APPID="wx6073812b9fefac99";
     private static final String APPSECRET="de4d56256fd9bc292dd3d6b24e050fe7";
+    //online
     //private static final String APPID="wxb9787523cec7fc6d";//在基础配置中可查看自己APPID
     //private static final String APPSECRET= "54ee2d33a55c22237b88f1d2b8d8d684";//在基础配置中可查看自己APPSECRET
     private static final String ACCESS_TOKEN_URL="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
